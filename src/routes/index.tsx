@@ -90,13 +90,23 @@ function Hero() {
   );
 }
 
-/* ─────────────────────  SECTION 2 — BRAND STORY  ───────────────────── */
-const TIMELINE = [
-  { year: "2018", title: "The First Chair", text: "A single atelier opens in South Mumbai with a manifesto: redefine the Indian salon as a house of design." },
-  { year: "2020", title: "The Studio Method", text: "Our proprietary service system is codified — every chair, every city, the same exacting standard." },
-  { year: "2022", title: "Five Houses", text: "Expansion across Mumbai, Delhi NCR, and Bengaluru. Twelve thousand guests served. Zero compromise." },
-  { year: "2024", title: "The Academy", text: "Maison Noir Academy launches — training the next generation of artists in our editorial craft." },
-  { year: "2026", title: "Franchise Era", text: "We open our doors to entrepreneurs who share our obsession with experience, design, and operational excellence." },
+/* ─────────────────────  SECTION 2 — BRAND STORY (PROVALLIANCE × JLD)  ───────────────────── */
+const GROUP_STATS = [
+  { n: "17", label: "Brands in portfolio" },
+  { n: "3,490", label: "Salons worldwide" },
+  { n: "30", label: "Countries" },
+  { n: "25,000", label: "Associates in salons" },
+  { n: "50M+", label: "Customers every year" },
+  { n: "€1.2B", label: "System sales" },
+];
+const JLD_TIMELINE = [
+  { year: "1961", title: "The First Salon", text: "Jean Louis David opens his first salon on Avenue de Wagram, Paris." },
+  { year: "1960s", title: "Editorial Era", text: "Jean Louis David assists Helmut Newton and Herb Ritts on landmark fashion editorials." },
+  { year: "1970", title: "The Layered Cut", text: "Jean Louis David invents the layered haircut with clippers — a global signature." },
+  { year: "1975", title: "The Franchise", text: "Creation of the Jean Louis David franchise model, the first of its kind in hairdressing." },
+  { year: "2008", title: "Joining Provalliance", text: "The brand joins Provalliance, the world's №1 hair salon group." },
+  { year: "2018", title: "New Salon Concept", text: "A redesigned salon concept rolls out across the international network." },
+  { year: "2025", title: "№1 Franchise", text: "Awarded Best Franchise of the Year for client satisfaction by Le Figaro." },
 ];
 function BrandStory() {
   return (
@@ -104,24 +114,35 @@ function BrandStory() {
       <div className="mx-auto max-w-[1400px] px-6 md:px-10">
         <div className="grid lg:grid-cols-12 gap-16 items-start">
           <div className="lg:col-span-5 lg:sticky lg:top-32">
-            <p className="eyebrow mb-6">— The House</p>
+            <p className="eyebrow mb-6">— Backed By Provalliance</p>
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-noir leading-[1.05]">
-              Built to redefine luxury beauty through <em className="font-editorial italic text-brown">design, technology, and obsession</em>.
+              The world's <em className="font-editorial italic text-brown">№1 hair salon group</em>. A heritage of 60+ years.
             </h2>
             <p className="mt-8 font-editorial text-lg md:text-xl text-brown leading-relaxed max-w-md">
-              Maison Noir is not a salon. It is a quiet rebellion against the ordinary — a house where every detail, from the marble underfoot to the espresso in your hand, is composed with intent.
+              Maison Noir is built on the operating system of Provalliance — a portfolio of 17 brands, 3,490 salons across 30 countries, and Jean Louis David, Europe's №1 hair salon brand with 86% awareness.
             </p>
+
+            <div className="mt-10 grid grid-cols-2 gap-px bg-noir/15 border border-noir/15">
+              {GROUP_STATS.map((s) => (
+                <div key={s.label} className="bg-ivory p-5">
+                  <div className="font-display text-3xl md:text-4xl text-champagne italic leading-none">{s.n}</div>
+                  <div className="mt-2 eyebrow !text-brown/80 text-[0.6rem]">{s.label}</div>
+                </div>
+              ))}
+            </div>
+
             <div className="mt-10">
               <Link to="/about" className="text-noir border-b border-champagne pb-1 text-xs tracking-[0.3em] uppercase hover:text-brown transition-colors">
-                Read the manifesto
+                Read the group story
               </Link>
             </div>
           </div>
           <div className="lg:col-span-7 lg:col-start-7">
+            <p className="eyebrow mb-6">— Jean Louis David · Heritage</p>
             <div className="relative">
               <div className="absolute left-3 top-2 bottom-2 w-px bg-gradient-to-b from-champagne via-beige to-transparent" />
               <div className="space-y-12">
-                {TIMELINE.map((t) => (
+                {JLD_TIMELINE.map((t) => (
                   <div key={t.year} className="relative pl-12">
                     <div className="absolute left-0 top-2 h-6 w-6 rounded-full border border-champagne bg-ivory flex items-center justify-center">
                       <div className="h-1.5 w-1.5 rounded-full bg-champagne" />
