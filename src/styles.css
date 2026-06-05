@@ -222,5 +222,4 @@
 @layer utilities {
   .animate-fade-up { animation: fadeUp 1.2s ease-out both; }
   .animate-slow-zoom { animation: slowZoom 18s ease-in-out infinite alternate; }
-  }
 }
