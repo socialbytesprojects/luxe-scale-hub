@@ -2,7 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import heroSalon from "@/assets/hero-salon.jpg";
-import clientPortrait from "@/assets/client-portrait.jpg";
 import founder from "@/assets/founder.jpg";
 import stylistWork from "@/assets/stylist-work.jpg";
 import interiorReception from "@/assets/interior-reception.jpg";
