@@ -134,7 +134,7 @@ function RootComponent() {
 
 const NAV = [
   { to: "/", label: "Home" },
-  { to: "/about", label: "House" },
+  { to: "/lookbook", label: "Lookbook" },
   { to: "/services", label: "Services" },
   { to: "/franchise", label: "Franchise" },
   { to: "/contact", label: "Contact" },
