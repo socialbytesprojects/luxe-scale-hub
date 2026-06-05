@@ -1,21 +1,14 @@
 @import "tailwindcss" source(none);
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap');
 @source "../src";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Design system definition.
- *
- * The @theme inline block maps CSS custom properties to Tailwind utility
- * classes (e.g. --color-primary -> bg-primary, text-primary).
- *
- * The :root and .dark blocks define the actual color values using oklch.
- * All colors MUST use oklch format.
- *
- * To add a new semantic color:
- * 1. Add the variable to :root (light value) and .dark (dark value)
- * 2. Register it in @theme inline as --color-<name>: var(--<name>)
+ * MAISON NOIR — Quiet Luxury Design System
+ * Matte black · warm beige · ivory · champagne gold · soft brown
+ * Playfair Display / Cormorant Garamond / Montserrat
  */
 
 @theme inline {
@@ -59,42 +52,57 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-ivory: var(--ivory);
+  --color-beige: var(--beige);
+  --color-champagne: var(--champagne);
+  --color-noir: var(--noir);
+  --color-brown: var(--brown);
+  --font-display: "Playfair Display", serif;
+  --font-editorial: "Cormorant Garamond", serif;
+  --font-sans: "Montserrat", sans-serif;
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
+  --radius: 0.125rem;
+  /* Brand tokens */
+  --noir: oklch(0.16 0.005 60);
+  --ivory: oklch(0.97 0.012 80);
+  --beige: oklch(0.88 0.025 75);
+  --champagne: oklch(0.78 0.085 75);
+  --brown: oklch(0.42 0.035 55);
+
+  --background: oklch(0.97 0.012 80);            /* ivory */
+  --foreground: oklch(0.16 0.005 60);            /* noir */
+  --card: oklch(0.95 0.015 80);
+  --card-foreground: oklch(0.16 0.005 60);
+  --popover: oklch(0.97 0.012 80);
+  --popover-foreground: oklch(0.16 0.005 60);
+  --primary: oklch(0.16 0.005 60);               /* matte black */
+  --primary-foreground: oklch(0.97 0.012 80);
+  --secondary: oklch(0.88 0.025 75);             /* beige */
+  --secondary-foreground: oklch(0.16 0.005 60);
+  --muted: oklch(0.92 0.02 78);
+  --muted-foreground: oklch(0.42 0.035 55);
+  --accent: oklch(0.78 0.085 75);                /* champagne */
+  --accent-foreground: oklch(0.16 0.005 60);
+  --destructive: oklch(0.55 0.18 25);
+  --destructive-foreground: oklch(0.97 0.012 80);
+  --border: oklch(0.85 0.02 75);
+  --input: oklch(0.85 0.02 75);
+  --ring: oklch(0.78 0.085 75);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788);
+  --sidebar: oklch(0.16 0.005 60);
+  --sidebar-foreground: oklch(0.97 0.012 80);
+  --sidebar-primary: oklch(0.78 0.085 75);
+  --sidebar-primary-foreground: oklch(0.16 0.005 60);
+  --sidebar-accent: oklch(0.22 0.008 60);
+  --sidebar-accent-foreground: oklch(0.97 0.012 80);
+  --sidebar-border: oklch(0.28 0.01 60);
+  --sidebar-ring: oklch(0.78 0.085 75);
 }
 
 .dark {
@@ -140,5 +148,79 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-weight: 300;
+    letter-spacing: 0.01em;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  .font-editorial { font-family: var(--font-editorial); }
+  .font-display { font-family: var(--font-display); }
+
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--brown);
+  }
+
+  .gold-rule {
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--champagne), transparent);
+  }
+
+  .btn-noir {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 1rem 2.25rem;
+    background: var(--noir); color: var(--ivory);
+    font-family: var(--font-sans); font-size: 0.72rem; font-weight: 500;
+    letter-spacing: 0.28em; text-transform: uppercase;
+    border: 1px solid var(--noir);
+    transition: all 0.4s ease;
+  }
+  .btn-noir:hover { background: var(--champagne); color: var(--noir); border-color: var(--champagne); }
+
+  .btn-ghost {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 1rem 2.25rem;
+    background: transparent; color: var(--ivory);
+    font-family: var(--font-sans); font-size: 0.72rem; font-weight: 500;
+    letter-spacing: 0.28em; text-transform: uppercase;
+    border: 1px solid var(--ivory);
+    transition: all 0.4s ease;
+  }
+  .btn-ghost:hover { background: var(--ivory); color: var(--noir); }
+
+  .btn-gold {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 1rem 2.25rem;
+    background: var(--champagne); color: var(--noir);
+    font-family: var(--font-sans); font-size: 0.72rem; font-weight: 500;
+    letter-spacing: 0.28em; text-transform: uppercase;
+    border: 1px solid var(--champagne);
+    transition: all 0.4s ease;
+  }
+  .btn-gold:hover { background: transparent; color: var(--champagne); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slowZoom {
+  from { transform: scale(1.05); }
+  to { transform: scale(1.15); }
+}
+@layer utilities {
+  .animate-fade-up { animation: fadeUp 1.2s ease-out both; }
+  .animate-slow-zoom { animation: slowZoom 18s ease-in-out infinite alternate; }
   }
 }
