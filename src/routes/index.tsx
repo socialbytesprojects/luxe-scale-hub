@@ -37,17 +37,28 @@ function Index() {
 }
 
 /* ─────────────────────  SECTION 1 — HERO  ───────────────────── */
+const HERO_SLIDES = [heroSalon, interiorReception, interiorStation, interiorWash, interiorCafe];
 function Hero() {
+  const [i, setI] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => setI((p) => (p + 1) % HERO_SLIDES.length), 4000);
+    return () => clearInterval(id);
+  }, []);
   return (
     <section className="relative h-screen min-h-[720px] w-full overflow-hidden bg-noir text-ivory">
       <div className="absolute inset-0">
-        <img
-          src={heroSalon}
-          alt="Maison Noir luxury salon interior"
-          width={1920}
-          height={1280}
-          className="h-full w-full object-cover animate-slow-zoom"
-        />
+        {HERO_SLIDES.map((src, idx) => (
+          <img
+            key={idx}
+            src={src}
+            alt="Maison Noir luxury salon interior"
+            width={1920}
+            height={1280}
+            className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-[1600ms] ease-in-out ${
+              idx === i ? "opacity-100 animate-slow-zoom" : "opacity-0"
+            }`}
+          />
+        ))}
         <div className="absolute inset-0 bg-gradient-to-b from-noir/70 via-noir/40 to-noir/95" />
       </div>
       <div className="relative z-10 mx-auto flex h-full max-w-[1400px] flex-col justify-end px-6 md:px-10 pb-20 md:pb-28">
@@ -65,9 +76,15 @@ function Hero() {
           </div>
         </div>
       </div>
-      <div className="absolute bottom-8 right-8 z-10 hidden md:flex items-center gap-3 text-ivory/60 text-xs tracking-[0.3em] uppercase">
-        <span className="h-px w-12 bg-champagne" />
-        Scroll
+      <div className="absolute bottom-8 right-8 z-10 hidden md:flex items-center gap-2">
+        {HERO_SLIDES.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => setI(idx)}
+            aria-label={`Slide ${idx + 1}`}
+            className={`h-px transition-all duration-500 ${idx === i ? "w-12 bg-champagne" : "w-6 bg-ivory/30"}`}
+          />
+        ))}
       </div>
     </section>
   );
