@@ -91,117 +91,68 @@ function Hero() {
 }
 
 /* ─────────────────────  SECTION 2 — BRAND STORY (PROVALLIANCE × JLD)  ───────────────────── */
-const GROUP_STATS = [
-  { n: "17", label: "Brands in portfolio" },
-  { n: "3,490", label: "Salons worldwide" },
-  { n: "30", label: "Countries" },
-  { n: "25,000", label: "Associates in salons" },
-  { n: "50M+", label: "Customers every year" },
-  { n: "€1.2B", label: "System sales" },
-];
-const JLD_TIMELINE = [
-  { year: "1961", title: "The First Salon", text: "Jean Louis David opens his first salon on Avenue de Wagram, Paris." },
-  { year: "1960s", title: "Editorial Era", text: "Jean Louis David assists Helmut Newton and Herb Ritts on landmark fashion editorials." },
-  { year: "1970", title: "The Layered Cut", text: "Jean Louis David invents the layered haircut with clippers — a global signature." },
-  { year: "1975", title: "The Franchise", text: "Creation of the Jean Louis David franchise model, the first of its kind in hairdressing." },
-  { year: "Late 70s", title: "Training Videos", text: "Launch of the legendary Jean Louis David training videos — codifying technique at scale." },
-  { year: "2008", title: "Joining Provalliance", text: "The brand joins Provalliance, the world's №1 hair salon group." },
-  { year: "2009", title: "Professional Range", text: "Launch of the Jean Louis David professional product range." },
-  { year: "2018", title: "New Salon Concept", text: "A redesigned salon concept rolls out across the international network." },
-  { year: "2025", title: "№1 Franchise", text: "Awarded Best Franchise of the Year for client satisfaction by Le Figaro." },
-];
-const JLD_STATS = [
-  { n: "№1", label: "In Europe" },
-  { n: "750+", label: "Salons worldwide" },
-  { n: "20+", label: "Countries" },
-  { n: "86%", label: "Brand awareness" },
-];
-const JLD_PILLARS = [
-  "Freedom of Spirit", "Creativity", "Singularity", "Tailor-Made",
-  "Proximity", "Trust", "Diversity", "Identity & Style",
-];
+const BRAND_SLIDES = Array.from({ length: 84 }, (_, i) => `/brand-slides/slide-${String(i + 1).padStart(2, "0")}.jpg`);
 function BrandStory() {
+  const [i, setI] = useState(0);
+  const [paused, setPaused] = useState(false);
+  useEffect(() => {
+    if (paused) return;
+    const id = setInterval(() => setI((p) => (p + 1) % BRAND_SLIDES.length), 4500);
+    return () => clearInterval(id);
+  }, [paused]);
+  const go = (dir: number) => setI((p) => (p + dir + BRAND_SLIDES.length) % BRAND_SLIDES.length);
   return (
     <section className="bg-ivory py-28 md:py-40">
       <div className="mx-auto max-w-[1400px] px-6 md:px-10">
-        <div className="grid lg:grid-cols-12 gap-16 items-start">
-          <div className="lg:col-span-5 lg:sticky lg:top-32">
-            <p className="eyebrow mb-6">— Backed By Provalliance</p>
+        <div className="grid lg:grid-cols-12 gap-12 items-end mb-14">
+          <div className="lg:col-span-7">
+            <p className="eyebrow mb-6">— Brand Story</p>
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-noir leading-[1.05]">
-              The world's <em className="font-editorial italic text-brown">№1 hair salon group</em>. A heritage of 60+ years.
+              The story behind <em className="font-editorial italic text-brown">Maison Noir</em>, told one frame at a time.
             </h2>
-            <p className="mt-8 font-editorial text-lg md:text-xl text-brown leading-relaxed max-w-md">
-              Maison Noir is built on the operating system of Provalliance — a portfolio of 17 brands, 3,490 salons across 30 countries, and Jean Louis David, Europe's №1 hair salon brand with 86% awareness.
-            </p>
-
-            <div className="mt-10 grid grid-cols-2 gap-px bg-noir/15 border border-noir/15">
-              {GROUP_STATS.map((s) => (
-                <div key={s.label} className="bg-ivory p-5">
-                  <div className="font-display text-3xl md:text-4xl text-champagne italic leading-none">{s.n}</div>
-                  <div className="mt-2 eyebrow !text-brown/80 text-[0.6rem]">{s.label}</div>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-10">
-              <Link to="/about" className="text-noir border-b border-champagne pb-1 text-xs tracking-[0.3em] uppercase hover:text-brown transition-colors">
-                Read the group story
-              </Link>
-            </div>
           </div>
-          <div className="lg:col-span-7 lg:col-start-7">
-            <p className="eyebrow mb-6">— Jean Louis David · Heritage</p>
-            <div className="relative">
-              <div className="absolute left-3 top-2 bottom-2 w-px bg-gradient-to-b from-champagne via-beige to-transparent" />
-              <div className="space-y-12">
-                {JLD_TIMELINE.map((t) => (
-                  <div key={t.year} className="relative pl-12">
-                    <div className="absolute left-0 top-2 h-6 w-6 rounded-full border border-champagne bg-ivory flex items-center justify-center">
-                      <div className="h-1.5 w-1.5 rounded-full bg-champagne" />
-                    </div>
-                    <div className="font-display text-3xl text-champagne italic mb-2">{t.year}</div>
-                    <h3 className="font-display text-2xl text-noir mb-2">{t.title}</h3>
-                    <p className="text-brown/90 font-editorial text-lg leading-relaxed">{t.text}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+          <p className="lg:col-span-5 font-editorial text-lg md:text-xl text-brown leading-relaxed">
+            A house built on six decades of European hairdressing heritage, the operating system of the world's №1 salon group, and a singular vision for India's luxury salon era. Move through the deck to see how the brand, the craft, and the opportunity come together.
+          </p>
         </div>
 
-        {/* The JLD Brand — stats band + Reason to be + Pillars */}
-        <div className="mt-28 md:mt-36 border-t border-noir/15 pt-20">
-          <div className="grid md:grid-cols-4 gap-px bg-noir/15 border border-noir/15">
-            {JLD_STATS.map((s) => (
-              <div key={s.label} className="bg-ivory p-8 md:p-10 text-center">
-                <div className="font-display text-5xl md:text-6xl text-champagne italic leading-none">{s.n}</div>
-                <div className="mt-4 eyebrow !text-brown/80">{s.label}</div>
-              </div>
+        <div
+          className="relative bg-noir border border-noir/15 overflow-hidden"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+        >
+          <div className="relative aspect-[16/9] w-full">
+            {BRAND_SLIDES.map((src, idx) => (
+              <img
+                key={idx}
+                src={src}
+                alt={`Brand story slide ${idx + 1}`}
+                loading={idx === 0 ? "eager" : "lazy"}
+                className={`absolute inset-0 h-full w-full object-contain transition-opacity duration-700 ${
+                  idx === i ? "opacity-100" : "opacity-0"
+                }`}
+              />
             ))}
+            <button
+              onClick={() => go(-1)}
+              aria-label="Previous slide"
+              className="absolute left-4 top-1/2 -translate-y-1/2 z-10 h-12 w-12 rounded-full border border-ivory/40 bg-noir/60 text-ivory hover:bg-champagne hover:text-noir transition-colors flex items-center justify-center font-display text-2xl"
+            >‹</button>
+            <button
+              onClick={() => go(1)}
+              aria-label="Next slide"
+              className="absolute right-4 top-1/2 -translate-y-1/2 z-10 h-12 w-12 rounded-full border border-ivory/40 bg-noir/60 text-ivory hover:bg-champagne hover:text-noir transition-colors flex items-center justify-center font-display text-2xl"
+            >›</button>
           </div>
-
-          <div className="mt-20 grid lg:grid-cols-12 gap-12 items-start">
-            <div className="lg:col-span-7">
-              <p className="eyebrow mb-6">— Our Reason To Be</p>
-              <blockquote className="font-display text-3xl md:text-4xl lg:text-5xl text-noir leading-[1.15]">
-                "Face to conformism and prejudice, we <em className="font-editorial italic text-brown">liberate the plurality</em> of identities and styles."
-              </blockquote>
-              <p className="mt-8 font-editorial text-xl text-brown leading-relaxed max-w-2xl">
-                We're the ones who dare to be themselves. It starts by choosing the haircut that suits us. We don't follow what's done, what's normal, or the standards. We don't follow anyone.
-              </p>
-              <p className="mt-6 eyebrow !text-champagne">— Jean Louis David · Make A Difference</p>
+          <div className="flex items-center justify-between px-6 py-4 border-t border-ivory/15 bg-noir text-ivory">
+            <span className="eyebrow !text-champagne">— Slide {String(i + 1).padStart(2, "0")} / {BRAND_SLIDES.length}</span>
+            <div className="h-px flex-1 mx-6 bg-ivory/15 relative overflow-hidden">
+              <div
+                className="absolute inset-y-0 left-0 bg-champagne transition-all duration-500"
+                style={{ width: `${((i + 1) / BRAND_SLIDES.length) * 100}%` }}
+              />
             </div>
-            <div className="lg:col-span-5">
-              <p className="eyebrow mb-6">— Brand Pillars</p>
-              <ul className="grid grid-cols-2 gap-px bg-noir/15 border border-noir/15">
-                {JLD_PILLARS.map((p, i) => (
-                  <li key={p} className="bg-ivory p-5 flex items-baseline gap-3">
-                    <span className="font-display italic text-champagne text-sm">{String(i + 1).padStart(2, "0")}</span>
-                    <span className="font-display text-lg text-noir">{p}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <span className="text-xs tracking-[0.3em] uppercase text-ivory/60">{paused ? "Paused" : "Auto"}</span>
           </div>
         </div>
       </div>
