@@ -104,9 +104,21 @@ const JLD_TIMELINE = [
   { year: "1960s", title: "Editorial Era", text: "Jean Louis David assists Helmut Newton and Herb Ritts on landmark fashion editorials." },
   { year: "1970", title: "The Layered Cut", text: "Jean Louis David invents the layered haircut with clippers — a global signature." },
   { year: "1975", title: "The Franchise", text: "Creation of the Jean Louis David franchise model, the first of its kind in hairdressing." },
+  { year: "Late 70s", title: "Training Videos", text: "Launch of the legendary Jean Louis David training videos — codifying technique at scale." },
   { year: "2008", title: "Joining Provalliance", text: "The brand joins Provalliance, the world's №1 hair salon group." },
+  { year: "2009", title: "Professional Range", text: "Launch of the Jean Louis David professional product range." },
   { year: "2018", title: "New Salon Concept", text: "A redesigned salon concept rolls out across the international network." },
   { year: "2025", title: "№1 Franchise", text: "Awarded Best Franchise of the Year for client satisfaction by Le Figaro." },
+];
+const JLD_STATS = [
+  { n: "№1", label: "In Europe" },
+  { n: "750+", label: "Salons worldwide" },
+  { n: "20+", label: "Countries" },
+  { n: "86%", label: "Brand awareness" },
+];
+const JLD_PILLARS = [
+  "Freedom of Spirit", "Creativity", "Singularity", "Tailor-Made",
+  "Proximity", "Trust", "Diversity", "Identity & Style",
 ];
 function BrandStory() {
   return (
@@ -153,6 +165,42 @@ function BrandStory() {
                   </div>
                 ))}
               </div>
+            </div>
+          </div>
+        </div>
+
+        {/* The JLD Brand — stats band + Reason to be + Pillars */}
+        <div className="mt-28 md:mt-36 border-t border-noir/15 pt-20">
+          <div className="grid md:grid-cols-4 gap-px bg-noir/15 border border-noir/15">
+            {JLD_STATS.map((s) => (
+              <div key={s.label} className="bg-ivory p-8 md:p-10 text-center">
+                <div className="font-display text-5xl md:text-6xl text-champagne italic leading-none">{s.n}</div>
+                <div className="mt-4 eyebrow !text-brown/80">{s.label}</div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-20 grid lg:grid-cols-12 gap-12 items-start">
+            <div className="lg:col-span-7">
+              <p className="eyebrow mb-6">— Our Reason To Be</p>
+              <blockquote className="font-display text-3xl md:text-4xl lg:text-5xl text-noir leading-[1.15]">
+                "Face to conformism and prejudice, we <em className="font-editorial italic text-brown">liberate the plurality</em> of identities and styles."
+              </blockquote>
+              <p className="mt-8 font-editorial text-xl text-brown leading-relaxed max-w-2xl">
+                We're the ones who dare to be themselves. It starts by choosing the haircut that suits us. We don't follow what's done, what's normal, or the standards. We don't follow anyone.
+              </p>
+              <p className="mt-6 eyebrow !text-champagne">— Jean Louis David · Make A Difference</p>
+            </div>
+            <div className="lg:col-span-5">
+              <p className="eyebrow mb-6">— Brand Pillars</p>
+              <ul className="grid grid-cols-2 gap-px bg-noir/15 border border-noir/15">
+                {JLD_PILLARS.map((p, i) => (
+                  <li key={p} className="bg-ivory p-5 flex items-baseline gap-3">
+                    <span className="font-display italic text-champagne text-sm">{String(i + 1).padStart(2, "0")}</span>
+                    <span className="font-display text-lg text-noir">{p}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
