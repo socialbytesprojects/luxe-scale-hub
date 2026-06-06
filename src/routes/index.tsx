@@ -2,6 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import heroSalon from "@/assets/hero-salon.jpg";
+import videoExperience from "@/assets/jld-experience.mp4.asset.json";
+import videoCurls from "@/assets/curls-maelle.mp4.asset.json";
 import founder from "@/assets/founder.jpg";
 import stylistWork from "@/assets/stylist-work.jpg";
 import interiorReception from "@/assets/interior-reception.jpg";
@@ -37,30 +39,45 @@ function Index() {
 }
 
 /* ─────────────────────  SECTION 1 — HERO  ───────────────────── */
-const HERO_SLIDES = [heroSalon, interiorReception, interiorStation, interiorWash, interiorCafe];
+const HERO_VIDEOS = [videoExperience.url, videoCurls.url];
 function Hero() {
-  const [i, setI] = useState(0);
+  const videoRefs = useRef<Array<HTMLVideoElement | null>>([]);
+  const [volume, setVolume] = useState(0);
+  const [muted, setMuted] = useState(true);
+
   useEffect(() => {
-    const id = setInterval(() => setI((p) => (p + 1) % HERO_SLIDES.length), 4000);
-    return () => clearInterval(id);
-  }, []);
+    videoRefs.current.forEach((v) => {
+      if (!v) return;
+      v.volume = volume;
+      v.muted = muted || volume === 0;
+    });
+  }, [volume, muted]);
+
+  const onVolume = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const v = Number(e.target.value);
+    setVolume(v);
+    setMuted(v === 0);
+  };
+
   return (
     <section className="relative h-screen min-h-[720px] w-full overflow-hidden bg-noir text-ivory">
-      <div className="absolute inset-0">
-        {HERO_SLIDES.map((src, idx) => (
-          <img
+      <div className="absolute inset-0 grid grid-cols-2">
+        {HERO_VIDEOS.map((src, idx) => (
+          <video
             key={idx}
+            ref={(el) => { videoRefs.current[idx] = el; }}
             src={src}
-            alt="JLD luxury salon interior"
-            width={1920}
-            height={1280}
-            className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-[1600ms] ease-in-out ${
-              idx === i ? "opacity-100 animate-slow-zoom" : "opacity-0"
-            }`}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            className="h-full w-full object-cover"
           />
         ))}
-        <div className="absolute inset-0 bg-gradient-to-b from-noir/70 via-noir/40 to-noir/95" />
       </div>
+      <div className="absolute inset-0 bg-gradient-to-b from-noir/60 via-noir/30 to-noir/95 pointer-events-none" />
+
       <div className="relative z-10 mx-auto flex h-full max-w-[1400px] flex-col justify-end px-6 md:px-10 pb-20 md:pb-28">
         <div className="max-w-3xl animate-fade-up">
           <p className="eyebrow !text-champagne mb-6">Est. 2018 · India</p>
@@ -76,15 +93,34 @@ function Hero() {
           </div>
         </div>
       </div>
-      <div className="absolute bottom-8 right-8 z-10 hidden md:flex items-center gap-2">
-        {HERO_SLIDES.map((_, idx) => (
-          <button
-            key={idx}
-            onClick={() => setI(idx)}
-            aria-label={`Slide ${idx + 1}`}
-            className={`h-px transition-all duration-500 ${idx === i ? "w-12 bg-champagne" : "w-6 bg-ivory/30"}`}
-          />
-        ))}
+
+      <div className="absolute bottom-8 right-8 z-20 flex items-center gap-3 bg-noir/60 backdrop-blur-sm px-4 py-2 border border-ivory/15">
+        <button
+          type="button"
+          onClick={() => {
+            const next = !muted;
+            setMuted(next);
+            if (!next && volume === 0) setVolume(0.5);
+          }}
+          aria-label={muted ? "Unmute videos" : "Mute videos"}
+          className="text-ivory hover:text-champagne transition-colors"
+        >
+          {muted || volume === 0 ? (
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+          ) : (
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          )}
+        </button>
+        <input
+          type="range"
+          min={0}
+          max={1}
+          step={0.01}
+          value={muted ? 0 : volume}
+          onChange={onVolume}
+          aria-label="Volume"
+          className="w-28 accent-champagne"
+        />
       </div>
     </section>
   );
