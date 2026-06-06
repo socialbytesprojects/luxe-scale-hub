@@ -6,9 +6,9 @@ import interiorStation from "@/assets/interior-station.jpg";
 export const Route = createFileRoute("/franchise")({
   head: () => ({
     meta: [
-      { title: "Franchise — Maison Noir" },
+      { title: "Franchise — JLD" },
       { name: "description", content: "A franchise opportunity for entrepreneurs who want to own a luxury salon brand. Turnkey support across brand, design, training, and technology." },
-      { property: "og:title", content: "Franchise — Maison Noir" },
+      { property: "og:title", content: "Franchise — JLD" },
       { property: "og:description", content: "Partner with a brand built for scale." },
     ],
   }),
@@ -37,14 +37,9 @@ function FranchisePage() {
 
       <section className="bg-ivory py-28 md:py-40">
         <div className="mx-auto max-w-[1400px] px-6 md:px-10">
-          <div className="grid md:grid-cols-3 gap-12 lg:gap-16">
+          <div className="grid md:grid-cols-1 gap-12 lg:gap-16 max-w-xl">
             {[
               { k: "₹1.2 Cr", v: "Indicative investment" },
-              { k: "28–36 mo", v: "Expected ROI window" },
-              { k: "2,400 sq ft", v: "Typical footprint" },
-              { k: "12–18 wk", v: "From signing to opening" },
-              { k: "9.5%", v: "Royalty on revenue" },
-              { k: "100% turnkey", v: "Design, fit-out, training, launch" },
             ].map((m) => (
               <div key={m.k} className="border-t border-champagne pt-6">
                 <div className="font-display text-5xl md:text-6xl text-noir italic">{m.k}</div>
@@ -57,7 +52,7 @@ function FranchisePage() {
 
       <section className="bg-beige py-28 md:py-40">
         <div className="mx-auto max-w-[1400px] px-6 md:px-10 grid lg:grid-cols-2 gap-16 items-center">
-          <img src={interiorStation} alt="A Maison Noir styling station" width={1200} height={1500} loading="lazy" className="w-full h-[640px] object-cover" />
+          <img src={interiorStation} alt="A JLD styling station" width={1200} height={1500} loading="lazy" className="w-full h-[640px] object-cover" />
           <div>
             <p className="eyebrow mb-6">— The Journey</p>
             <h2 className="font-display text-4xl md:text-5xl text-noir leading-tight">
@@ -96,7 +91,7 @@ function FranchisePage() {
           {sent ? (
             <div className="mt-12 border border-champagne/40 p-10">
               <h3 className="font-display text-3xl text-champagne mb-3">Thank you.</h3>
-              <p className="font-editorial text-lg text-ivory/80">We have received your enquiry. The Maison Noir partnerships team will be in touch shortly.</p>
+              <p className="font-editorial text-lg text-ivory/80">We have received your enquiry. The JLD partnerships team will be in touch shortly.</p>
             </div>
           ) : (
             <form

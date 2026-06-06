@@ -13,9 +13,9 @@ import interiorCafe from "@/assets/interior-cafe.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Maison Noir — India's Next Luxury Salon Destination" },
+      { title: "JLD — India's Next Luxury Salon Destination" },
       { name: "description", content: "A house of beauty for clients and franchise partners. Experience luxury hair, skin, and styling crafted with editorial precision." },
-      { property: "og:title", content: "Maison Noir — Luxury Salon House" },
+      { property: "og:title", content: "JLD — Luxury Salon House" },
       { property: "og:description", content: "Experience beauty. Own the brand." },
     ],
   }),
@@ -28,7 +28,7 @@ function Index() {
       <Hero />
       <BrandStory />
       <WhyClients />
-      <Franchise />
+      <LookbookPreview />
       <Interiors />
       <Numbers />
       <InvestorCTA />
@@ -51,7 +51,7 @@ function Hero() {
           <img
             key={idx}
             src={src}
-            alt="Maison Noir luxury salon interior"
+            alt="JLD luxury salon interior"
             width={1920}
             height={1280}
             className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-[1600ms] ease-in-out ${
@@ -108,7 +108,7 @@ function BrandStory() {
           <div className="lg:col-span-7">
             <p className="eyebrow mb-6">— Brand Story</p>
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-noir leading-[1.05]">
-              The story behind <em className="font-editorial italic text-brown">Maison Noir</em>, told one frame at a time.
+              The story behind <em className="font-editorial italic text-brown">JLD</em>, told one frame at a time.
             </h2>
           </div>
           <p className="lg:col-span-5 font-editorial text-lg md:text-xl text-brown leading-relaxed">
@@ -162,7 +162,7 @@ function BrandStory() {
 
 /* ─────────────────────  SECTION 3 — WHY CLIENTS LOVE US  ───────────────────── */
 const TESTIMONIALS = [
-  { quote: "Maison Noir doesn't cut hair. It composes you. There is no other word for it.", name: "Ananya R.", role: "Vogue India" },
+  { quote: "JLD doesn't cut hair. It composes you. There is no other word for it.", name: "Ananya R.", role: "Vogue India" },
   { quote: "The only chair in the country that understands editorial. I fly in from London for it.", name: "Priya M.", role: "Stylist" },
   { quote: "Every visit feels like checking into a private members' club that happens to do extraordinary hair.", name: "Vikram S.", role: "Founder, ARC Studios" },
 ];
@@ -210,45 +210,55 @@ function WhyClients() {
   );
 }
 
-/* ─────────────────────  SECTION 4 — FRANCHISE  ───────────────────── */
-const PILLARS = [
-  { n: "01", title: "Brand Identity", text: "A fully-developed luxury house with editorial reach, press equity, and a loyal premium clientele." },
-  { n: "02", title: "Operational System", text: "A turnkey playbook covering every chair, every shift, every guest interaction — engineered for repeatability." },
-  { n: "03", title: "Interior Architecture", text: "End-to-end design assistance from our in-house studio. Every Maison feels singular, yet unmistakably ours." },
-  { n: "04", title: "Training & Academy", text: "Stylists and managers trained at Maison Noir Academy before opening. Ongoing masterclasses included." },
-  { n: "05", title: "Marketing Engine", text: "National PR, influencer programmes, digital performance, and local launch campaigns — handled." },
-  { n: "06", title: "Technology Stack", text: "Proprietary booking, CRM, inventory, and analytics — built for visibility and unit economics." },
+/* ─────────────────────  SECTION 4 — LOOKBOOK PREVIEW  ───────────────────── */
+const LOOKBOOK_PREVIEW = [
+  { label: "Women's Cuts",   img: "https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?auto=format&fit=crop&w=900&q=80" },
+  { label: "Men's Grooming", img: "https://images.unsplash.com/photo-1522336572468-97b06e8ef143?auto=format&fit=crop&w=900&q=80" },
+  { label: "Colour & Gloss", img: "https://images.unsplash.com/photo-1560869713-7d0a29430803?auto=format&fit=crop&w=900&q=80" },
+  { label: "Curly",          img: "https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=900&q=80" },
+  { label: "Coily & Textured", img: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=900&q=80" },
+  { label: "Updos & Occasion", img: "https://images.unsplash.com/photo-1519415943484-9fa1873496d4?auto=format&fit=crop&w=900&q=80" },
 ];
-function Franchise() {
+function LookbookPreview() {
   return (
     <section className="bg-beige py-28 md:py-40">
       <div className="mx-auto max-w-[1400px] px-6 md:px-10">
-        <div className="max-w-3xl mb-20">
-          <p className="eyebrow mb-6">— The Opportunity</p>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-noir leading-[1.05]">
-            Designed for <em className="font-editorial italic text-brown">scalable growth</em>. Built for modern entrepreneurs.
-          </h2>
-          <p className="mt-8 font-editorial text-xl text-brown leading-relaxed">
-            Maison Noir is luxury with operational excellence — a brand engineered to be replicated without ever feeling replicated.
+        <div className="grid lg:grid-cols-12 gap-12 items-end mb-16">
+          <div className="lg:col-span-7">
+            <p className="eyebrow mb-6">— The Lookbook</p>
+            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-noir leading-[1.05]">
+              Every <em className="font-editorial italic text-brown">texture</em>, every silhouette, every shade.
+            </h2>
+          </div>
+          <p className="lg:col-span-5 font-editorial text-lg md:text-xl text-brown leading-relaxed">
+            A curated library of signature work from our floor — women's cuts, men's grooming, colour, curls, coils and occasion styling.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-noir/15">
-          {PILLARS.map((p) => (
-            <div key={p.n} className="bg-beige p-10 md:p-12 group hover:bg-ivory transition-colors duration-500">
-              <div className="flex items-start justify-between mb-8">
-                <span className="font-display italic text-3xl text-champagne">{p.n}</span>
-                <span className="h-px w-12 bg-noir/30 mt-5" />
-              </div>
-              <h3 className="font-display text-2xl md:text-3xl text-noir mb-4">{p.title}</h3>
-              <p className="text-brown leading-relaxed">{p.text}</p>
-            </div>
-          ))}
-        </div>
+        <Link to="/lookbook" className="block group">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+            {LOOKBOOK_PREVIEW.map((l, i) => (
+              <figure
+                key={l.label}
+                className={`relative overflow-hidden bg-noir ${i === 0 ? "col-span-2 row-span-2 aspect-square md:aspect-[4/5]" : "aspect-[3/4]"}`}
+              >
+                <img
+                  src={l.img}
+                  alt={l.label}
+                  loading="lazy"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <figcaption className="absolute bottom-0 left-0 right-0 p-4 md:p-5 bg-gradient-to-t from-noir/85 to-transparent text-ivory text-xs tracking-[0.25em] uppercase">
+                  {l.label}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </Link>
 
-        <div className="mt-16 flex flex-col sm:flex-row items-start sm:items-center gap-6">
-          <Link to="/franchise" className="btn-noir">Explore the Opportunity</Link>
-          <p className="text-sm text-brown italic font-editorial">Investment from ₹1.2 Cr · ROI in 28–36 months · Tier 1 & 2 cities</p>
+        <div className="mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-6">
+          <Link to="/lookbook" className="btn-noir">Open the Lookbook</Link>
+          <p className="text-sm text-brown italic font-editorial">Eight categories · hundreds of references · updated monthly</p>
         </div>
       </div>
     </section>
@@ -275,7 +285,7 @@ function Interiors() {
             </h2>
           </div>
           <p className="font-editorial text-lg text-brown leading-relaxed max-w-md md:justify-self-end">
-            From the reception's bouquet to the café's espresso, every Maison Noir is composed from the same architectural language — a system that protects the experience at every location.
+            From the reception's bouquet to the café's espresso, every JLD is composed from the same architectural language — a system that protects the experience at every location.
           </p>
         </div>
 
@@ -354,11 +364,11 @@ function Metric({ m }: { m: (typeof METRICS)[number] }) {
   const { ref, display } = useCount(m.n, m.decimals ?? 0);
   return (
     <div ref={ref} className="text-center md:text-left">
-      <div className="font-display text-6xl md:text-7xl lg:text-8xl text-champagne italic leading-none">
+      <div className="font-display text-5xl md:text-6xl lg:text-7xl text-champagne italic leading-none whitespace-nowrap">
         {display}
         {m.suffix ?? ""}
       </div>
-      <div className="mt-4 eyebrow !text-ivory/70">{m.label}</div>
+      <div className="mt-4 eyebrow !text-ivory/70 whitespace-nowrap">{m.label}</div>
     </div>
   );
 }
@@ -376,7 +386,7 @@ function Numbers() {
             A house measured in <em className="font-editorial italic text-champagne">trust</em>, not just chairs.
           </h2>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-12 md:gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-x-8 gap-y-12 md:gap-8">
           {METRICS.map((m) => (
             <Metric key={m.label} m={m} />
           ))}
@@ -393,7 +403,7 @@ function InvestorCTA() {
       <div className="mx-auto max-w-[1400px] px-6 md:px-10">
         <div className="grid lg:grid-cols-12 gap-12 items-stretch">
           <div className="lg:col-span-5 relative overflow-hidden">
-            <img src={founder} alt="Founder, Maison Noir" width={1200} height={1500} loading="lazy" className="w-full h-full object-cover min-h-[480px]" />
+            <img src={founder} alt="Founder, JLD" width={1200} height={1500} loading="lazy" className="w-full h-full object-cover min-h-[480px]" />
           </div>
           <div className="lg:col-span-7 bg-noir text-ivory p-10 md:p-16 lg:p-20 flex flex-col justify-center">
             <p className="eyebrow !text-champagne mb-6">— Partnership</p>

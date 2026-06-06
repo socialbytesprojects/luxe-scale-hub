@@ -77,15 +77,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Maison Noir — India's Next Luxury Salon Destination" },
+      { title: "JLD — India's Next Luxury Salon Destination" },
       { name: "description", content: "Experience beauty. Own the brand. A luxury salon house built for clients and franchise partners." },
-      { name: "author", content: "Maison Noir" },
-      { property: "og:title", content: "Maison Noir — India's Next Luxury Salon Destination" },
+      { name: "author", content: "JLD" },
+      { property: "og:title", content: "JLD — India's Next Luxury Salon Destination" },
       { property: "og:description", content: "Experience beauty. Own the brand. A luxury salon house built for clients and franchise partners." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
-      { name: "twitter:title", content: "Maison Noir — India's Next Luxury Salon Destination" },
+      { name: "twitter:title", content: "JLD — India's Next Luxury Salon Destination" },
       { name: "twitter:description", content: "Experience beauty. Own the brand. A luxury salon house built for clients and franchise partners." },
       { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/41ca147c-3f08-40b7-85f6-5025157226a3/id-preview-46ef4a90--8913fd1b-a2b2-46e0-85d2-c2420d492538.lovable.app-1780645942255.png" },
       { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/41ca147c-3f08-40b7-85f6-5025157226a3/id-preview-46ef4a90--8913fd1b-a2b2-46e0-85d2-c2420d492538.lovable.app-1780645942255.png" },
@@ -157,8 +157,8 @@ function SiteHeader() {
     >
       <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 md:px-10">
         <Link to="/" className="flex items-baseline gap-2">
-          <span className="font-display text-ivory text-2xl tracking-wider">MAISON</span>
-          <span className="font-display italic text-champagne text-2xl tracking-wider">noir</span>
+          <span className="font-display text-ivory text-2xl tracking-wider">JLD</span>
+          <span className="font-display italic text-champagne text-sm tracking-[0.3em] hidden sm:inline">Jean Louis David</span>
         </Link>
         <nav className="hidden md:flex items-center gap-10">
           {NAV.map((n) => (
@@ -214,8 +214,8 @@ function SiteFooter() {
         <div className="grid md:grid-cols-4 gap-12">
           <div>
             <div className="flex items-baseline gap-2 mb-6">
-              <span className="font-display text-2xl tracking-wider">MAISON</span>
-              <span className="font-display italic text-champagne text-2xl tracking-wider">noir</span>
+              <span className="font-display text-2xl tracking-wider">JLD</span>
+              <span className="font-display italic text-champagne text-sm tracking-[0.3em]">Jean Louis David</span>
             </div>
             <p className="font-editorial text-lg text-ivory/70 leading-relaxed">
               A house of beauty, built for the modern connoisseur and the visionary entrepreneur.
@@ -254,7 +254,7 @@ function SiteFooter() {
           </div>
         </div>
         <div className="mt-16 pt-8 border-t border-ivory/10 flex flex-col md:flex-row justify-between gap-4 text-xs text-ivory/50">
-          <p>© {new Date().getFullYear()} Maison Noir. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} JLD · Jean Louis David. All rights reserved.</p>
           <p className="tracking-[0.2em] uppercase">A house of quiet luxury</p>
         </div>
       </div>

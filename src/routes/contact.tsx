@@ -5,10 +5,10 @@ import interiorCafe from "@/assets/interior-cafe.jpg";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Book & Contact — Maison Noir" },
-      { name: "description", content: "Reserve a chair, find a Maison Noir near you, or speak with our concierge." },
-      { property: "og:title", content: "Book — Maison Noir" },
-      { property: "og:description", content: "Reserve a chair at Maison Noir." },
+      { title: "Book & Contact — JLD" },
+      { name: "description", content: "Reserve a chair, find a JLD near you, or speak with our concierge." },
+      { property: "og:title", content: "Book — JLD" },
+      { property: "og:description", content: "Reserve a chair at JLD." },
     ],
   }),
   component: Contact,
