@@ -13,9 +13,9 @@ import interiorCafe from "@/assets/interior-cafe.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Maison Noir — India's Next Luxury Salon Destination" },
+      { title: "JLD — India's Next Luxury Salon Destination" },
       { name: "description", content: "A house of beauty for clients and franchise partners. Experience luxury hair, skin, and styling crafted with editorial precision." },
-      { property: "og:title", content: "Maison Noir — Luxury Salon House" },
+      { property: "og:title", content: "JLD — Luxury Salon House" },
       { property: "og:description", content: "Experience beauty. Own the brand." },
     ],
   }),
@@ -51,7 +51,7 @@ function Hero() {
           <img
             key={idx}
             src={src}
-            alt="Maison Noir luxury salon interior"
+            alt="JLD luxury salon interior"
             width={1920}
             height={1280}
             className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-[1600ms] ease-in-out ${
@@ -108,7 +108,7 @@ function BrandStory() {
           <div className="lg:col-span-7">
             <p className="eyebrow mb-6">— Brand Story</p>
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-noir leading-[1.05]">
-              The story behind <em className="font-editorial italic text-brown">Maison Noir</em>, told one frame at a time.
+              The story behind <em className="font-editorial italic text-brown">JLD</em>, told one frame at a time.
             </h2>
           </div>
           <p className="lg:col-span-5 font-editorial text-lg md:text-xl text-brown leading-relaxed">
@@ -162,7 +162,7 @@ function BrandStory() {
 
 /* ─────────────────────  SECTION 3 — WHY CLIENTS LOVE US  ───────────────────── */
 const TESTIMONIALS = [
-  { quote: "Maison Noir doesn't cut hair. It composes you. There is no other word for it.", name: "Ananya R.", role: "Vogue India" },
+  { quote: "JLD doesn't cut hair. It composes you. There is no other word for it.", name: "Ananya R.", role: "Vogue India" },
   { quote: "The only chair in the country that understands editorial. I fly in from London for it.", name: "Priya M.", role: "Stylist" },
   { quote: "Every visit feels like checking into a private members' club that happens to do extraordinary hair.", name: "Vikram S.", role: "Founder, ARC Studios" },
 ];
@@ -215,7 +215,7 @@ const PILLARS = [
   { n: "01", title: "Brand Identity", text: "A fully-developed luxury house with editorial reach, press equity, and a loyal premium clientele." },
   { n: "02", title: "Operational System", text: "A turnkey playbook covering every chair, every shift, every guest interaction — engineered for repeatability." },
   { n: "03", title: "Interior Architecture", text: "End-to-end design assistance from our in-house studio. Every Maison feels singular, yet unmistakably ours." },
-  { n: "04", title: "Training & Academy", text: "Stylists and managers trained at Maison Noir Academy before opening. Ongoing masterclasses included." },
+  { n: "04", title: "Training & Academy", text: "Stylists and managers trained at JLD Academy before opening. Ongoing masterclasses included." },
   { n: "05", title: "Marketing Engine", text: "National PR, influencer programmes, digital performance, and local launch campaigns — handled." },
   { n: "06", title: "Technology Stack", text: "Proprietary booking, CRM, inventory, and analytics — built for visibility and unit economics." },
 ];
@@ -229,7 +229,7 @@ function Franchise() {
             Designed for <em className="font-editorial italic text-brown">scalable growth</em>. Built for modern entrepreneurs.
           </h2>
           <p className="mt-8 font-editorial text-xl text-brown leading-relaxed">
-            Maison Noir is luxury with operational excellence — a brand engineered to be replicated without ever feeling replicated.
+            JLD is luxury with operational excellence — a brand engineered to be replicated without ever feeling replicated.
           </p>
         </div>
 
@@ -275,7 +275,7 @@ function Interiors() {
             </h2>
           </div>
           <p className="font-editorial text-lg text-brown leading-relaxed max-w-md md:justify-self-end">
-            From the reception's bouquet to the café's espresso, every Maison Noir is composed from the same architectural language — a system that protects the experience at every location.
+            From the reception's bouquet to the café's espresso, every JLD is composed from the same architectural language — a system that protects the experience at every location.
           </p>
         </div>
 
@@ -393,7 +393,7 @@ function InvestorCTA() {
       <div className="mx-auto max-w-[1400px] px-6 md:px-10">
         <div className="grid lg:grid-cols-12 gap-12 items-stretch">
           <div className="lg:col-span-5 relative overflow-hidden">
-            <img src={founder} alt="Founder, Maison Noir" width={1200} height={1500} loading="lazy" className="w-full h-full object-cover min-h-[480px]" />
+            <img src={founder} alt="Founder, JLD" width={1200} height={1500} loading="lazy" className="w-full h-full object-cover min-h-[480px]" />
           </div>
           <div className="lg:col-span-7 bg-noir text-ivory p-10 md:p-16 lg:p-20 flex flex-col justify-center">
             <p className="eyebrow !text-champagne mb-6">— Partnership</p>

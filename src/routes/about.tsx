@@ -6,9 +6,9 @@ import interiorReception from "@/assets/interior-reception.jpg";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "The House — Maison Noir" },
+      { title: "The House — JLD" },
       { name: "description", content: "The philosophy, the founder, and the manifesto behind India's house of quiet luxury beauty." },
-      { property: "og:title", content: "The House — Maison Noir" },
+      { property: "og:title", content: "The House — JLD" },
       { property: "og:description", content: "Built to redefine luxury beauty through design, technology, and obsession." },
     ],
   }),
@@ -34,7 +34,7 @@ function About() {
       <section className="bg-ivory py-28 md:py-40">
         <div className="mx-auto max-w-[1100px] px-6 md:px-10">
           <p className="font-editorial text-2xl md:text-3xl text-brown leading-[1.5] italic">
-            "We did not set out to open a salon. We set out to compose a house — a place where craftsmanship, design, and hospitality are inseparable. Where a haircut is a ritual, and a chair is a stage. Maison Noir is the answer to the question we asked ourselves: what would beauty look like if it were built with the care of a fashion house?"
+            "We did not set out to open a salon. We set out to compose a house — a place where craftsmanship, design, and hospitality are inseparable. Where a haircut is a ritual, and a chair is a stage. JLD is the answer to the question we asked ourselves: what would beauty look like if it were built with the care of a fashion house?"
           </p>
           <p className="mt-10 text-sm tracking-[0.3em] uppercase text-noir">— The Founder</p>
         </div>
@@ -52,7 +52,7 @@ function About() {
             </h2>
             <div className="mt-8 space-y-5 font-editorial text-lg text-brown leading-relaxed">
               <p>I trained in London. I worked in Paris. I came home to India and could not find the experience I had been part of building elsewhere. So I built it.</p>
-              <p>Maison Noir is the culmination of two decades of asking what luxury beauty could be when it is treated like an art form and run like a business of consequence.</p>
+              <p>JLD is the culmination of two decades of asking what luxury beauty could be when it is treated like an art form and run like a business of consequence.</p>
               <p>Today, we are opening the house to partners who feel the same hunger.</p>
             </div>
           </div>
@@ -74,11 +74,11 @@ function About() {
             ))}
           </div>
           <div className="mt-20 grid md:grid-cols-2 gap-6 items-stretch">
-            <img src={clientPortrait} alt="A guest at Maison Noir" width={1200} height={1500} loading="lazy" className="w-full h-[520px] object-cover" />
+            <img src={clientPortrait} alt="A guest at JLD" width={1200} height={1500} loading="lazy" className="w-full h-[520px] object-cover" />
             <div className="bg-noir text-ivory p-12 flex flex-col justify-center">
               <p className="eyebrow !text-champagne mb-6">— Visit</p>
               <h3 className="font-display text-4xl mb-6">Come, sit with us.</h3>
-              <p className="font-editorial text-lg text-ivory/80 mb-8">An appointment at Maison Noir is the easiest way to understand it.</p>
+              <p className="font-editorial text-lg text-ivory/80 mb-8">An appointment at JLD is the easiest way to understand it.</p>
               <div><Link to="/contact" className="btn-gold">Book a Chair</Link></div>
             </div>
           </div>

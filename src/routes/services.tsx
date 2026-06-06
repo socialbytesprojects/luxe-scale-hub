@@ -4,10 +4,10 @@ import stylistWork from "@/assets/stylist-work.jpg";
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
-      { title: "Services — Maison Noir" },
+      { title: "Services — JLD" },
       { name: "description", content: "Hair, colour, skin, bridal, and grooming — every service composed with editorial precision." },
-      { property: "og:title", content: "Services — Maison Noir" },
-      { property: "og:description", content: "The Maison Noir service menu." },
+      { property: "og:title", content: "Services — JLD" },
+      { property: "og:description", content: "The JLD service menu." },
     ],
   }),
   component: Services,

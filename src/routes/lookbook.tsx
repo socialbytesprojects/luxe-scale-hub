@@ -4,9 +4,9 @@ import { useState } from "react";
 export const Route = createFileRoute("/lookbook")({
   head: () => ({
     meta: [
-      { title: "Lookbook — Maison Noir" },
-      { name: "description", content: "Explore the Maison Noir lookbook: signature women's cuts, men's grooming, curly and coily textures, gloss treatments, contrast highlights, and more." },
-      { property: "og:title", content: "Lookbook — Maison Noir" },
+      { title: "Lookbook — JLD" },
+      { name: "description", content: "Explore the JLD lookbook: signature women's cuts, men's grooming, curly and coily textures, gloss treatments, contrast highlights, and more." },
+      { property: "og:title", content: "Lookbook — JLD" },
       { property: "og:description", content: "A curated gallery of signature looks across every texture, length, and tone." },
     ],
   }),
