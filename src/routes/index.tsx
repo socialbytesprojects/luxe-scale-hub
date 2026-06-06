@@ -28,7 +28,7 @@ function Index() {
       <Hero />
       <BrandStory />
       <WhyClients />
-      <Franchise />
+      <LookbookPreview />
       <Interiors />
       <Numbers />
       <InvestorCTA />
@@ -210,45 +210,55 @@ function WhyClients() {
   );
 }
 
-/* ─────────────────────  SECTION 4 — FRANCHISE  ───────────────────── */
-const PILLARS = [
-  { n: "01", title: "Brand Identity", text: "A fully-developed luxury house with editorial reach, press equity, and a loyal premium clientele." },
-  { n: "02", title: "Operational System", text: "A turnkey playbook covering every chair, every shift, every guest interaction — engineered for repeatability." },
-  { n: "03", title: "Interior Architecture", text: "End-to-end design assistance from our in-house studio. Every Maison feels singular, yet unmistakably ours." },
-  { n: "04", title: "Training & Academy", text: "Stylists and managers trained at JLD Academy before opening. Ongoing masterclasses included." },
-  { n: "05", title: "Marketing Engine", text: "National PR, influencer programmes, digital performance, and local launch campaigns — handled." },
-  { n: "06", title: "Technology Stack", text: "Proprietary booking, CRM, inventory, and analytics — built for visibility and unit economics." },
+/* ─────────────────────  SECTION 4 — LOOKBOOK PREVIEW  ───────────────────── */
+const LOOKBOOK_PREVIEW = [
+  { label: "Women's Cuts",   img: "https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?auto=format&fit=crop&w=900&q=80" },
+  { label: "Men's Grooming", img: "https://images.unsplash.com/photo-1522336572468-97b06e8ef143?auto=format&fit=crop&w=900&q=80" },
+  { label: "Colour & Gloss", img: "https://images.unsplash.com/photo-1560869713-7d0a29430803?auto=format&fit=crop&w=900&q=80" },
+  { label: "Curly",          img: "https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=900&q=80" },
+  { label: "Coily & Textured", img: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=900&q=80" },
+  { label: "Updos & Occasion", img: "https://images.unsplash.com/photo-1519415943484-9fa1873496d4?auto=format&fit=crop&w=900&q=80" },
 ];
-function Franchise() {
+function LookbookPreview() {
   return (
     <section className="bg-beige py-28 md:py-40">
       <div className="mx-auto max-w-[1400px] px-6 md:px-10">
-        <div className="max-w-3xl mb-20">
-          <p className="eyebrow mb-6">— The Opportunity</p>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-noir leading-[1.05]">
-            Designed for <em className="font-editorial italic text-brown">scalable growth</em>. Built for modern entrepreneurs.
-          </h2>
-          <p className="mt-8 font-editorial text-xl text-brown leading-relaxed">
-            JLD is luxury with operational excellence — a brand engineered to be replicated without ever feeling replicated.
+        <div className="grid lg:grid-cols-12 gap-12 items-end mb-16">
+          <div className="lg:col-span-7">
+            <p className="eyebrow mb-6">— The Lookbook</p>
+            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-noir leading-[1.05]">
+              Every <em className="font-editorial italic text-brown">texture</em>, every silhouette, every shade.
+            </h2>
+          </div>
+          <p className="lg:col-span-5 font-editorial text-lg md:text-xl text-brown leading-relaxed">
+            A curated library of signature work from our floor — women's cuts, men's grooming, colour, curls, coils and occasion styling.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-noir/15">
-          {PILLARS.map((p) => (
-            <div key={p.n} className="bg-beige p-10 md:p-12 group hover:bg-ivory transition-colors duration-500">
-              <div className="flex items-start justify-between mb-8">
-                <span className="font-display italic text-3xl text-champagne">{p.n}</span>
-                <span className="h-px w-12 bg-noir/30 mt-5" />
-              </div>
-              <h3 className="font-display text-2xl md:text-3xl text-noir mb-4">{p.title}</h3>
-              <p className="text-brown leading-relaxed">{p.text}</p>
-            </div>
-          ))}
-        </div>
+        <Link to="/lookbook" className="block group">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+            {LOOKBOOK_PREVIEW.map((l, i) => (
+              <figure
+                key={l.label}
+                className={`relative overflow-hidden bg-noir ${i === 0 ? "col-span-2 row-span-2 aspect-square md:aspect-[4/5]" : "aspect-[3/4]"}`}
+              >
+                <img
+                  src={l.img}
+                  alt={l.label}
+                  loading="lazy"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <figcaption className="absolute bottom-0 left-0 right-0 p-4 md:p-5 bg-gradient-to-t from-noir/85 to-transparent text-ivory text-xs tracking-[0.25em] uppercase">
+                  {l.label}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </Link>
 
-        <div className="mt-16 flex flex-col sm:flex-row items-start sm:items-center gap-6">
-          <Link to="/franchise" className="btn-noir">Explore the Opportunity</Link>
-          <p className="text-sm text-brown italic font-editorial">Investment from ₹1.2 Cr · ROI in 28–36 months · Tier 1 & 2 cities</p>
+        <div className="mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-6">
+          <Link to="/lookbook" className="btn-noir">Open the Lookbook</Link>
+          <p className="text-sm text-brown italic font-editorial">Eight categories · hundreds of references · updated monthly</p>
         </div>
       </div>
     </section>
