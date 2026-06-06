@@ -37,14 +37,9 @@ function FranchisePage() {
 
       <section className="bg-ivory py-28 md:py-40">
         <div className="mx-auto max-w-[1400px] px-6 md:px-10">
-          <div className="grid md:grid-cols-3 gap-12 lg:gap-16">
+          <div className="grid md:grid-cols-1 gap-12 lg:gap-16 max-w-xl">
             {[
               { k: "₹1.2 Cr", v: "Indicative investment" },
-              { k: "28–36 mo", v: "Expected ROI window" },
-              { k: "2,400 sq ft", v: "Typical footprint" },
-              { k: "12–18 wk", v: "From signing to opening" },
-              { k: "9.5%", v: "Royalty on revenue" },
-              { k: "100% turnkey", v: "Design, fit-out, training, launch" },
             ].map((m) => (
               <div key={m.k} className="border-t border-champagne pt-6">
                 <div className="font-display text-5xl md:text-6xl text-noir italic">{m.k}</div>

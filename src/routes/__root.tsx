@@ -157,8 +157,8 @@ function SiteHeader() {
     >
       <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 md:px-10">
         <Link to="/" className="flex items-baseline gap-2">
-          <span className="font-display text-ivory text-2xl tracking-wider">MAISON</span>
-          <span className="font-display italic text-champagne text-2xl tracking-wider">noir</span>
+          <span className="font-display text-ivory text-2xl tracking-wider">JLD</span>
+          <span className="font-display italic text-champagne text-sm tracking-[0.3em] hidden sm:inline">Jean Louis David</span>
         </Link>
         <nav className="hidden md:flex items-center gap-10">
           {NAV.map((n) => (
@@ -214,8 +214,8 @@ function SiteFooter() {
         <div className="grid md:grid-cols-4 gap-12">
           <div>
             <div className="flex items-baseline gap-2 mb-6">
-              <span className="font-display text-2xl tracking-wider">MAISON</span>
-              <span className="font-display italic text-champagne text-2xl tracking-wider">noir</span>
+              <span className="font-display text-2xl tracking-wider">JLD</span>
+              <span className="font-display italic text-champagne text-sm tracking-[0.3em]">Jean Louis David</span>
             </div>
             <p className="font-editorial text-lg text-ivory/70 leading-relaxed">
               A house of beauty, built for the modern connoisseur and the visionary entrepreneur.
@@ -254,7 +254,7 @@ function SiteFooter() {
           </div>
         </div>
         <div className="mt-16 pt-8 border-t border-ivory/10 flex flex-col md:flex-row justify-between gap-4 text-xs text-ivory/50">
-          <p>© {new Date().getFullYear()} JLD. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} JLD · Jean Louis David. All rights reserved.</p>
           <p className="tracking-[0.2em] uppercase">A house of quiet luxury</p>
         </div>
       </div>
