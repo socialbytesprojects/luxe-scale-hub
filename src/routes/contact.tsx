@@ -54,7 +54,7 @@ function Contact() {
                 </Row>
                 <Row>
                   <Input label="Email" type="email" />
-                  <Select label="Preferred Maison" options={LOCATIONS.map(l => `${l.city} — ${l.area.split(" · ")[0]}`)} />
+                  <Select label="Preferred Salon" options={LOCATIONS.map(l => `${l.city} — ${l.area.split(" · ")[0]}`)} />
                 </Row>
                 <Row>
                   <Input label="Service" />
