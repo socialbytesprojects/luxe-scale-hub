@@ -35,21 +35,6 @@ function FranchisePage() {
         </div>
       </section>
 
-      <section className="bg-ivory py-28 md:py-40">
-        <div className="mx-auto max-w-[1400px] px-6 md:px-10">
-          <div className="grid md:grid-cols-1 gap-12 lg:gap-16 max-w-xl">
-            {[
-              { k: "₹1.2 Cr", v: "Indicative investment" },
-            ].map((m) => (
-              <div key={m.k} className="border-t border-champagne pt-6">
-                <div className="font-display text-5xl md:text-6xl text-noir italic">{m.k}</div>
-                <p className="mt-2 text-sm tracking-[0.2em] uppercase text-brown">{m.v}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className="bg-beige py-28 md:py-40">
         <div className="mx-auto max-w-[1400px] px-6 md:px-10 grid lg:grid-cols-2 gap-16 items-center">
           <img src={interiorStation} alt="A JLD styling station" width={1200} height={1500} loading="lazy" className="w-full h-[640px] object-cover" />
@@ -102,14 +87,6 @@ function FranchisePage() {
               <Field label="Email" type="email" />
               <Field label="Phone (with WhatsApp)" />
               <Field label="City of interest" />
-              <div className="md:col-span-2">
-                <label className="eyebrow !text-ivory/60 block mb-3">Investment capacity</label>
-                <select className="w-full bg-transparent border-b border-ivory/30 py-3 text-sm outline-none focus:border-champagne">
-                  <option className="bg-noir">₹1 – 1.5 Cr</option>
-                  <option className="bg-noir">₹1.5 – 2.5 Cr</option>
-                  <option className="bg-noir">₹2.5 Cr +</option>
-                </select>
-              </div>
               <div className="md:col-span-2">
                 <label className="eyebrow !text-ivory/60 block mb-3">A note (optional)</label>
                 <textarea rows={4} className="w-full bg-transparent border-b border-ivory/30 py-3 text-sm outline-none focus:border-champagne resize-none" placeholder="Tell us about your background and your vision."></textarea>
