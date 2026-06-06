@@ -364,11 +364,11 @@ function Metric({ m }: { m: (typeof METRICS)[number] }) {
   const { ref, display } = useCount(m.n, m.decimals ?? 0);
   return (
     <div ref={ref} className="text-center md:text-left">
-      <div className="font-display text-6xl md:text-7xl lg:text-8xl text-champagne italic leading-none">
+      <div className="font-display text-5xl md:text-6xl lg:text-7xl text-champagne italic leading-none whitespace-nowrap">
         {display}
         {m.suffix ?? ""}
       </div>
-      <div className="mt-4 eyebrow !text-ivory/70">{m.label}</div>
+      <div className="mt-4 eyebrow !text-ivory/70 whitespace-nowrap">{m.label}</div>
     </div>
   );
 }
@@ -386,7 +386,7 @@ function Numbers() {
             A house measured in <em className="font-editorial italic text-champagne">trust</em>, not just chairs.
           </h2>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-12 md:gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-x-8 gap-y-12 md:gap-8">
           {METRICS.map((m) => (
             <Metric key={m.label} m={m} />
           ))}
