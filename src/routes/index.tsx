@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import heroSalon from "@/assets/hero-salon.jpg";
 import videoExperience from "@/assets/jld-experience.mp4.asset.json";
 import videoCurls from "@/assets/curls-maelle.mp4.asset.json";
-import founder from "@/assets/founder.jpg";
+import partnershipVideo from "@/assets/partnership.mp4.asset.json";
 import stylistWork from "@/assets/stylist-work.jpg";
 import interiorReception from "@/assets/interior-reception.jpg";
 import interiorStation from "@/assets/interior-station.jpg";
@@ -29,9 +29,7 @@ function Index() {
     <>
       <Hero />
       <BrandStory />
-      <WhyClients />
       <LookbookPreview />
-      <Interiors />
       <Numbers />
       <InvestorCTA />
     </>
@@ -439,7 +437,15 @@ function InvestorCTA() {
       <div className="mx-auto max-w-[1400px] px-6 md:px-10">
         <div className="grid lg:grid-cols-12 gap-12 items-stretch">
           <div className="lg:col-span-5 relative overflow-hidden">
-            <img src={founder} alt="Founder, JLD" width={1200} height={1500} loading="lazy" className="w-full h-full object-cover min-h-[480px]" />
+            <video
+              src={partnershipVideo.url}
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="auto"
+              className="w-full h-full object-cover min-h-[480px]"
+            />
           </div>
           <div className="lg:col-span-7 bg-noir text-ivory p-10 md:p-16 lg:p-20 flex flex-col justify-center">
             <p className="eyebrow !text-champagne mb-6">— Partnership</p>
