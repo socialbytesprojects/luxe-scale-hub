@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as PartnersRouteImport } from './routes/partners'
 import { Route as LookbookRouteImport } from './routes/lookbook'
 import { Route as FranchiseRouteImport } from './routes/franchise'
 import { Route as ContactRouteImport } from './routes/contact'
@@ -25,6 +26,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PartnersRoute = PartnersRouteImport.update({
+  id: '/partners',
+  path: '/partners',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LookbookRoute = LookbookRouteImport.update({
@@ -59,6 +65,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/franchise': typeof FranchiseRoute
   '/lookbook': typeof LookbookRoute
+  '/partners': typeof PartnersRoute
   '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
@@ -68,6 +75,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/franchise': typeof FranchiseRoute
   '/lookbook': typeof LookbookRoute
+  '/partners': typeof PartnersRoute
   '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
@@ -78,6 +86,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/franchise': typeof FranchiseRoute
   '/lookbook': typeof LookbookRoute
+  '/partners': typeof PartnersRoute
   '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
@@ -89,6 +98,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/franchise'
     | '/lookbook'
+    | '/partners'
     | '/services'
     | '/sitemap.xml'
   fileRoutesByTo: FileRoutesByTo
@@ -98,6 +108,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/franchise'
     | '/lookbook'
+    | '/partners'
     | '/services'
     | '/sitemap.xml'
   id:
@@ -107,6 +118,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/franchise'
     | '/lookbook'
+    | '/partners'
     | '/services'
     | '/sitemap.xml'
   fileRoutesById: FileRoutesById
@@ -117,6 +129,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   FranchiseRoute: typeof FranchiseRoute
   LookbookRoute: typeof LookbookRoute
+  PartnersRoute: typeof PartnersRoute
   ServicesRoute: typeof ServicesRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
 }
@@ -135,6 +148,13 @@ declare module '@tanstack/react-router' {
       path: '/services'
       fullPath: '/services'
       preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/partners': {
+      id: '/partners'
+      path: '/partners'
+      fullPath: '/partners'
+      preLoaderRoute: typeof PartnersRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/lookbook': {
@@ -181,6 +201,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   FranchiseRoute: FranchiseRoute,
   LookbookRoute: LookbookRoute,
+  PartnersRoute: PartnersRoute,
   ServicesRoute: ServicesRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
 }
