@@ -251,12 +251,12 @@ function WhyClients() {
 
 /* ─────────────────────  SECTION 4 — LOOKBOOK PREVIEW  ───────────────────── */
 const LOOKBOOK_PREVIEW = [
-  { label: "Women's Cuts",   img: "https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?auto=format&fit=crop&w=900&q=80" },
-  { label: "Men's Grooming", img: "https://images.unsplash.com/photo-1522336572468-97b06e8ef143?auto=format&fit=crop&w=900&q=80" },
-  { label: "Colour & Gloss", img: "https://images.unsplash.com/photo-1560869713-7d0a29430803?auto=format&fit=crop&w=900&q=80" },
-  { label: "Curly",          img: "https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=900&q=80" },
-  { label: "Coily & Textured", img: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=900&q=80" },
-  { label: "Updos & Occasion", img: "https://images.unsplash.com/photo-1519415943484-9fa1873496d4?auto=format&fit=crop&w=900&q=80" },
+  { label: "Coupes Femme",      img: "/lookbook/coupes-femme/coupes-femme-001.jpg" },
+  { label: "Hommes",            img: "/lookbook/hommes/hommes-001.jpg" },
+  { label: "Gloss",             img: "/lookbook/gloss/gloss-001.jpg" },
+  { label: "Contrast & Sunlight", img: "/lookbook/contrast-sunlight/contrast-sunlight-001.jpg" },
+  { label: "Curly",             img: "/lookbook/curly/curly-001.jpg" },
+  { label: "BAS",               img: "/lookbook/bas/bas-001.jpg" },
 ];
 function LookbookPreview() {
   return (
