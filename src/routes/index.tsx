@@ -46,9 +46,15 @@ function Hero() {
   useEffect(() => {
     videoRefs.current.forEach((v) => {
       if (!v) return;
-      v.volume = volume;
-      v.muted = muted || volume === 0;
+      v.volume = 0;
+      v.muted = true;
     });
+    // Only the audio-enabled video (jld-experience, now on the right) carries sound
+    const audioVideo = videoRefs.current[1];
+    if (audioVideo) {
+      audioVideo.volume = volume;
+      audioVideo.muted = muted || volume === 0;
+    }
   }, [volume, muted]);
 
   const onVolume = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -60,7 +66,7 @@ function Hero() {
   return (
     <section className="relative h-screen min-h-[720px] w-full overflow-hidden bg-noir text-ivory">
       <div className="absolute inset-0 grid grid-cols-2">
-        {HERO_VIDEOS.map((src, idx) => (
+        {[videoCurls.url, videoExperience.url].map((src, idx) => (
           <video
             key={idx}
             ref={(el) => { videoRefs.current[idx] = el; }}
