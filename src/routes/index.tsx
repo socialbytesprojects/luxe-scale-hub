@@ -37,7 +37,6 @@ function Index() {
 }
 
 /* ─────────────────────  SECTION 1 — HERO  ───────────────────── */
-const HERO_VIDEOS = [videoExperience.url, videoCurls.url];
 function Hero() {
   const videoRefs = useRef<Array<HTMLVideoElement | null>>([]);
   const [volume, setVolume] = useState(0);
