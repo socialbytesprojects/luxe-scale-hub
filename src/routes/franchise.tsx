@@ -139,7 +139,7 @@ function FranchisePage() {
               ))}
             </ul>
           </div>
-          <img src={interiorStation} alt="A JLD styling station" width={1200} height={1500} loading="lazy" className="w-full h-[640px] object-cover" />
+          <img src={brandSlide(51)} alt="A JLD franchise moment" loading="lazy" className="w-full h-[640px] object-cover" />
         </div>
       </section>
 
