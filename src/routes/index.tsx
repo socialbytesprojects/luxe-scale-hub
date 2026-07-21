@@ -1,16 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import heroSalon from "@/assets/hero-salon.jpg";
-import videoExperience from "@/assets/jld-experience.mp4.asset.json";
-import videoCurls from "@/assets/curls-maelle.mp4.asset.json";
 import partnershipVideo from "@/assets/partnership.mp4.asset.json";
-import stylistWork from "@/assets/stylist-work.jpg";
-import interiorReception from "@/assets/interior-reception.jpg";
-import interiorStation from "@/assets/interior-station.jpg";
-import interiorWash from "@/assets/interior-wash.jpg";
-import interiorRetail from "@/assets/interior-retail.jpg";
-import interiorCafe from "@/assets/interior-cafe.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -30,7 +21,7 @@ function Index() {
       <Hero />
       <BrandStory />
       <LookbookPreview />
-      <Numbers />
+      <PressCollage />
       <InvestorCTA />
     </>
   );
@@ -38,46 +29,31 @@ function Index() {
 
 /* ─────────────────────  SECTION 1 — HERO  ───────────────────── */
 function Hero() {
-  const videoRefs = useRef<Array<HTMLVideoElement | null>>([]);
-  const [volume, setVolume] = useState(0);
-  const [muted, setMuted] = useState(true);
-
+  const holderRef = useRef<HTMLDivElement | null>(null);
+  const [inView, setInView] = useState(false);
   useEffect(() => {
-    videoRefs.current.forEach((v) => {
-      if (!v) return;
-      v.volume = 0;
-      v.muted = true;
-    });
-    // Only the audio-enabled video (jld-experience, now on the right) carries sound
-    const audioVideo = videoRefs.current[1];
-    if (audioVideo) {
-      audioVideo.volume = volume;
-      audioVideo.muted = muted || volume === 0;
-    }
-  }, [volume, muted]);
-
-  const onVolume = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const v = Number(e.target.value);
-    setVolume(v);
-    setMuted(v === 0);
-  };
-
+    if (!holderRef.current) return;
+    const obs = new IntersectionObserver(
+      ([e]) => setInView(e.isIntersecting),
+      { threshold: 0.1 },
+    );
+    obs.observe(holderRef.current);
+    return () => obs.disconnect();
+  }, []);
+  const videoId = "3CyyQc6UyrY";
+  const src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&modestbranding=1&rel=0&playsinline=1&iv_load_policy=3`;
   return (
     <section className="relative h-screen min-h-[720px] w-full overflow-hidden bg-noir text-ivory">
-      <div className="absolute inset-0 grid grid-cols-2">
-        {[videoCurls.url, videoExperience.url].map((src, idx) => (
-          <video
-            key={idx}
-            ref={(el) => { videoRefs.current[idx] = el; }}
+      <div ref={holderRef} className="absolute inset-0 overflow-hidden">
+        {inView && (
+          <iframe
             src={src}
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="auto"
-            className="h-full w-full object-cover"
+            title="JLD Film"
+            allow="autoplay; encrypted-media; picture-in-picture"
+            allowFullScreen
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] min-w-full h-[56.25vw] min-h-full border-0 pointer-events-none"
           />
-        ))}
+        )}
       </div>
       <div className="absolute inset-0 bg-gradient-to-b from-noir/60 via-noir/30 to-noir/95 pointer-events-none" />
 
@@ -96,50 +72,14 @@ function Hero() {
           </div>
         </div>
       </div>
-
-      <div className="absolute bottom-8 right-8 z-20 flex items-center gap-3 bg-noir/60 backdrop-blur-sm px-4 py-2 border border-ivory/15">
-        <button
-          type="button"
-          onClick={() => {
-            const next = !muted;
-            setMuted(next);
-            if (!next && volume === 0) setVolume(0.5);
-          }}
-          aria-label={muted ? "Unmute videos" : "Mute videos"}
-          className="text-ivory hover:text-champagne transition-colors"
-        >
-          {muted || volume === 0 ? (
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
-          ) : (
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
-          )}
-        </button>
-        <input
-          type="range"
-          min={0}
-          max={1}
-          step={0.01}
-          value={muted ? 0 : volume}
-          onChange={onVolume}
-          aria-label="Volume"
-          className="w-28 accent-champagne"
-        />
-      </div>
     </section>
   );
 }
 
 /* ─────────────────────  SECTION 2 — BRAND STORY (PROVALLIANCE × JLD)  ───────────────────── */
-const BRAND_SLIDES = Array.from({ length: 84 }, (_, i) => `/brand-slides/slide-${String(i + 1).padStart(2, "0")}.jpg`);
+const slidePath = (n: number) => `/brand-slides/slide-${String(n).padStart(2, "0")}.jpg`;
+const BRAND_STORY_SLIDES = [9, 11, 6, 3, 4, 8, 48].map(slidePath);
 function BrandStory() {
-  const [i, setI] = useState(0);
-  const [paused, setPaused] = useState(false);
-  useEffect(() => {
-    if (paused) return;
-    const id = setInterval(() => setI((p) => (p + 1) % BRAND_SLIDES.length), 4500);
-    return () => clearInterval(id);
-  }, [paused]);
-  const go = (dir: number) => setI((p) => (p + dir + BRAND_SLIDES.length) % BRAND_SLIDES.length);
   return (
     <section className="bg-ivory py-28 md:py-40">
       <div className="mx-auto max-w-[1400px] px-6 md:px-10">
@@ -147,52 +87,77 @@ function BrandStory() {
           <div className="lg:col-span-7">
             <p className="eyebrow mb-6">— Brand Story</p>
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-noir leading-[1.05]">
-              The story behind <em className="font-editorial italic text-brown">JLD</em>, told one frame at a time.
+              Six decades of European craft, <em className="font-editorial italic text-brown">reimagined for India</em>.
             </h2>
           </div>
           <p className="lg:col-span-5 font-editorial text-lg md:text-xl text-brown leading-relaxed">
-            A house built on six decades of European hairdressing heritage, the operating system of the world's №1 salon group, and a singular vision for India's luxury salon era. Move through the deck to see how the brand, the craft, and the opportunity come together.
+            From a single Parisian atelier in 1961 to the operating system of the world's №1 salon group — JLD carries a heritage of freedom, creativity and precision into every chair we open in India.
           </p>
         </div>
 
-        <div
-          className="relative bg-noir border border-noir/15 overflow-hidden"
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
-        >
-          <div className="relative aspect-[16/9] w-full">
-            {BRAND_SLIDES.map((src, idx) => (
-              <img
-                key={idx}
-                src={src}
-                alt={`Brand story slide ${idx + 1}`}
-                loading={idx === 0 ? "eager" : "lazy"}
-                className={`absolute inset-0 h-full w-full object-contain transition-opacity duration-700 ${
-                  idx === i ? "opacity-100" : "opacity-0"
-                }`}
-              />
-            ))}
-            <button
-              onClick={() => go(-1)}
-              aria-label="Previous slide"
-              className="absolute left-4 top-1/2 -translate-y-1/2 z-10 h-12 w-12 rounded-full border border-ivory/40 bg-noir/60 text-ivory hover:bg-champagne hover:text-noir transition-colors flex items-center justify-center font-display text-2xl"
-            >‹</button>
-            <button
-              onClick={() => go(1)}
-              aria-label="Next slide"
-              className="absolute right-4 top-1/2 -translate-y-1/2 z-10 h-12 w-12 rounded-full border border-ivory/40 bg-noir/60 text-ivory hover:bg-champagne hover:text-noir transition-colors flex items-center justify-center font-display text-2xl"
-            >›</button>
+        <div className="grid grid-cols-6 grid-rows-3 gap-3 md:gap-4 h-[560px] md:h-[820px]">
+          <figure className="col-span-4 row-span-2 relative overflow-hidden bg-noir group">
+            <img src={BRAND_STORY_SLIDES[0]} alt="JLD brand story" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          </figure>
+          <figure className="col-span-2 row-span-1 relative overflow-hidden bg-noir group">
+            <img src={BRAND_STORY_SLIDES[1]} alt="JLD brand story" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          </figure>
+          <figure className="col-span-2 row-span-1 relative overflow-hidden bg-noir group">
+            <img src={BRAND_STORY_SLIDES[2]} alt="JLD brand story" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          </figure>
+          <figure className="col-span-2 row-span-1 relative overflow-hidden bg-noir group">
+            <img src={BRAND_STORY_SLIDES[3]} alt="JLD brand story" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          </figure>
+          <figure className="col-span-2 row-span-1 relative overflow-hidden bg-noir group">
+            <img src={BRAND_STORY_SLIDES[4]} alt="JLD brand story" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          </figure>
+          <figure className="col-span-2 row-span-1 relative overflow-hidden bg-noir group">
+            <img src={BRAND_STORY_SLIDES[5]} alt="JLD brand story" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          </figure>
+          <figure className="col-span-2 row-span-1 relative overflow-hidden bg-noir group">
+            <img src={BRAND_STORY_SLIDES[6]} alt="JLD brand story" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          </figure>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─────────────────────  PRESS COLLAGE (replaces Numbers) ───────────────────── */
+const PRESS_SLIDES = Array.from({ length: 14 }, (_, i) => `/press-slides/slide-${String(i + 1).padStart(2, "0")}.jpg`);
+function PressCollage() {
+  return (
+    <section className="bg-noir text-ivory py-28 md:py-40">
+      <div className="mx-auto max-w-[1400px] px-6 md:px-10">
+        <div className="grid lg:grid-cols-12 gap-12 items-end mb-16">
+          <div className="lg:col-span-7">
+            <p className="eyebrow !text-champagne mb-6">— Spring / Summer 2026</p>
+            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.05]">
+              The season, <em className="font-editorial italic text-champagne">frame by frame</em>.
+            </h2>
           </div>
-          <div className="flex items-center justify-between px-6 py-4 border-t border-ivory/15 bg-noir text-ivory">
-            <span className="eyebrow !text-champagne">— Slide {String(i + 1).padStart(2, "0")} / {BRAND_SLIDES.length}</span>
-            <div className="h-px flex-1 mx-6 bg-ivory/15 relative overflow-hidden">
-              <div
-                className="absolute inset-y-0 left-0 bg-champagne transition-all duration-500"
-                style={{ width: `${((i + 1) / BRAND_SLIDES.length) * 100}%` }}
-              />
-            </div>
-            <span className="text-xs tracking-[0.3em] uppercase text-ivory/60">{paused ? "Paused" : "Auto"}</span>
-          </div>
+          <p className="lg:col-span-5 font-editorial text-lg md:text-xl text-ivory/75 leading-relaxed">
+            Editorial highlights from the latest JLD collection — a house language that travels from the runway to the chair.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[220px] md:auto-rows-[260px] gap-3 md:gap-4">
+          {PRESS_SLIDES.map((src, i) => {
+            const feature = i % 6 === 0;
+            return (
+              <figure
+                key={src}
+                className={`relative overflow-hidden bg-ivory/5 group ${feature ? "md:col-span-2 md:row-span-2" : ""}`}
+              >
+                <img
+                  src={src}
+                  alt={`JLD Spring Summer 2026 slide ${i + 1}`}
+                  loading="lazy"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+              </figure>
+            );
+          })}
         </div>
       </div>
     </section>
@@ -304,151 +269,31 @@ function LookbookPreview() {
   );
 }
 
-/* ─────────────────────  SECTION 5 — INTERIORS  ───────────────────── */
-const INTERIORS = [
-  { src: interiorReception, label: "The Reception", w: 1400, h: 1000 },
-  { src: interiorStation, label: "Styling Stations", w: 1200, h: 1500 },
-  { src: interiorWash, label: "Wash Lounge", w: 1200, h: 1500 },
-  { src: interiorCafe, label: "The Café Bar", w: 1200, h: 1500 },
-  { src: interiorRetail, label: "Retail Apothecary", w: 1200, h: 1500 },
-];
-function Interiors() {
-  return (
-    <section className="bg-ivory py-28 md:py-40">
-      <div className="mx-auto max-w-[1400px] px-6 md:px-10">
-        <div className="grid md:grid-cols-2 items-end gap-10 mb-16">
-          <div>
-            <p className="eyebrow mb-6">— The Space</p>
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-noir leading-[1.05]">
-              One house. <em className="font-editorial italic text-brown">Standardised in spirit</em>, singular in feeling.
-            </h2>
-          </div>
-          <p className="font-editorial text-lg text-brown leading-relaxed max-w-md md:justify-self-end">
-            From the reception's bouquet to the café's espresso, every JLD is composed from the same architectural language — a system that protects the experience at every location.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-12 gap-4 md:gap-6">
-          <figure className="col-span-12 md:col-span-8 relative overflow-hidden group">
-            <img src={INTERIORS[0].src} alt={INTERIORS[0].label} width={INTERIORS[0].w} height={INTERIORS[0].h} loading="lazy" className="w-full h-[420px] md:h-[560px] object-cover group-hover:scale-105 transition-transform duration-1000" />
-            <figcaption className="absolute bottom-0 left-0 p-6 bg-gradient-to-t from-noir/80 to-transparent w-full text-ivory">
-              <p className="eyebrow !text-champagne mb-1">01</p>
-              <p className="font-display text-2xl">{INTERIORS[0].label}</p>
-            </figcaption>
-          </figure>
-          <figure className="col-span-12 md:col-span-4 relative overflow-hidden group">
-            <img src={INTERIORS[1].src} alt={INTERIORS[1].label} width={INTERIORS[1].w} height={INTERIORS[1].h} loading="lazy" className="w-full h-[420px] md:h-[560px] object-cover group-hover:scale-105 transition-transform duration-1000" />
-            <figcaption className="absolute bottom-0 left-0 p-6 bg-gradient-to-t from-noir/80 to-transparent w-full text-ivory">
-              <p className="eyebrow !text-champagne mb-1">02</p>
-              <p className="font-display text-2xl">{INTERIORS[1].label}</p>
-            </figcaption>
-          </figure>
-          {INTERIORS.slice(2).map((it, i) => (
-            <figure key={it.label} className="col-span-12 md:col-span-4 relative overflow-hidden group">
-              <img src={it.src} alt={it.label} width={it.w} height={it.h} loading="lazy" className="w-full h-[360px] md:h-[440px] object-cover group-hover:scale-105 transition-transform duration-1000" />
-              <figcaption className="absolute bottom-0 left-0 p-6 bg-gradient-to-t from-noir/80 to-transparent w-full text-ivory">
-                <p className="eyebrow !text-champagne mb-1">0{i + 3}</p>
-                <p className="font-display text-2xl">{it.label}</p>
-              </figcaption>
-            </figure>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ─────────────────────  SECTION 6 — NUMBERS  ───────────────────── */
-const METRICS = [
-  { n: 28400, suffix: "+", label: "Guests served" },
-  { n: 4.9, label: "Google rating", decimals: 1 },
-  { n: 120, suffix: "+", label: "Artists trained" },
-  { n: 7, label: "Houses open" },
-  { n: 8, label: "Years of craft" },
-];
-function useCount(target: number, decimals = 0) {
-  const [v, setV] = useState(0);
-  const ref = useRef<HTMLDivElement | null>(null);
-  const started = useRef(false);
-  useEffect(() => {
-    if (!ref.current) return;
-    const obs = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting && !started.current) {
-            started.current = true;
-            const dur = 1800;
-            const start = performance.now();
-            const tick = (t: number) => {
-              const p = Math.min(1, (t - start) / dur);
-              const eased = 1 - Math.pow(1 - p, 3);
-              setV(target * eased);
-              if (p < 1) requestAnimationFrame(tick);
-              else setV(target);
-            };
-            requestAnimationFrame(tick);
-          }
-        });
-      },
-      { threshold: 0.4 },
-    );
-    obs.observe(ref.current);
-    return () => obs.disconnect();
-  }, [target]);
-  const display =
-    decimals > 0 ? v.toFixed(decimals) : Math.floor(v).toLocaleString("en-IN");
-  return { ref, display };
-}
-function Metric({ m }: { m: (typeof METRICS)[number] }) {
-  const { ref, display } = useCount(m.n, m.decimals ?? 0);
-  return (
-    <div ref={ref} className="text-center md:text-left">
-      <div className="font-display text-5xl md:text-6xl lg:text-7xl text-champagne italic leading-none whitespace-nowrap">
-        {display}
-        {m.suffix ?? ""}
-      </div>
-      <div className="mt-4 eyebrow !text-ivory/70 whitespace-nowrap">{m.label}</div>
-    </div>
-  );
-}
-function Numbers() {
-  return (
-    <section className="bg-noir text-ivory py-28 md:py-40 relative">
-      <div className="absolute inset-0 opacity-20">
-        <img src={stylistWork} alt="" width={1400} height={1000} loading="lazy" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-noir/80" />
-      </div>
-      <div className="relative z-10 mx-auto max-w-[1400px] px-6 md:px-10">
-        <div className="max-w-2xl mb-20">
-          <p className="eyebrow !text-champagne mb-6">— By The Numbers</p>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl">
-            A house measured in <em className="font-editorial italic text-champagne">trust</em>, not just chairs.
-          </h2>
-        </div>
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-x-8 gap-y-12 md:gap-8">
-          {METRICS.map((m) => (
-            <Metric key={m.label} m={m} />
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 /* ─────────────────────  SECTION 7 — INVESTOR CTA  ───────────────────── */
 function InvestorCTA() {
+  const vidRef = useRef<HTMLVideoElement | null>(null);
+  useEffect(() => {
+    const v = vidRef.current;
+    if (!v) return;
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) v.play().catch(() => {}); else v.pause(); },
+      { threshold: 0.25 },
+    );
+    obs.observe(v);
+    return () => obs.disconnect();
+  }, []);
   return (
     <section className="bg-ivory py-28 md:py-40">
       <div className="mx-auto max-w-[1400px] px-6 md:px-10">
         <div className="grid lg:grid-cols-12 gap-12 items-stretch">
           <div className="lg:col-span-5 relative overflow-hidden">
             <video
+              ref={vidRef}
               src={partnershipVideo.url}
-              autoPlay
               loop
               muted
               playsInline
-              preload="auto"
+              preload="metadata"
               className="w-full h-full object-cover min-h-[480px]"
             />
           </div>
