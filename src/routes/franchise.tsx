@@ -1,10 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import interiorReception from "@/assets/interior-reception.jpg";
-import interiorStation from "@/assets/interior-station.jpg";
-import interiorWash from "@/assets/interior-wash.jpg";
-import interiorRetail from "@/assets/interior-retail.jpg";
-import interiorCafe from "@/assets/interior-cafe.jpg";
+const brandSlide = (n: number) => `/brand-slides/slide-${String(n).padStart(2, "0")}.jpg`;
+const heroImage = brandSlide(50);
+const spaceImages = [brandSlide(50), brandSlide(51), brandSlide(54)];
 
 export const Route = createFileRoute("/franchise")({
   head: () => ({
@@ -24,7 +22,7 @@ function FranchisePage() {
     <>
       <section className="relative bg-noir text-ivory pt-40 pb-28 md:pt-52 md:pb-40 overflow-hidden">
         <div className="absolute inset-0">
-          <img src={interiorReception} alt="" width={1400} height={1000} className="w-full h-full object-cover opacity-40" />
+          <img src={heroImage} alt="" className="w-full h-full object-cover opacity-40" />
           <div className="absolute inset-0 bg-gradient-to-b from-noir/60 to-noir" />
         </div>
         <div className="relative z-10 mx-auto max-w-[1400px] px-6 md:px-10">
@@ -65,10 +63,9 @@ function FranchisePage() {
             </p>
           </div>
           <div className="grid grid-cols-2 gap-4">
-            <img src={interiorStation} alt="" width={1200} height={1500} loading="lazy" className="w-full h-[300px] md:h-[380px] object-cover" />
-            <img src={interiorWash} alt="" width={1200} height={1500} loading="lazy" className="w-full h-[300px] md:h-[380px] object-cover mt-8" />
-            <img src={interiorCafe} alt="" width={1200} height={1500} loading="lazy" className="w-full h-[300px] md:h-[380px] object-cover" />
-            <img src={interiorRetail} alt="" width={1200} height={1500} loading="lazy" className="w-full h-[300px] md:h-[380px] object-cover mt-8" />
+            <img src={spaceImages[0]} alt="" loading="lazy" className="col-span-2 w-full h-[300px] md:h-[380px] object-cover" />
+            <img src={spaceImages[1]} alt="" loading="lazy" className="w-full h-[280px] md:h-[340px] object-cover" />
+            <img src={spaceImages[2]} alt="" loading="lazy" className="w-full h-[280px] md:h-[340px] object-cover" />
           </div>
         </div>
       </section>
@@ -142,7 +139,7 @@ function FranchisePage() {
               ))}
             </ul>
           </div>
-          <img src={interiorStation} alt="A JLD styling station" width={1200} height={1500} loading="lazy" className="w-full h-[640px] object-cover" />
+          <img src={brandSlide(51)} alt="A JLD franchise moment" loading="lazy" className="w-full h-[640px] object-cover" />
         </div>
       </section>
 
