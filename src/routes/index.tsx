@@ -60,7 +60,10 @@ function Hero() {
       <div className="relative z-10 mx-auto flex h-full max-w-[1400px] flex-col justify-end px-6 md:px-10 pb-20 md:pb-28">
         <div className="max-w-3xl animate-fade-up">
           <p className="eyebrow !text-champagne mb-6">Est. 2018 · India</p>
-          <h1 className="font-display text-5xl md:text-7xl lg:text-8xl leading-[1.02] text-ivory">
+          <h1
+            className="font-display text-5xl md:text-7xl lg:text-8xl leading-[1.02] text-ivory"
+            style={{ textShadow: "0 6px 22px rgba(0,0,0,0.95), 0 18px 50px rgba(0,0,0,0.7)" }}
+          >
             India's next <em className="font-editorial italic text-champagne">luxury salon</em> destination.
           </h1>
           <p className="mt-8 font-editorial text-xl md:text-2xl text-ivory/80 italic max-w-xl">
@@ -96,29 +99,31 @@ function BrandStory() {
           </p>
         </div>
 
-        {/* Mobile: single-column stacked mosaic. Desktop: editorial asymmetric grid. */}
-        <div className="grid grid-cols-2 md:grid-cols-12 gap-2 md:gap-3 auto-rows-[38vw] sm:auto-rows-[28vw] md:auto-rows-[140px] lg:auto-rows-[170px]">
-          <figure className="col-span-2 md:col-span-8 md:row-span-3 relative overflow-hidden bg-noir group">
+        {/* Mobile: flush stacked mosaic. Desktop: expanded, gapless editorial grid. */}
+        <div className="-mx-5 md:-mx-10 lg:mx-[-32px]">
+          <div className="grid grid-cols-2 md:grid-cols-12 gap-0 auto-rows-[40vw] sm:auto-rows-[28vw] md:auto-rows-[110px] lg:auto-rows-[145px] xl:auto-rows-[165px] overflow-hidden bg-noir">
+          <figure className="col-span-2 md:col-span-7 md:row-span-4 relative overflow-hidden bg-noir group">
             <img src={hero} alt="JLD brand story" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
           </figure>
-          <figure className="col-span-1 md:col-span-4 md:row-span-2 relative overflow-hidden bg-noir group">
+          <figure className="col-span-1 md:col-span-5 md:row-span-2 relative overflow-hidden bg-noir group">
             <img src={rest[0]} alt="JLD brand story" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
           </figure>
-          <figure className="col-span-1 md:col-span-4 md:row-span-1 relative overflow-hidden bg-noir group">
+          <figure className="col-span-1 md:col-span-3 md:row-span-2 relative overflow-hidden bg-noir group">
             <img src={rest[1]} alt="JLD brand story" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
           </figure>
-          <figure className="col-span-1 md:col-span-4 md:row-span-2 relative overflow-hidden bg-noir group">
+          <figure className="col-span-1 md:col-span-2 md:row-span-2 relative overflow-hidden bg-noir group">
             <img src={rest[2]} alt="JLD brand story" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
           </figure>
           <figure className="col-span-1 md:col-span-4 md:row-span-2 relative overflow-hidden bg-noir group">
             <img src={rest[3]} alt="JLD brand story" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
           </figure>
-          <figure className="col-span-2 md:col-span-4 md:row-span-2 relative overflow-hidden bg-noir group">
+          <figure className="col-span-1 md:col-span-4 md:row-span-2 relative overflow-hidden bg-noir group">
             <img src={rest[4]} alt="JLD brand story" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
           </figure>
-          <figure className="col-span-2 md:col-span-8 md:row-span-2 relative overflow-hidden bg-noir group">
+          <figure className="col-span-2 md:col-span-4 md:row-span-2 relative overflow-hidden bg-noir group">
             <img src={rest[5]} alt="JLD brand story" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
           </figure>
+          </div>
         </div>
       </div>
     </section>
