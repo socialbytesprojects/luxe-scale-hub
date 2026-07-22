@@ -20,7 +20,7 @@ function FranchisePage() {
   const [sent, setSent] = useState(false);
   return (
     <>
-      <section className="relative bg-noir text-ivory pt-40 pb-28 md:pt-52 md:pb-40 overflow-hidden">
+      <section className="relative bg-noir text-ivory pt-32 pb-20 md:pt-44 md:pb-28 overflow-hidden">
         <div className="absolute inset-0">
           <img src={heroImage} alt="" className="w-full h-full object-cover opacity-40" />
           <div className="absolute inset-0 bg-gradient-to-b from-noir/60 to-noir" />
@@ -40,7 +40,7 @@ function FranchisePage() {
       </section>
 
       {/* A Space That Feels Alive */}
-      <section className="bg-ivory py-28 md:py-40">
+      <section className="bg-ivory py-16 md:py-28">
         <div className="mx-auto max-w-[1400px] px-6 md:px-10 grid lg:grid-cols-2 gap-16 items-center">
           <div>
             <p className="eyebrow mb-6">— More than a salon</p>
@@ -71,7 +71,7 @@ function FranchisePage() {
       </section>
 
       {/* FOCO Model */}
-      <section className="bg-noir text-ivory py-28 md:py-40">
+      <section className="bg-noir text-ivory py-16 md:py-28">
         <div className="mx-auto max-w-[1400px] px-6 md:px-10">
           <div className="max-w-3xl mb-16">
             <p className="eyebrow !text-champagne mb-6">— The JLD Franchise Model</p>
@@ -113,7 +113,7 @@ function FranchisePage() {
       </section>
 
       {/* End-to-end Support */}
-      <section className="bg-beige py-28 md:py-40">
+      <section className="bg-beige py-16 md:py-28">
         <div className="mx-auto max-w-[1400px] px-6 md:px-10 grid lg:grid-cols-2 gap-16 items-center">
           <div>
             <p className="eyebrow mb-6">— End-to-end Support</p>
@@ -144,7 +144,7 @@ function FranchisePage() {
       </section>
 
       {/* Why Entrepreneurs Choose JLD */}
-      <section className="bg-ivory py-28 md:py-40">
+      <section className="bg-ivory py-16 md:py-28">
         <div className="mx-auto max-w-[1400px] px-6 md:px-10">
           <div className="max-w-3xl mb-16">
             <p className="eyebrow mb-6">— Why Entrepreneurs Choose JLD</p>
@@ -174,7 +174,7 @@ function FranchisePage() {
       </section>
 
       {/* The JLD Promise */}
-      <section className="bg-noir text-ivory py-28 md:py-40">
+      <section className="bg-noir text-ivory py-16 md:py-28">
         <div className="mx-auto max-w-[1400px] px-6 md:px-10 text-center">
           <p className="eyebrow !text-champagne mb-6">— The JLD Promise</p>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl leading-tight max-w-3xl mx-auto">
@@ -195,7 +195,7 @@ function FranchisePage() {
         </div>
       </section>
 
-      <section id="franchise-form" className="bg-beige py-28 md:py-40 scroll-mt-24">
+      <section id="franchise-form" className="bg-beige py-16 md:py-28 scroll-mt-24">
         <div className="mx-auto max-w-[900px] px-6 md:px-10">
           <p className="eyebrow mb-6">— Enquire</p>
           <h2 className="font-display text-4xl md:text-5xl text-noir leading-tight">

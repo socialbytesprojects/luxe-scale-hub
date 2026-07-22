@@ -26,7 +26,6 @@ const CATEGORIES: Category[] = [
       "/lookbook/coupes-femme/coupes-femme-002.jpg",
       "/lookbook/coupes-femme/coupes-femme-003.jpg",
       "/lookbook/coupes-femme/coupes-femme-004.jpg",
-      "/lookbook/coupes-femme/coupes-femme-005.jpg",
     ],
   },
   {
@@ -39,7 +38,6 @@ const CATEGORIES: Category[] = [
       "/lookbook/hommes/hommes-002.jpg",
       "/lookbook/hommes/hommes-003.jpg",
       "/lookbook/hommes/hommes-004.jpg",
-      "/lookbook/hommes/hommes-005.jpg",
     ],
   },
   {
@@ -52,7 +50,6 @@ const CATEGORIES: Category[] = [
       "/lookbook/gloss/gloss-002.jpg",
       "/lookbook/gloss/gloss-003.jpg",
       "/lookbook/gloss/gloss-004.jpg",
-      "/lookbook/gloss/gloss-005.jpg",
     ],
   },
   {
@@ -65,7 +62,6 @@ const CATEGORIES: Category[] = [
       "/lookbook/contrast-sunlight/contrast-sunlight-002.jpg",
       "/lookbook/contrast-sunlight/contrast-sunlight-003.jpg",
       "/lookbook/contrast-sunlight/contrast-sunlight-004.jpg",
-      "/lookbook/contrast-sunlight/contrast-sunlight-005.jpg",
     ],
   },
   {
@@ -78,7 +74,6 @@ const CATEGORIES: Category[] = [
       "/lookbook/curly/curly-002.png",
       "/lookbook/curly/curly-003.jpg",
       "/lookbook/curly/curly-004.jpg",
-      "/lookbook/curly/curly-005.png",
     ],
   },
   {
@@ -91,7 +86,6 @@ const CATEGORIES: Category[] = [
       "/lookbook/2en1/2en1-002.jpg",
       "/lookbook/2en1/2en1-003.jpg",
       "/lookbook/2en1/2en1-004.jpg",
-      "/lookbook/2en1/2en1-005.jpg",
     ],
   },
   {
@@ -104,7 +98,6 @@ const CATEGORIES: Category[] = [
       "/lookbook/bas/bas-002.jpg",
       "/lookbook/bas/bas-003.jpg",
       "/lookbook/bas/bas-004.jpg",
-      "/lookbook/bas/bas-005.jpg",
     ],
   },
 ];

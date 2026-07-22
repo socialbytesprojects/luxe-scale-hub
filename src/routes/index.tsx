@@ -41,7 +41,7 @@ function Hero() {
     return () => obs.disconnect();
   }, []);
   const videoId = "3CyyQc6UyrY";
-  const src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&modestbranding=1&rel=0&playsinline=1&iv_load_policy=3`;
+  const src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&modestbranding=1&rel=0&playsinline=1&iv_load_policy=3&cc_load_policy=0&disablekb=1&fs=0&showinfo=0`;
   return (
     <section className="relative h-screen min-h-[720px] w-full overflow-hidden bg-noir text-ivory">
       <div ref={holderRef} className="absolute inset-0 overflow-hidden">
@@ -51,7 +51,7 @@ function Hero() {
             title="JLD Film"
             allow="autoplay; encrypted-media; picture-in-picture"
             allowFullScreen
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] min-w-full h-[56.25vw] min-h-full border-0 pointer-events-none"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] min-w-full h-[56.25vw] min-h-full border-0 pointer-events-none scale-[1.35]"
           />
         )}
       </div>
@@ -80,42 +80,44 @@ function Hero() {
 const slidePath = (n: number) => `/brand-slides/slide-${String(n).padStart(2, "0")}.jpg`;
 const BRAND_STORY_SLIDES = [9, 11, 6, 3, 4, 8, 48].map(slidePath);
 function BrandStory() {
+  const [hero, ...rest] = BRAND_STORY_SLIDES;
   return (
-    <section className="bg-ivory py-28 md:py-40">
-      <div className="mx-auto max-w-[1400px] px-6 md:px-10">
-        <div className="grid lg:grid-cols-12 gap-12 items-end mb-14">
+    <section className="bg-ivory py-16 md:py-28">
+      <div className="mx-auto max-w-[1400px] px-5 md:px-10">
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-end mb-10 md:mb-14">
           <div className="lg:col-span-7">
-            <p className="eyebrow mb-6">— Brand Story</p>
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-noir leading-[1.05]">
+            <p className="eyebrow mb-4 md:mb-6">— Brand Story</p>
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-noir leading-[1.05]">
               Six decades of European craft, <em className="font-editorial italic text-brown">reimagined for India</em>.
             </h2>
           </div>
-          <p className="lg:col-span-5 font-editorial text-lg md:text-xl text-brown leading-relaxed">
+          <p className="lg:col-span-5 font-editorial text-base md:text-xl text-brown leading-relaxed">
             From a single Parisian atelier in 1961 to the operating system of the world's №1 salon group — JLD carries a heritage of freedom, creativity and precision into every chair we open in India.
           </p>
         </div>
 
-        <div className="grid grid-cols-6 grid-rows-3 gap-3 md:gap-4 h-[560px] md:h-[820px]">
-          <figure className="col-span-4 row-span-2 relative overflow-hidden bg-noir group">
-            <img src={BRAND_STORY_SLIDES[0]} alt="JLD brand story" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+        {/* Mobile: single-column stacked mosaic. Desktop: editorial asymmetric grid. */}
+        <div className="grid grid-cols-2 md:grid-cols-12 gap-2 md:gap-3 auto-rows-[38vw] sm:auto-rows-[28vw] md:auto-rows-[140px] lg:auto-rows-[170px]">
+          <figure className="col-span-2 md:col-span-8 md:row-span-3 relative overflow-hidden bg-noir group">
+            <img src={hero} alt="JLD brand story" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
           </figure>
-          <figure className="col-span-2 row-span-1 relative overflow-hidden bg-noir group">
-            <img src={BRAND_STORY_SLIDES[1]} alt="JLD brand story" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          <figure className="col-span-1 md:col-span-4 md:row-span-2 relative overflow-hidden bg-noir group">
+            <img src={rest[0]} alt="JLD brand story" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
           </figure>
-          <figure className="col-span-2 row-span-1 relative overflow-hidden bg-noir group">
-            <img src={BRAND_STORY_SLIDES[2]} alt="JLD brand story" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          <figure className="col-span-1 md:col-span-4 md:row-span-1 relative overflow-hidden bg-noir group">
+            <img src={rest[1]} alt="JLD brand story" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
           </figure>
-          <figure className="col-span-2 row-span-1 relative overflow-hidden bg-noir group">
-            <img src={BRAND_STORY_SLIDES[3]} alt="JLD brand story" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          <figure className="col-span-1 md:col-span-4 md:row-span-2 relative overflow-hidden bg-noir group">
+            <img src={rest[2]} alt="JLD brand story" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
           </figure>
-          <figure className="col-span-2 row-span-1 relative overflow-hidden bg-noir group">
-            <img src={BRAND_STORY_SLIDES[4]} alt="JLD brand story" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          <figure className="col-span-1 md:col-span-4 md:row-span-2 relative overflow-hidden bg-noir group">
+            <img src={rest[3]} alt="JLD brand story" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
           </figure>
-          <figure className="col-span-2 row-span-1 relative overflow-hidden bg-noir group">
-            <img src={BRAND_STORY_SLIDES[5]} alt="JLD brand story" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          <figure className="col-span-2 md:col-span-4 md:row-span-2 relative overflow-hidden bg-noir group">
+            <img src={rest[4]} alt="JLD brand story" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
           </figure>
-          <figure className="col-span-2 row-span-1 relative overflow-hidden bg-noir group">
-            <img src={BRAND_STORY_SLIDES[6]} alt="JLD brand story" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          <figure className="col-span-2 md:col-span-8 md:row-span-2 relative overflow-hidden bg-noir group">
+            <img src={rest[5]} alt="JLD brand story" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
           </figure>
         </div>
       </div>
@@ -127,27 +129,27 @@ function BrandStory() {
 const PRESS_SLIDES = Array.from({ length: 14 }, (_, i) => `/press-slides/slide-${String(i + 1).padStart(2, "0")}.jpg`);
 function PressCollage() {
   return (
-    <section className="bg-noir text-ivory py-28 md:py-40">
-      <div className="mx-auto max-w-[1400px] px-6 md:px-10">
-        <div className="grid lg:grid-cols-12 gap-12 items-end mb-16">
+    <section className="bg-noir text-ivory py-16 md:py-28">
+      <div className="mx-auto max-w-[1400px] px-5 md:px-10">
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-end mb-10 md:mb-14">
           <div className="lg:col-span-7">
-            <p className="eyebrow !text-champagne mb-6">— Spring / Summer 2026</p>
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.05]">
+            <p className="eyebrow !text-champagne mb-4 md:mb-6">— Spring / Summer 2026</p>
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-[1.05]">
               The season, <em className="font-editorial italic text-champagne">frame by frame</em>.
             </h2>
           </div>
-          <p className="lg:col-span-5 font-editorial text-lg md:text-xl text-ivory/75 leading-relaxed">
+          <p className="lg:col-span-5 font-editorial text-base md:text-xl text-ivory/75 leading-relaxed">
             Editorial highlights from the latest JLD collection — a house language that travels from the runway to the chair.
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[220px] md:auto-rows-[260px] gap-3 md:gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3 auto-rows-[42vw] sm:auto-rows-[30vw] md:auto-rows-[200px] lg:auto-rows-[240px]">
           {PRESS_SLIDES.map((src, i) => {
-            const feature = i % 6 === 0;
+            const feature = i === 0 || i === 7;
             return (
               <figure
                 key={src}
-                className={`relative overflow-hidden bg-ivory/5 group ${feature ? "md:col-span-2 md:row-span-2" : ""}`}
+                className={`relative overflow-hidden bg-ivory/5 group ${feature ? "col-span-2 row-span-2" : ""}`}
               >
                 <img
                   src={src}
@@ -225,22 +227,22 @@ const LOOKBOOK_PREVIEW = [
 ];
 function LookbookPreview() {
   return (
-    <section className="bg-beige py-28 md:py-40">
-      <div className="mx-auto max-w-[1400px] px-6 md:px-10">
-        <div className="grid lg:grid-cols-12 gap-12 items-end mb-16">
+    <section className="bg-beige py-16 md:py-28">
+      <div className="mx-auto max-w-[1400px] px-5 md:px-10">
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-end mb-10 md:mb-14">
           <div className="lg:col-span-7">
-            <p className="eyebrow mb-6">— The Lookbook</p>
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-noir leading-[1.05]">
+            <p className="eyebrow mb-4 md:mb-6">— The Lookbook</p>
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-noir leading-[1.05]">
               Every <em className="font-editorial italic text-brown">texture</em>, every silhouette, every shade.
             </h2>
           </div>
-          <p className="lg:col-span-5 font-editorial text-lg md:text-xl text-brown leading-relaxed">
+          <p className="lg:col-span-5 font-editorial text-base md:text-xl text-brown leading-relaxed">
             A curated library of signature work from our floor — women's cuts, men's grooming, colour, curls, coils and occasion styling.
           </p>
         </div>
 
         <Link to="/lookbook" className="block group">
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-3">
             {LOOKBOOK_PREVIEW.map((l, i) => (
               <figure
                 key={l.label}
@@ -260,7 +262,7 @@ function LookbookPreview() {
           </div>
         </Link>
 
-        <div className="mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-6">
+        <div className="mt-8 md:mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-4 md:gap-6">
           <Link to="/lookbook" className="btn-noir">Open the Lookbook</Link>
           <p className="text-sm text-brown italic font-editorial">Eight categories · hundreds of references · updated monthly</p>
         </div>
@@ -283,8 +285,8 @@ function InvestorCTA() {
     return () => obs.disconnect();
   }, []);
   return (
-    <section className="bg-ivory py-28 md:py-40">
-      <div className="mx-auto max-w-[1400px] px-6 md:px-10">
+    <section className="bg-ivory py-16 md:py-28">
+      <div className="mx-auto max-w-[1400px] px-5 md:px-10">
         <div className="grid lg:grid-cols-12 gap-12 items-stretch">
           <div className="lg:col-span-5 relative overflow-hidden">
             <video
