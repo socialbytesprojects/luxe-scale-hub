@@ -5,9 +5,9 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * MAISON NOIR — Quiet Luxury Design System
- * Matte black · warm beige · ivory · champagne gold · soft brown
- * Playfair Display / Cormorant Garamond / Montserrat
+ * JLD — Mocha Luxury Design System
+ * Warm beige · mocha · soft taupe · cream · light oak · minimal black
+ * Cormorant Garamond (display) / Montserrat (body)
  */
 
 @theme inline {
@@ -56,39 +56,39 @@
   --color-champagne: var(--champagne);
   --color-noir: var(--noir);
   --color-brown: var(--brown);
-  --font-display: "Playfair Display", serif;
+  --font-display: "Cormorant Garamond", serif;
   --font-editorial: "Cormorant Garamond", serif;
   --font-sans: "Montserrat", sans-serif;
 }
 
 :root {
   --radius: 0.125rem;
-  /* Brand tokens */
-  --noir: oklch(0.22 0.07 200);          /* deep teal-black */
-  --ivory: oklch(0.97 0.022 190);         /* cool teal ivory */
-  --beige: oklch(0.86 0.06 190);          /* pale teal */
-  --champagne: oklch(0.70 0.16 195);      /* vibrant teal accent */
-  --brown: oklch(0.40 0.10 200);          /* deep teal text */
+  /* JLD Mocha Luxury brand tokens */
+  --noir: #3B2E24;               /* deep mocha — used for headings & dark bands */
+  --ivory: #F7F3EE;              /* cream — page background */
+  --beige: #E8DED4;              /* warm beige — alternating band */
+  --champagne: #B89F8A;          /* mocha accent (buttons, rules) */
+  --brown: #6E5A48;              /* soft taupe body text */
 
-  --background: oklch(0.97 0.022 190);
-  --foreground: oklch(0.22 0.07 200);
-  --card: oklch(0.94 0.035 190);
-  --card-foreground: oklch(0.22 0.07 200);
-  --popover: oklch(0.97 0.022 190);
-  --popover-foreground: oklch(0.22 0.07 200);
-  --primary: oklch(0.40 0.14 200);
-  --primary-foreground: oklch(0.97 0.022 190);
-  --secondary: oklch(0.86 0.06 190);
-  --secondary-foreground: oklch(0.22 0.07 200);
-  --muted: oklch(0.90 0.04 190);
-  --muted-foreground: oklch(0.40 0.10 200);
-  --accent: oklch(0.70 0.16 195);
-  --accent-foreground: oklch(0.22 0.07 200);
+  --background: #F7F3EE;
+  --foreground: #3B2E24;
+  --card: #FFFFFF;
+  --card-foreground: #3B2E24;
+  --popover: #F7F3EE;
+  --popover-foreground: #3B2E24;
+  --primary: #6E5A48;
+  --primary-foreground: #F7F3EE;
+  --secondary: #E8DED4;
+  --secondary-foreground: #3B2E24;
+  --muted: #EFE8DF;
+  --muted-foreground: #6E5A48;
+  --accent: #DCC6A1;             /* light oak highlight */
+  --accent-foreground: #3B2E24;
   --destructive: oklch(0.55 0.18 25);
   --destructive-foreground: oklch(0.97 0.012 80);
-  --border: oklch(0.82 0.05 190);
-  --input: oklch(0.82 0.05 190);
-  --ring: oklch(0.70 0.16 195);
+  --border: #E4D9CB;
+  --input: #E4D9CB;
+  --ring: #B89F8A;
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -185,7 +185,7 @@
     border: 1px solid var(--noir);
     transition: all 0.4s ease;
   }
-  .btn-noir:hover { background: var(--champagne); color: var(--noir); border-color: var(--champagne); }
+  .btn-noir:hover { background: var(--champagne); color: var(--ivory); border-color: var(--champagne); }
 
   .btn-ghost {
     display: inline-flex; align-items: center; justify-content: center;
@@ -201,7 +201,7 @@
   .btn-gold {
     display: inline-flex; align-items: center; justify-content: center;
     padding: 1rem 2.25rem;
-    background: var(--champagne); color: var(--noir);
+    background: var(--champagne); color: var(--ivory);
     font-family: var(--font-sans); font-size: 0.72rem; font-weight: 500;
     letter-spacing: 0.28em; text-transform: uppercase;
     border: 1px solid var(--champagne);
