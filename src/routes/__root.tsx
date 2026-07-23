@@ -140,6 +140,7 @@ function RootComponent() {
 
 const NAV = [
   { to: "/", label: "Home" },
+  { to: "/about", label: "About" },
   { to: "/lookbook", label: "Lookbook" },
   { to: "/services", label: "Services" },
   { to: "/partners", label: "Partners" },
@@ -159,21 +160,21 @@ function SiteHeader() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? "bg-noir/95 backdrop-blur-sm py-3" : "bg-transparent py-6"
+        scrolled ? "bg-ivory/95 backdrop-blur-md py-3 border-b border-champagne/20" : "bg-transparent py-6"
       }`}
     >
       <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 md:px-10">
         <Link to="/" className="flex items-baseline gap-2">
-          <span className="font-display text-ivory text-2xl tracking-wider">JLD</span>
-          <span className="font-display italic text-champagne text-sm tracking-[0.3em] hidden sm:inline">Jean Louis David</span>
+          <span className={`font-display text-2xl tracking-wider ${scrolled ? "text-noir" : "text-ivory"}`}>JLD</span>
+          <span className={`font-display italic text-sm tracking-[0.3em] hidden sm:inline ${scrolled ? "text-brown" : "text-champagne"}`}>Jean Louis David</span>
         </Link>
         <nav className="hidden md:flex items-center gap-10">
           {NAV.map((n) => (
             <Link
               key={n.to}
               to={n.to}
-              className="text-ivory/85 hover:text-champagne text-[0.7rem] uppercase tracking-[0.28em] transition-colors"
-              activeProps={{ className: "text-champagne text-[0.7rem] uppercase tracking-[0.28em]" }}
+              className={`${scrolled ? "text-brown hover:text-noir" : "text-ivory/90 hover:text-champagne"} text-[0.7rem] uppercase tracking-[0.28em] transition-colors`}
+              activeProps={{ className: `${scrolled ? "text-noir" : "text-champagne"} text-[0.7rem] uppercase tracking-[0.28em]` }}
               activeOptions={{ exact: true }}
             >
               {n.label}
@@ -185,21 +186,21 @@ function SiteHeader() {
         </div>
         <button
           onClick={() => setOpen((o) => !o)}
-          className="md:hidden text-ivory text-2xl"
+          className={`md:hidden text-2xl ${scrolled ? "text-noir" : "text-ivory"}`}
           aria-label="Toggle menu"
         >
           {open ? "✕" : "☰"}
         </button>
       </div>
       {open && (
-        <div className="md:hidden bg-noir border-t border-champagne/20 px-6 py-6">
+        <div className="md:hidden bg-ivory border-t border-champagne/30 px-6 py-6">
           <nav className="flex flex-col gap-5">
             {NAV.map((n) => (
               <Link
                 key={n.to}
                 to={n.to}
                 onClick={() => setOpen(false)}
-                className="text-ivory text-sm uppercase tracking-[0.28em]"
+                className="text-noir text-sm uppercase tracking-[0.28em]"
               >
                 {n.label}
               </Link>
