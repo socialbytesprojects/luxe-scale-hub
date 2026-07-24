@@ -60,8 +60,8 @@ function FranchisePage() {
     <>
       {/* Hero */}
       <section className="relative bg-noir text-ivory pt-40 pb-28 md:pt-52 md:pb-36 overflow-hidden">
-        <div className="absolute inset-0">
-          <img src={brandSlide(50)} alt="" className="w-full h-full object-cover opacity-45" />
+        <div className="absolute inset-0 overflow-hidden">
+          <img src={brandSlide(50)} alt="" className="w-full h-full object-cover scale-125 opacity-45" />
           <div className="absolute inset-0 bg-gradient-to-b from-noir/50 to-noir" />
         </div>
         <div className="relative z-10 mx-auto max-w-[1400px] px-6 md:px-10">
@@ -161,7 +161,9 @@ function FranchisePage() {
               ))}
             </ol>
           </div>
-          <img src={brandSlide(51)} alt="A JLD franchise moment" loading="lazy" className="w-full h-[520px] md:h-[640px] object-cover" />
+          <div className="w-full h-[520px] md:h-[640px] overflow-hidden">
+            <img src={brandSlide(51)} alt="A JLD franchise moment" loading="lazy" className="w-full h-full object-cover scale-125" />
+          </div>
         </div>
       </section>
 
