@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 
 export const Route = createFileRoute("/services")({
   head: () => ({
@@ -123,6 +124,24 @@ const MENU: Group[] = [
 ];
 
 function Services() {
+  const [activeSlug, setActiveSlug] = useState<string>(slug(MENU[0].cat));
+
+  useEffect(() => {
+    const sections = MENU.map((g) => document.getElementById(slug(g.cat))).filter(Boolean) as HTMLElement[];
+    if (!sections.length) return;
+    const obs = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => (a.boundingClientRect.top - b.boundingClientRect.top));
+        if (visible[0]) setActiveSlug(visible[0].target.id);
+      },
+      { rootMargin: "-30% 0px -60% 0px", threshold: 0 },
+    );
+    sections.forEach((s) => obs.observe(s));
+    return () => obs.disconnect();
+  }, []);
+
   return (
     <>
       {/* Hero */}
@@ -163,7 +182,31 @@ function Services() {
 
       {/* Menu */}
       <section className="bg-ivory py-16 md:py-24">
-        <div className="mx-auto max-w-[1200px] px-6 md:px-10 space-y-20 md:space-y-28">
+        <div className="mx-auto max-w-[1400px] px-6 md:px-10 lg:grid lg:grid-cols-[220px_1fr] lg:gap-12">
+          {/* Sticky category rail */}
+          <aside className="hidden lg:block">
+            <nav className="sticky top-28">
+              <p className="eyebrow mb-5">— Jump to</p>
+              <ul className="space-y-2 border-l border-champagne/40">
+                {MENU.map((g) => {
+                  const s = slug(g.cat);
+                  const active = s === activeSlug;
+                  return (
+                    <li key={g.cat}>
+                      <a
+                        href={`#${s}`}
+                        className={`block pl-4 py-1.5 -ml-px border-l-2 font-editorial text-sm leading-snug transition-colors ${active ? "border-champagne text-noir" : "border-transparent text-brown/70 hover:text-noir hover:border-champagne/60"}`}
+                      >
+                        {g.cat}
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+            </nav>
+          </aside>
+
+          <div className="space-y-20 md:space-y-28">
           {MENU.map((g) => (
             <article key={g.cat} id={slug(g.cat)} className="scroll-mt-28">
               <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 mb-10 md:mb-14 items-end">
@@ -197,6 +240,7 @@ function Services() {
           <div className="text-center pt-6">
             <p className="font-editorial italic text-brown mb-6">Prices are indicative. Member pricing is 20% below regular pricing across the menu.</p>
             <Link to="/contact" className="btn-noir">Book an Appointment</Link>
+          </div>
           </div>
         </div>
       </section>
