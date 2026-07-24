@@ -231,7 +231,7 @@ function MeetFounders() {
 }
 
 /* ─────────────────────  SUMMER COLLECTION  ───────────────────── */
-const COLLECTION_SLIDES = [2, 4, 6, 8, 10, 12].map((i) => `/press-slides/slide-${String(i).padStart(2, "0")}.jpg`);
+const COLLECTION_SLIDES = [1, 3, 8, 9, 12, 13].map((i) => `/press-slides/slide-${String(i).padStart(2, "0")}.jpg`);
 function SummerCollection() {
   return (
     <section className="bg-ivory py-20 md:py-32">
@@ -248,9 +248,12 @@ function SummerCollection() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-8">
           {COLLECTION_SLIDES.map((src, i) => (
-            <figure
+            <button
+              type="button"
               key={src}
-              className="relative overflow-hidden bg-beige aspect-[2480/1813] group"
+              onClick={() => openImage(src)}
+              className="relative block w-full overflow-hidden bg-beige aspect-[2480/1813] group cursor-zoom-in focus:outline-none focus:ring-2 focus:ring-champagne"
+              aria-label={`Open look ${i + 1}`}
             >
               <img
                 src={src}
@@ -258,7 +261,7 @@ function SummerCollection() {
                 loading="lazy"
                 className="absolute inset-0 h-full w-full object-contain transition-transform duration-700 group-hover:scale-[1.02]"
               />
-            </figure>
+            </button>
           ))}
         </div>
       </div>
