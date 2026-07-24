@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import partnershipVideo from "@/assets/partnership.mp4.asset.json";
+import heroVideo from "@/assets/jld-hero.mp4.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -28,39 +29,40 @@ function Index() {
 
 /* ─────────────────────  HERO  ───────────────────── */
 function Hero() {
-  const holderRef = useRef<HTMLDivElement | null>(null);
-  const iframeRef = useRef<HTMLIFrameElement | null>(null);
-  const [inView, setInView] = useState(false);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
   const [muted, setMuted] = useState(true);
 
   useEffect(() => {
-    if (!holderRef.current) return;
+    const v = videoRef.current;
+    if (!v) return;
     const obs = new IntersectionObserver(
-      ([e]) => setInView(e.isIntersecting),
-      { threshold: 0.1 },
+      ([e]) => { if (e.isIntersecting) v.play().catch(() => {}); else v.pause(); },
+      { threshold: 0.15 },
     );
-    obs.observe(holderRef.current);
+    obs.observe(v);
     return () => obs.disconnect();
   }, []);
 
-  const videoId = "3CyyQc6UyrY";
-  const src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=${muted ? 1 : 0}&loop=1&playlist=${videoId}&controls=0&modestbranding=1&rel=0&playsinline=1&iv_load_policy=3&cc_load_policy=0&disablekb=1&fs=0&showinfo=0&enablejsapi=1`;
+  const toggleMute = () => {
+    const v = videoRef.current;
+    if (!v) return;
+    v.muted = !v.muted;
+    setMuted(v.muted);
+    if (!v.muted) v.play().catch(() => {});
+  };
 
   return (
     <section className="relative h-[92vh] min-h-[640px] w-full overflow-hidden bg-noir text-ivory">
-      <div ref={holderRef} className="absolute inset-0 overflow-hidden">
-        {inView && (
-          <iframe
-            ref={iframeRef}
-            key={muted ? "m" : "u"}
-            src={src}
-            title="JLD Film"
-            allow="autoplay; encrypted-media; picture-in-picture"
-            allowFullScreen
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] min-w-full h-[56.25vw] min-h-full border-0 pointer-events-none scale-[1.35]"
-          />
-        )}
-      </div>
+      <video
+        ref={videoRef}
+        src={heroVideo.url}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        className="absolute inset-0 h-full w-full object-cover"
+      />
       <div className="absolute inset-0 bg-gradient-to-tr from-noir/70 via-noir/10 to-transparent pointer-events-none" />
 
       <div className="relative z-10 mx-auto flex h-full max-w-[1400px] flex-col justify-end px-6 md:px-10 pb-14 md:pb-16">
@@ -84,7 +86,7 @@ function Hero() {
 
       <button
         type="button"
-        onClick={() => setMuted((m) => !m)}
+        onClick={toggleMute}
         className="absolute bottom-6 right-6 md:bottom-8 md:right-8 z-20 h-12 w-12 rounded-full border border-ivory/40 bg-noir/40 backdrop-blur text-ivory flex items-center justify-center hover:bg-champagne hover:border-champagne transition-colors"
         aria-label={muted ? "Unmute film" : "Mute film"}
       >
@@ -110,10 +112,10 @@ const TIMELINE = [
   { year: "2018", text: "New salon concept — a redefined luxury salon experience." },
 ];
 const STORY_IMAGES = [
-  "/lookbook/coupes-femme/coupes-femme-001.jpg",
-  "/lookbook/gloss/gloss-002.jpg",
-  "/lookbook/hommes/hommes-001.jpg",
-  "/lookbook/curly/curly-001.jpg",
+  "/brand-slides/slide-08.jpg",
+  "/brand-slides/slide-11.jpg",
+  "/brand-slides/slide-12.jpg",
+  "/brand-slides/slide-49.jpg",
 ];
 
 function StorySection() {
