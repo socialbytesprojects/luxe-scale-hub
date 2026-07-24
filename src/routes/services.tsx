@@ -173,7 +173,7 @@ function Services() {
                   <p className="mt-5 font-editorial text-lg text-brown leading-relaxed">{g.blurb}</p>
                 </div>
                 <figure className="lg:col-span-5 aspect-[16/10] overflow-hidden bg-beige">
-                  <img src={g.image} alt="" loading="lazy" className="h-full w-full object-cover" />
+                  <img src={g.image} alt="" loading="lazy" className="h-full w-full object-cover object-[center_20%]" />
                 </figure>
               </div>
 
