@@ -89,24 +89,7 @@ function About() {
       <section className="bg-beige py-20 md:py-28">
         <div className="mx-auto max-w-[1400px] px-6 md:px-10">
           <p className="eyebrow mb-4">— Meet the Founders</p>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-noir leading-tight max-w-3xl">
-            Two decades of obsession, <em className="font-editorial italic text-champagne">poured into one house</em>.
-          </h2>
-          <div className="mt-16 grid md:grid-cols-2 gap-10 lg:gap-16">
-            {[
-              { name: "The Creative Director", role: "Craft & Artistry", bio: "Trained in London and Paris, our creative director leads the JLD method and the seasonal collection — translating international editorial standards for Indian textures and lifestyles." },
-              { name: "The Managing Partner", role: "Brand & Growth", bio: "A veteran of luxury hospitality, our managing partner architects the JLD experience — from interior design to the operational systems that keep every chair in perfect rhythm." },
-            ].map((f) => (
-              <article key={f.name} className="bg-ivory p-10">
-                <div className="aspect-[4/5] bg-champagne/20 mb-8 overflow-hidden">
-                  <img src="/brand-slides/slide-49.jpg" alt="" loading="lazy" className="h-full w-full object-cover" />
-                </div>
-                <p className="eyebrow mb-2">{f.role}</p>
-                <h3 className="font-display text-3xl text-noir">{f.name}</h3>
-                <p className="mt-4 font-editorial text-lg text-brown leading-relaxed">{f.bio}</p>
-              </article>
-            ))}
-          </div>
+          <div className="min-h-[240px]" />
         </div>
       </section>
 
