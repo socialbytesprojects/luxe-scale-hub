@@ -17,46 +17,62 @@ function About() {
     <>
       {/* Hero */}
       <section className="relative bg-noir text-ivory pt-40 pb-24 md:pt-52 md:pb-32 overflow-hidden">
-        <div className="absolute inset-0 opacity-40">
-          <img src="/brand-slides/slide-08.jpg" alt="" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-noir via-noir/60 to-noir/40" />
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute inset-0 bg-gradient-to-b from-noir via-noir to-noir/90" />
+          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-champagne/40 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-champagne/40 to-transparent" />
         </div>
-        <div className="relative z-10 mx-auto max-w-[1400px] px-6 md:px-10">
-          <p className="eyebrow !text-champagne mb-6">— About JLD</p>
-          <h1 className="font-display text-5xl md:text-7xl lg:text-8xl leading-[1.02] max-w-4xl">
+        <div className="relative z-10 mx-auto max-w-[1400px] px-6 md:px-10 text-center">
+          <p className="eyebrow !text-champagne mb-6 flex items-center justify-center gap-4">
+            <span className="h-px w-10 bg-champagne" />
+            About JLD
+            <span className="h-px w-10 bg-champagne" />
+          </p>
+          <h1 className="font-display text-5xl md:text-7xl lg:text-8xl leading-[1.02] max-w-4xl mx-auto">
             A quiet rebellion, <em className="font-editorial italic text-champagne">65 years in the making</em>.
           </h1>
+          <p className="mt-8 font-editorial text-lg md:text-xl text-ivory/75 max-w-2xl mx-auto italic">
+            Parisian in origin. Indian in temperament. Precise in every detail.
+          </p>
         </div>
       </section>
 
       {/* Brand Story */}
-      <section className="bg-ivory py-20 md:py-28">
-        <div className="mx-auto max-w-[1100px] px-6 md:px-10">
-          <p className="eyebrow mb-4">— Brand Story</p>
-          <p className="font-editorial text-2xl md:text-3xl text-brown leading-[1.5] italic">
+      <section className="bg-ivory py-24 md:py-32">
+        <div className="mx-auto max-w-[1100px] px-6 md:px-10 text-center">
+          <p className="eyebrow mb-6">— Brand Story</p>
+          <p className="font-editorial text-2xl md:text-3xl text-brown leading-[1.55] italic">
             "We did not set out to open a salon. We set out to compose a house — a place where craftsmanship, design and hospitality are inseparable. JLD is the answer to a single question: what would beauty look like if it were built with the care of a fashion house?"
           </p>
-          <p className="mt-8 text-sm tracking-[0.3em] uppercase text-noir">— The Founders</p>
+          <p className="mt-10 text-sm tracking-[0.3em] uppercase text-noir">— The Founders</p>
         </div>
       </section>
 
       {/* 65 Years of French Heritage */}
-      <section className="bg-beige py-20 md:py-28">
-        <div className="mx-auto max-w-[1400px] px-6 md:px-10 grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
-          <div>
+      <section className="bg-beige py-24 md:py-32">
+        <div className="mx-auto max-w-[1100px] px-6 md:px-10">
+          <div className="text-center mb-14">
             <p className="eyebrow mb-4">— 65 Years of French Heritage</p>
-            <h2 className="font-display text-4xl md:text-5xl text-noir leading-tight">
+            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-noir leading-tight">
               From a Parisian atelier in 1961, <em className="font-editorial italic text-champagne">to the world's №1 salon group</em>.
             </h2>
-            <div className="mt-8 space-y-5 font-editorial text-lg text-brown leading-relaxed">
-              <p>The first Jean Louis David salon opened on Rue de Wagram, Paris. Jean Louis David went on to assist Helmut Newton and Herb Ritts, invent the layered haircut with clippers, and launch the world's first professional training videos.</p>
-              <p>In 2008 the brand joined Provalliance — a group with 3,700+ salons across 35 countries. JLD India carries this lineage forward, adapted to the tastes and rhythms of Indian luxury.</p>
-            </div>
           </div>
-          <div className="grid grid-cols-2 gap-3">
-            <img src="/brand-slides/slide-09.jpg" alt="" loading="lazy" className="col-span-2 w-full h-[320px] object-cover" />
-            <img src="/brand-slides/slide-11.jpg" alt="" loading="lazy" className="w-full h-[240px] object-cover" />
-            <img src="/brand-slides/slide-12.jpg" alt="" loading="lazy" className="w-full h-[240px] object-cover" />
+          <div className="grid md:grid-cols-2 gap-10 md:gap-14 font-editorial text-lg text-brown leading-relaxed">
+            <p>The first Jean Louis David salon opened on Rue de Wagram, Paris. Jean Louis David went on to assist Helmut Newton and Herb Ritts, invent the layered haircut with clippers, and launch the world's first professional training videos.</p>
+            <p>In 2008 the brand joined Provalliance — a group with 3,700+ salons across 35 countries. JLD India carries this lineage forward, adapted to the tastes and rhythms of Indian luxury.</p>
+          </div>
+          <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 border-t border-champagne/50 pt-10">
+            {[
+              ["1961", "Founded in Paris"],
+              ["3,700+", "Salons worldwide"],
+              ["35", "Countries"],
+              ["№1", "Salon group globally"],
+            ].map(([n, l]) => (
+              <div key={l} className="text-center">
+                <p className="font-display text-3xl md:text-4xl text-noir">{n}</p>
+                <p className="mt-2 eyebrow">{l}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>

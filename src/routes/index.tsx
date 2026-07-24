@@ -18,12 +18,45 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <>
+      <Lightbox />
       <Hero />
       <StorySection />
-      <AboutFounders />
+      <MeetFounders />
       <SummerCollection />
       <InvestorCTA />
     </>
+  );
+}
+
+/* ─────────────────────  LIGHTBOX (shared)  ───────────────────── */
+let openLightboxFn: ((src: string) => void) | null = null;
+export function openImage(src: string) { openLightboxFn?.(src); }
+function Lightbox() {
+  const [src, setSrc] = useState<string | null>(null);
+  useEffect(() => {
+    openLightboxFn = setSrc;
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setSrc(null); };
+    window.addEventListener("keydown", onKey);
+    return () => { openLightboxFn = null; window.removeEventListener("keydown", onKey); };
+  }, []);
+  if (!src) return null;
+  return (
+    <div
+      role="dialog"
+      aria-modal="true"
+      onClick={() => setSrc(null)}
+      className="fixed inset-0 z-[9999] bg-noir/95 backdrop-blur-sm flex items-center justify-center p-4 md:p-10 cursor-zoom-out animate-fade-up"
+    >
+      <img src={src} alt="" className="max-h-full max-w-full object-contain shadow-2xl" />
+      <button
+        type="button"
+        onClick={(e) => { e.stopPropagation(); setSrc(null); }}
+        className="absolute top-4 right-4 md:top-6 md:right-6 h-11 w-11 rounded-full border border-ivory/40 bg-noir/40 text-ivory flex items-center justify-center hover:bg-champagne hover:border-champagne transition-colors"
+        aria-label="Close"
+      >
+        <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="m6 6 12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
   );
 }
 
@@ -57,7 +90,7 @@ function Hero() {
         ref={videoRef}
         src={heroVideo.url}
         autoPlay
-        muted
+        muted={muted}
         loop
         playsInline
         preload="auto"
@@ -146,21 +179,22 @@ function StorySection() {
             ))}
           </ol>
 
-          {/* Sticky imagery */}
-          <aside className="lg:col-span-5">
-            <div className="lg:sticky lg:top-28 grid grid-cols-2 gap-3">
-              {STORY_IMAGES.map((s, i) => (
-                <figure
-                  key={s}
-                  className={`relative overflow-hidden bg-beige ${i === 0 ? "col-span-2 aspect-[16/10]" : "aspect-[3/4]"}`}
-                >
-                  <img src={s} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
-                </figure>
-              ))}
-              <figcaption className="col-span-2 font-editorial italic text-brown text-sm mt-1">
-                Craft, texture and character — the JLD floor, today.
-              </figcaption>
-            </div>
+          {/* 16:9 slides, stacked */}
+          <aside className="lg:col-span-5 space-y-4 md:space-y-5">
+            {STORY_IMAGES.map((s) => (
+              <button
+                type="button"
+                key={s}
+                onClick={() => openImage(s)}
+                className="group relative block w-full overflow-hidden bg-beige aspect-video cursor-zoom-in focus:outline-none focus:ring-2 focus:ring-champagne"
+                aria-label="Open image"
+              >
+                <img src={s} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
+              </button>
+            ))}
+            <p className="font-editorial italic text-brown text-sm">
+              Tap any frame to enlarge.
+            </p>
           </aside>
         </div>
       </div>
@@ -168,37 +202,36 @@ function StorySection() {
   );
 }
 
-/* ─────────────────────  ABOUT / FOUNDERS PREVIEW  ───────────────────── */
-function AboutFounders() {
+/* ─────────────────────  MEET THE FOUNDERS  ───────────────────── */
+function MeetFounders() {
   return (
-    <section className="bg-beige py-20 md:py-32">
-      <div className="mx-auto max-w-[1400px] px-6 md:px-10 grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-        <div className="lg:col-span-6 order-2 lg:order-1">
-          <p className="eyebrow mb-4">— About JLD</p>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-noir leading-[1.05]">
-            A house built on <em className="font-editorial italic text-champagne">craft, hospitality</em> and quiet obsession.
-          </h2>
-          <div className="mt-8 space-y-5 font-editorial text-lg text-brown leading-relaxed">
-            <p>
-              JLD is a modern beauty house rooted in 65 years of French salon heritage — Parisian in origin, Indian in temperament, precise in every detail.
-            </p>
-            <p>
-              Our founders trained in the ateliers of Europe and returned home to compose a brand that treats a haircut as an art form and a salon as a stage.
-            </p>
-          </div>
-          <div className="mt-10 flex flex-col sm:flex-row gap-4">
-            <Link to="/about" className="btn-noir">Meet the House</Link>
-            <Link to="/lookbook" className="btn-gold">See the Work</Link>
-          </div>
+    <section className="bg-beige py-24 md:py-36">
+      <div className="mx-auto max-w-[900px] px-6 md:px-10 text-center">
+        <p className="eyebrow mb-6 flex items-center justify-center gap-4">
+          <span className="h-px w-10 bg-champagne" />
+          Meet the Founders
+          <span className="h-px w-10 bg-champagne" />
+        </p>
+        <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-noir leading-[1.08]">
+          Two lives in beauty, <em className="font-editorial italic text-champagne">one house</em>.
+        </h2>
+        <p className="mt-8 font-editorial text-lg md:text-xl text-brown leading-relaxed">
+          Trained in the ateliers of Europe and shaped by the rhythm of Indian hospitality, our founders returned home to compose a modern beauty house — one that treats a haircut as an art form and the salon as a stage.
+        </p>
+        <p className="mt-6 font-editorial text-lg md:text-xl text-brown leading-relaxed">
+          Every detail of JLD — the light, the linen, the language at the door — is drawn from a single conviction: <em className="italic">luxury is quiet, and craftsmanship is a form of care.</em>
+        </p>
+        <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
+          <Link to="/about" className="btn-noir">Read the Full Story</Link>
+          <Link to="/lookbook" className="btn-gold">See the Work</Link>
         </div>
-        <div className="lg:col-span-6 order-1 lg:order-2" />
       </div>
     </section>
   );
 }
 
 /* ─────────────────────  SUMMER COLLECTION  ───────────────────── */
-const COLLECTION_SLIDES = [2, 4, 6, 8, 10, 12].map((i) => `/press-slides/slide-${String(i).padStart(2, "0")}.jpg`);
+const COLLECTION_SLIDES = [1, 3, 8, 9, 12, 13].map((i) => `/press-slides/slide-${String(i).padStart(2, "0")}.jpg`);
 function SummerCollection() {
   return (
     <section className="bg-ivory py-20 md:py-32">
@@ -215,9 +248,12 @@ function SummerCollection() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-8">
           {COLLECTION_SLIDES.map((src, i) => (
-            <figure
+            <button
+              type="button"
               key={src}
-              className="relative overflow-hidden bg-beige aspect-[2480/1813] group"
+              onClick={() => openImage(src)}
+              className="relative block w-full overflow-hidden bg-beige aspect-[2480/1813] group cursor-zoom-in focus:outline-none focus:ring-2 focus:ring-champagne"
+              aria-label={`Open look ${i + 1}`}
             >
               <img
                 src={src}
@@ -225,7 +261,7 @@ function SummerCollection() {
                 loading="lazy"
                 className="absolute inset-0 h-full w-full object-contain transition-transform duration-700 group-hover:scale-[1.02]"
               />
-            </figure>
+            </button>
           ))}
         </div>
       </div>
