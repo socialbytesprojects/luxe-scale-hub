@@ -18,12 +18,45 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <>
+      <Lightbox />
       <Hero />
       <StorySection />
-      <AboutFounders />
+      <MeetFounders />
       <SummerCollection />
       <InvestorCTA />
     </>
+  );
+}
+
+/* ─────────────────────  LIGHTBOX (shared)  ───────────────────── */
+let openLightboxFn: ((src: string) => void) | null = null;
+export function openImage(src: string) { openLightboxFn?.(src); }
+function Lightbox() {
+  const [src, setSrc] = useState<string | null>(null);
+  useEffect(() => {
+    openLightboxFn = setSrc;
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setSrc(null); };
+    window.addEventListener("keydown", onKey);
+    return () => { openLightboxFn = null; window.removeEventListener("keydown", onKey); };
+  }, []);
+  if (!src) return null;
+  return (
+    <div
+      role="dialog"
+      aria-modal="true"
+      onClick={() => setSrc(null)}
+      className="fixed inset-0 z-[9999] bg-noir/95 backdrop-blur-sm flex items-center justify-center p-4 md:p-10 cursor-zoom-out animate-fade-up"
+    >
+      <img src={src} alt="" className="max-h-full max-w-full object-contain shadow-2xl" />
+      <button
+        type="button"
+        onClick={(e) => { e.stopPropagation(); setSrc(null); }}
+        className="absolute top-4 right-4 md:top-6 md:right-6 h-11 w-11 rounded-full border border-ivory/40 bg-noir/40 text-ivory flex items-center justify-center hover:bg-champagne hover:border-champagne transition-colors"
+        aria-label="Close"
+      >
+        <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="m6 6 12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
   );
 }
 
@@ -57,7 +90,7 @@ function Hero() {
         ref={videoRef}
         src={heroVideo.url}
         autoPlay
-        muted
+        muted={muted}
         loop
         playsInline
         preload="auto"
