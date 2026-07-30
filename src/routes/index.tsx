@@ -217,42 +217,21 @@ function StorySection() {
 /* ─────────────────────  MEET THE FOUNDERS  ───────────────────── */
 function MeetFounders() {
   return (
-    <section className="bg-beige py-24 md:py-36">
-      <div className="mx-auto max-w-[900px] px-6 md:px-10 text-center">
+    <section className="bg-beige py-16 md:py-24">
+      <div className="mx-auto max-w-[760px] px-6 md:px-10 text-center">
         <p className="eyebrow mb-6 flex items-center justify-center gap-4">
           <span className="h-px w-10 bg-champagne" />
           Meet the Founders
           <span className="h-px w-10 bg-champagne" />
         </p>
-        <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-noir leading-[1.08]">
-          65 years of French excellence. <em className="font-editorial italic text-champagne">A new chapter in India.</em>
+        <h2 className="font-display text-3xl md:text-4xl text-noir leading-[1.12]">
+          Sonniya &amp; Nitin Sharma — <em className="font-editorial italic text-champagne">the India chapter</em>.
         </h2>
-        <p className="mt-8 font-editorial text-lg md:text-xl text-brown leading-relaxed">
-          Founded in 1961, Jean Louis David has spent over six decades shaping the craft of French hairdressing. Today, as a flagship brand of Provalliance — the world's largest salon group with 3,500+ salons — it opens its next chapter in India.
+        <p className="mt-6 font-editorial text-lg text-brown leading-relaxed">
+          Two decades in service-led businesses, more than a decade of it in premium salons. Sonniya shapes the vision; Nitin builds the systems and teams that deliver it, visit after visit.
         </p>
-        <p className="mt-6 font-editorial text-lg md:text-xl text-brown leading-relaxed">
-          Leading that chapter are <em className="italic">Sonniya and Nitin Sharma</em> — entrepreneurs with two decades in service-led businesses and over a decade in the premium salon industry.
-        </p>
-
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 text-left">
-          {[
-            { name: "Sonniya", img: sonniyaImg.url, pos: "object-[58%_28%]", body: "Shapes the vision — global standards delivered through a guest experience that feels personal every time." },
-            { name: "Nitin", img: nitinImg.url, pos: "object-[38%_25%]", body: "Brings the execution — the systems and people that deliver a brand consistently, visit after visit." },
-          ].map((f) => (
-            <figure key={f.name}>
-              <div className="relative w-full overflow-hidden bg-ivory aspect-[4/5]">
-                <img src={f.img} alt={`${f.name} Sharma, co-founder of JLD India`} loading="lazy" className={`absolute inset-0 h-full w-full object-cover ${f.pos}`} />
-              </div>
-              <figcaption className="mt-5">
-                <p className="font-display text-2xl md:text-3xl text-noir">{f.name}</p>
-                <p className="mt-2 font-editorial text-base text-brown leading-relaxed">{f.body}</p>
-              </figcaption>
-            </figure>
-          ))}
-        </div>
-        <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
           <Link to="/about" className="btn-noir">Read the Full Story</Link>
-          <Link to="/lookbook" className="btn-gold">See the Work</Link>
         </div>
       </div>
     </section>
