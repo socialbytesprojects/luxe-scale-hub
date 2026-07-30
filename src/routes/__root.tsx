@@ -242,9 +242,8 @@ function SiteFooter() {
           <div>
             <h4 className="eyebrow !text-champagne mb-5">Connect</h4>
             <ul className="space-y-3 text-sm text-ivory/75">
-              <li>+91 98XXX XXX XX</li>
-              <li>hello@maisonnoir.in</li>
-              <li>franchise@maisonnoir.in</li>
+              <li><a href="tel:+919509502222" className="hover:text-champagne transition-colors">+91 95095 02222</a></li>
+              <li><a href="mailto:info@jeanlouisdavid.in" className="hover:text-champagne transition-colors">info@jeanlouisdavid.in</a></li>
               <li>Mumbai · Delhi · Bengaluru</li>
             </ul>
           </div>
@@ -273,7 +272,7 @@ function SiteFooter() {
 function WhatsAppFloat() {
   return (
     <a
-      href="https://wa.me/919999999999"
+      href="https://wa.me/919509502222"
       target="_blank"
       rel="noopener noreferrer"
       className="fixed bottom-6 right-6 z-40 h-14 w-14 rounded-full bg-champagne text-noir flex items-center justify-center shadow-lg hover:scale-110 transition-transform"

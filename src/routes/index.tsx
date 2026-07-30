@@ -2,8 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import partnershipVideo from "@/assets/partnership.mp4.asset.json";
 import heroVideo from "@/assets/jld-hero.mp4.asset.json";
-import sonniyaImg from "@/assets/sonniya.png.asset.json";
-import nitinImg from "@/assets/nitin.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -137,14 +135,18 @@ function Hero() {
 
 /* ─────────────────────  STORY (Timeline from slide 9)  ───────────────────── */
 const TIMELINE = [
-  { year: "1961", text: "1st Jean Louis David Salon opens on Rue de Wagram, Paris." },
-  { year: "60ies", text: "Jean Louis David assists Helmut Newton and Herb Ritts on iconic editorials." },
-  { year: "1970", text: "Jean Louis David invents the layered haircut with clippers." },
-  { year: "1975", text: "Creation of the Jean Louis David franchise network." },
-  { year: "End of 70s", text: "Launch of the training videos — a first for the industry." },
-  { year: "2008", text: "The brand joins Provalliance, the world's №1 hair group." },
-  { year: "2009", text: "Launch of the Jean Louis David professional product range." },
-  { year: "2018", text: "New salon concept — a redefined luxury salon experience." },
+  { year: "1961", title: "The Beginning", text: "First Jean Louis David salon opens in Wagram, Paris." },
+  { year: "1960s", title: "Fashion Meets Hair", text: "Collaborates with Helmut Newton, Herb Ritts, and other fashion icons." },
+  { year: "1970", title: "An Industry Innovation", text: "Invents the revolutionary layered haircut with clippers." },
+  { year: "1975", title: "Global Expansion Begins", text: "Launch of the Jean Louis David franchise network." },
+  { year: "Late 1970s", title: "Education First", text: "Launch of the brand's professional training videos." },
+  { year: "1980–2007", title: "International Growth", text: "Expands to 750+ salons across 20+ countries." },
+  { year: "2009", title: "Professional Collection", text: "Launch of the Jean Louis David Professional product range." },
+  { year: "2018", title: "A New Salon Concept", text: "Introduction of the brand's new salon concept." },
+  { year: "2024", title: "Brand Excellence", text: "Awarded Best Brand Strategy of the Year." },
+  { year: "2025", title: "Franchise Excellence", text: "Awarded Best Franchise in France." },
+  { year: "2026", title: "Recognised Once Again", text: "Named Best Franchise in France 2026." },
+  { year: "2026", title: "A New Chapter", text: "Master franchise agreements signed for India & China." },
 ];
 const STORY_IMAGES = [
   "/brand-slides/slide-08.jpg",
@@ -161,11 +163,11 @@ function StorySection() {
           <div className="lg:col-span-7">
             <p className="eyebrow mb-4">— The Story</p>
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-noir leading-[1.05]">
-              Six decades of French craft, <em className="font-editorial italic text-champagne">reimagined for India</em>.
+              The Jean Louis David Journey, <em className="font-editorial italic text-champagne">reimagined for India</em>.
             </h2>
           </div>
           <p className="lg:col-span-5 font-editorial text-lg md:text-xl text-brown leading-relaxed">
-            From a single Parisian atelier in 1961 to the operating system of the world's №1 salon group — a heritage of freedom, creativity and precision now takes its place in India.
+            A French salon brand that continues to evolve with every generation — combining heritage, innovation and creativity while remaining true to the standards that have defined Jean Louis David for over six decades.
           </p>
         </div>
 
@@ -173,12 +175,18 @@ function StorySection() {
           {/* Timeline */}
           <ol className="lg:col-span-7 relative border-l border-champagne/50 pl-8 md:pl-10 space-y-10">
             {TIMELINE.map((t) => (
-              <li key={t.year} className="relative">
+              <li key={`${t.year}-${t.title}`} className="relative">
                 <span className="absolute -left-[42px] md:-left-[50px] top-2 h-3 w-3 rounded-full bg-champagne ring-4 ring-ivory" />
                 <p className="font-display text-3xl md:text-4xl text-noir leading-none">{t.year}</p>
-                <p className="mt-3 font-editorial text-lg text-brown leading-relaxed max-w-lg">{t.text}</p>
+                <p className="mt-2 eyebrow">{t.title}</p>
+                <p className="mt-2 font-editorial text-lg text-brown leading-relaxed max-w-lg">{t.text}</p>
               </li>
             ))}
+            <li className="relative">
+              <span className="absolute -left-[42px] md:-left-[50px] top-2 h-3 w-3 rounded-full bg-champagne ring-4 ring-ivory" />
+              <p className="font-display text-3xl md:text-4xl text-noir leading-none">Today</p>
+              <p className="mt-2 eyebrow">750+ Salons · 20+ Countries · Since 1961</p>
+            </li>
           </ol>
 
           {/* 16:9 slides, stacked */}
@@ -207,42 +215,21 @@ function StorySection() {
 /* ─────────────────────  MEET THE FOUNDERS  ───────────────────── */
 function MeetFounders() {
   return (
-    <section className="bg-beige py-24 md:py-36">
-      <div className="mx-auto max-w-[900px] px-6 md:px-10 text-center">
+    <section className="bg-beige py-16 md:py-24">
+      <div className="mx-auto max-w-[760px] px-6 md:px-10 text-center">
         <p className="eyebrow mb-6 flex items-center justify-center gap-4">
           <span className="h-px w-10 bg-champagne" />
           Meet the Founders
           <span className="h-px w-10 bg-champagne" />
         </p>
-        <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-noir leading-[1.08]">
-          65 years of French excellence. <em className="font-editorial italic text-champagne">A new chapter in India.</em>
+        <h2 className="font-display text-3xl md:text-4xl text-noir leading-[1.12]">
+          Sonniya &amp; Nitin Sharma — <em className="font-editorial italic text-champagne">the India chapter</em>.
         </h2>
-        <p className="mt-8 font-editorial text-lg md:text-xl text-brown leading-relaxed">
-          Founded in 1961, Jean Louis David has spent over six decades shaping the craft of French hairdressing. Today, as a flagship brand of Provalliance — the world's largest salon group with 3,500+ salons — it opens its next chapter in India.
+        <p className="mt-6 font-editorial text-lg text-brown leading-relaxed">
+          Two decades in service-led businesses, more than a decade of it in premium salons. Sonniya shapes the vision; Nitin builds the systems and teams that deliver it, visit after visit.
         </p>
-        <p className="mt-6 font-editorial text-lg md:text-xl text-brown leading-relaxed">
-          Leading that chapter are <em className="italic">Sonniya and Nitin Sharma</em> — entrepreneurs with two decades in service-led businesses and over a decade in the premium salon industry.
-        </p>
-
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 text-left">
-          {[
-            { name: "Sonniya", img: sonniyaImg.url, pos: "object-[58%_28%]", body: "Shapes the vision — global standards delivered through a guest experience that feels personal every time." },
-            { name: "Nitin", img: nitinImg.url, pos: "object-[38%_25%]", body: "Brings the execution — the systems and people that deliver a brand consistently, visit after visit." },
-          ].map((f) => (
-            <figure key={f.name}>
-              <div className="relative w-full overflow-hidden bg-ivory aspect-[4/5]">
-                <img src={f.img} alt={`${f.name} Sharma, co-founder of JLD India`} loading="lazy" className={`absolute inset-0 h-full w-full object-cover ${f.pos}`} />
-              </div>
-              <figcaption className="mt-5">
-                <p className="font-display text-2xl md:text-3xl text-noir">{f.name}</p>
-                <p className="mt-2 font-editorial text-base text-brown leading-relaxed">{f.body}</p>
-              </figcaption>
-            </figure>
-          ))}
-        </div>
-        <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
           <Link to="/about" className="btn-noir">Read the Full Story</Link>
-          <Link to="/lookbook" className="btn-gold">See the Work</Link>
         </div>
       </div>
     </section>
