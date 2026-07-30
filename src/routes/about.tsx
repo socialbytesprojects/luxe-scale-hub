@@ -1,4 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import sonniyaImg from "@/assets/sonniya.png.asset.json";
+import nitinImg from "@/assets/nitin.png.asset.json";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -103,9 +105,59 @@ function About() {
 
       {/* Founders */}
       <section className="bg-beige py-20 md:py-28">
-        <div className="mx-auto max-w-[1400px] px-6 md:px-10">
-          <p className="eyebrow mb-4">— Meet the Founders</p>
-          <div className="min-h-[240px]" />
+        <div className="mx-auto max-w-[1200px] px-6 md:px-10">
+          <div className="max-w-3xl mb-14">
+            <p className="eyebrow mb-4">— Meet the Founders</p>
+            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-noir leading-tight">
+              65 years of French excellence. <em className="font-editorial italic text-champagne">A new chapter in India.</em>
+            </h2>
+            <p className="mt-6 font-editorial text-lg text-brown leading-relaxed">
+              Founded in 1961, Jean Louis David has spent over six decades shaping the craft of French hairdressing — evolving with every era while staying rooted in the creativity and precision that built its name. Today, as a flagship brand of Provalliance, the world's largest salon group with more than 3,500 salons worldwide, it opens its next chapter in India.
+            </p>
+            <p className="mt-5 font-editorial text-lg text-brown leading-relaxed">
+              Leading that chapter are Sonniya and Nitin Sharma — entrepreneurs with two decades in service-led businesses and over a decade focused specifically on the premium salon industry.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-10 md:gap-14">
+            {[
+              {
+                name: "Sonniya",
+                img: sonniyaImg.url,
+                pos: "object-[58%_28%]",
+                body: "Sonniya shapes the vision behind Jean Louis David's India journey. Years spent studying leading beauty markets across Europe and the USA have given her a close understanding of what makes salon brands endure — how they earn loyalty and turn a visit into a lasting relationship. That understanding drives her focus here: global standards, delivered through a guest experience that feels personal every time.",
+              },
+              {
+                name: "Nitin",
+                img: nitinImg.url,
+                pos: "object-[38%_25%]",
+                body: "Nitin brings the execution behind that vision. His experience across service industries — sharpened by over a decade specifically in premium salons — has taught him how creativity and operational discipline reinforce each other. His approach: strong brands aren't built on inspiration alone, but on the systems and people that deliver it consistently, visit after visit.",
+              },
+            ].map((f) => (
+              <article key={f.name}>
+                <div className="relative w-full overflow-hidden bg-ivory aspect-[4/5]">
+                  <img
+                    src={f.img}
+                    alt={`${f.name} Sharma, co-founder of JLD India`}
+                    loading="lazy"
+                    className={`absolute inset-0 h-full w-full object-cover ${f.pos}`}
+                  />
+                </div>
+                <h3 className="font-display text-3xl md:text-4xl text-noir mt-6">{f.name}</h3>
+                <p className="mt-4 font-editorial text-lg text-brown leading-relaxed">{f.body}</p>
+              </article>
+            ))}
+          </div>
+
+          <div className="mt-16 border-t border-champagne pt-8 max-w-3xl">
+            <h3 className="font-display text-3xl md:text-4xl text-noir leading-tight">A partnership built on trust</h3>
+            <p className="mt-5 font-editorial text-lg text-brown leading-relaxed">
+              Provalliance's earlier expansion into India was placed in their hands, with the mandate to bring Franck Provost to the country. What followed became one of Bangalore's most respected premium salon names — proof that a global brand's standards can take root and thrive here, given the right execution.
+            </p>
+            <p className="mt-5 font-editorial text-lg text-brown leading-relaxed">
+              That track record is why Jean Louis David — a brand that has led its industry since 1961 without ever diluting its heritage — now begins its own India story with them.
+            </p>
+          </div>
         </div>
       </section>
 
