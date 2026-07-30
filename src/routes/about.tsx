@@ -40,19 +40,66 @@ function About() {
       </section>
 
       {/* 65 Years of French Heritage */}
-      <section className="bg-beige py-24 md:py-32">
+      <section className="bg-ivory py-24 md:py-32">
         <div className="mx-auto max-w-[1100px] px-6 md:px-10">
           <div className="text-center">
             <p className="eyebrow mb-4">— 65 Years of French Heritage</p>
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-noir leading-tight">
-              From a Parisian atelier in 1961, <em className="font-editorial italic text-champagne">to the world's №1 salon group</em>.
+              From a Parisian atelier in 1961, <em className="font-editorial italic text-champagne">to one of the world's largest salon networks</em>.
             </h2>
+          </div>
+
+          <div className="mt-12 grid md:grid-cols-2 gap-10 md:gap-14 text-left">
+            <p className="font-editorial text-xl md:text-2xl text-brown leading-relaxed">
+              Jean Louis David opened its first salon in Paris in 1961 with a simple conviction: a haircut should be built around the person wearing it, not the fashion of the season. That idea reshaped French hairdressing — cuts designed to move, to grow out gracefully, and to be lived in.
+            </p>
+            <p className="font-editorial text-xl md:text-2xl text-brown leading-relaxed">
+              Six decades later, the house counts 750+ salons across 20+ countries, a proprietary cutting method taught in its own academies, and a place among the most recognised names in professional beauty. India is the next chapter — the same craft, the same standards, delivered close to home.
+            </p>
+          </div>
+
+          <div className="mt-14 grid grid-cols-2 lg:grid-cols-4 gap-8 border-t border-champagne pt-10">
+            {[
+              ["1961", "Founded in Paris"],
+              ["750+", "Salons worldwide"],
+              ["20+", "Countries"],
+              ["2026", "India chapter begins"],
+            ].map(([n, l]) => (
+              <div key={l}>
+                <p className="font-display text-4xl md:text-5xl text-noir">{n}</p>
+                <p className="eyebrow mt-2">{l}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* What we stand for */}
+      <section className="bg-beige py-20 md:py-28">
+        <div className="mx-auto max-w-[1200px] px-6 md:px-10">
+          <div className="max-w-3xl mb-12">
+            <p className="eyebrow mb-4">— What we stand for</p>
+            <h2 className="font-display text-4xl md:text-5xl text-noir leading-tight">
+              A house built on <em className="font-editorial italic text-champagne">method, not trend</em>.
+            </h2>
+          </div>
+          <div className="grid md:grid-cols-3 gap-10">
+            {[
+              ["The cut comes first", "Every service begins with a consultation and a cut engineered for your hair's texture, density and how you actually wear it."],
+              ["One trained method", "Artists are trained in a single French technique, so the result is the same whether you sit down in Paris, Delhi or Mumbai."],
+              ["Considered, not rushed", "Timings, products and finishing are set by the house — never by how quickly a chair can be turned over."],
+            ].map(([t, b]) => (
+              <div key={t} className="border-t border-champagne pt-6">
+                <h3 className="font-display text-2xl md:text-3xl text-noir mb-3">{t}</h3>
+                <p className="font-editorial text-xl text-brown leading-relaxed">{b}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Founders */}
-      <section className="bg-beige py-20 md:py-28">
+      <section className="bg-ivory py-20 md:py-28">
         <div className="mx-auto max-w-[1200px] px-6 md:px-10">
           <div className="max-w-3xl mb-14">
             <p className="eyebrow mb-4">— Meet the Founders</p>
@@ -110,7 +157,7 @@ function About() {
       </section>
 
       {/* Mission & Vision */}
-      <section className="bg-ivory py-20 md:py-28">
+      <section className="bg-beige py-20 md:py-28">
         <div className="mx-auto max-w-[1400px] px-6 md:px-10 grid md:grid-cols-2 gap-10 lg:gap-16">
           <div className="border-t border-champagne pt-6">
             <p className="eyebrow mb-3">— Mission</p>
