@@ -39,66 +39,14 @@ function About() {
         </div>
       </section>
 
-      {/* Brand Story */}
-      <section className="bg-ivory py-24 md:py-32">
-        <div className="mx-auto max-w-[1100px] px-6 md:px-10 text-center">
-          <p className="eyebrow mb-6">— Brand Story</p>
-          <p className="font-editorial text-2xl md:text-3xl text-brown leading-[1.55] italic">
-            "We did not set out to open a salon. We set out to compose a house — a place where craftsmanship, design and hospitality are inseparable. JLD is the answer to a single question: what would beauty look like if it were built with the care of a fashion house?"
-          </p>
-          <p className="mt-10 text-sm tracking-[0.3em] uppercase text-noir">— The Founders</p>
-        </div>
-      </section>
-
       {/* 65 Years of French Heritage */}
       <section className="bg-beige py-24 md:py-32">
         <div className="mx-auto max-w-[1100px] px-6 md:px-10">
-          <div className="text-center mb-14">
+          <div className="text-center">
             <p className="eyebrow mb-4">— 65 Years of French Heritage</p>
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-noir leading-tight">
               From a Parisian atelier in 1961, <em className="font-editorial italic text-champagne">to the world's №1 salon group</em>.
             </h2>
-          </div>
-          <div className="grid md:grid-cols-2 gap-10 md:gap-14 font-editorial text-lg text-brown leading-relaxed">
-            <p>The first Jean Louis David salon opened on Rue de Wagram, Paris. Jean Louis David went on to assist Helmut Newton and Herb Ritts, invent the layered haircut with clippers, and launch the world's first professional training videos.</p>
-            <p>In 2008 the brand joined Provalliance — a group with 3,700+ salons across 35 countries. JLD India carries this lineage forward, adapted to the tastes and rhythms of Indian luxury.</p>
-          </div>
-          <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 border-t border-champagne/50 pt-10">
-            {[
-              ["1961", "Founded in Paris"],
-              ["3,700+", "Salons worldwide"],
-              ["35", "Countries"],
-              ["№1", "Salon group globally"],
-            ].map(([n, l]) => (
-              <div key={l} className="text-center">
-                <p className="font-display text-3xl md:text-4xl text-noir">{n}</p>
-                <p className="mt-2 eyebrow">{l}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Philosophy */}
-      <section className="bg-ivory py-20 md:py-28">
-        <div className="mx-auto max-w-[1400px] px-6 md:px-10">
-          <div className="max-w-3xl mb-14">
-            <p className="eyebrow mb-4">— Philosophy</p>
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-noir leading-tight">
-              Three disciplines. <em className="font-editorial italic text-champagne">One house.</em>
-            </h2>
-          </div>
-          <div className="grid md:grid-cols-3 gap-10 md:gap-14">
-            {[
-              { t: "Design", b: "Every salon is composed by our in-house studio. Architecture is brand — light, material and silence do the first talking." },
-              { t: "Craft", b: "Our artists train continuously in the JLD method. The chair is a stage, and a discipline." },
-              { t: "Hospitality", b: "Borrowed from the finest hotels — service is the silent layer beneath the cut, felt long after the appointment ends." },
-            ].map((p) => (
-              <div key={p.t} className="border-t border-champagne pt-6">
-                <h3 className="font-display text-3xl text-noir mb-4">{p.t}</h3>
-                <p className="font-editorial text-lg text-brown leading-relaxed">{p.b}</p>
-              </div>
-            ))}
           </div>
         </div>
       </section>
@@ -111,10 +59,10 @@ function About() {
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-noir leading-tight">
               65 years of French excellence. <em className="font-editorial italic text-champagne">A new chapter in India.</em>
             </h2>
-            <p className="mt-6 font-editorial text-lg text-brown leading-relaxed">
-              Founded in 1961, Jean Louis David has spent over six decades shaping the craft of French hairdressing — evolving with every era while staying rooted in the creativity and precision that built its name. Today, as a flagship brand of Provalliance, the world's largest salon group with more than 3,500 salons worldwide, it opens its next chapter in India.
+            <p className="mt-6 font-editorial text-xl md:text-2xl text-brown leading-relaxed">
+              Founded in 1961, Jean Louis David has spent over six decades shaping the craft of French hairdressing — evolving with every era while staying rooted in the creativity and precision that built its name. Today, with 750+ salons across 20+ countries, it opens its next chapter in India.
             </p>
-            <p className="mt-5 font-editorial text-lg text-brown leading-relaxed">
+            <p className="mt-5 font-editorial text-xl md:text-2xl text-brown leading-relaxed">
               Leading that chapter are Sonniya and Nitin Sharma — entrepreneurs with two decades in service-led businesses and over a decade focused specifically on the premium salon industry.
             </p>
           </div>
@@ -144,17 +92,17 @@ function About() {
                   />
                 </div>
                 <h3 className="font-display text-3xl md:text-4xl text-noir mt-6">{f.name}</h3>
-                <p className="mt-4 font-editorial text-lg text-brown leading-relaxed">{f.body}</p>
+                <p className="mt-4 font-editorial text-xl text-brown leading-relaxed">{f.body}</p>
               </article>
             ))}
           </div>
 
           <div className="mt-16 border-t border-champagne pt-8 max-w-3xl">
             <h3 className="font-display text-3xl md:text-4xl text-noir leading-tight">A partnership built on trust</h3>
-            <p className="mt-5 font-editorial text-lg text-brown leading-relaxed">
-              Provalliance's earlier expansion into India was placed in their hands, with the mandate to bring Franck Provost to the country. What followed became one of Bangalore's most respected premium salon names — proof that a global brand's standards can take root and thrive here, given the right execution.
+            <p className="mt-5 font-editorial text-xl md:text-2xl text-brown leading-relaxed">
+              An earlier French salon brand's expansion into India was placed in their hands. What followed became one of Bangalore's most respected premium salon names — proof that a global brand's standards can take root and thrive here, given the right execution.
             </p>
-            <p className="mt-5 font-editorial text-lg text-brown leading-relaxed">
+            <p className="mt-5 font-editorial text-xl md:text-2xl text-brown leading-relaxed">
               That track record is why Jean Louis David — a brand that has led its industry since 1961 without ever diluting its heritage — now begins its own India story with them.
             </p>
           </div>
@@ -169,7 +117,7 @@ function About() {
             <h3 className="font-display text-3xl md:text-4xl text-noir leading-tight">
               To make luxury salon experiences the everyday standard in India.
             </h3>
-            <p className="mt-6 font-editorial text-lg text-brown leading-relaxed">
+            <p className="mt-6 font-editorial text-xl text-brown leading-relaxed">
               We measure ourselves by the quality of every guest visit — the sit-down, the wash, the conversation, the finish — and by the standards we set for the industry that follows.
             </p>
           </div>
@@ -178,7 +126,7 @@ function About() {
             <h3 className="font-display text-3xl md:text-4xl text-noir leading-tight">
               A house of beauty, present in every serious Indian city.
             </h3>
-            <p className="mt-6 font-editorial text-lg text-brown leading-relaxed">
+            <p className="mt-6 font-editorial text-xl text-brown leading-relaxed">
               Built with the discipline of a fashion house and the warmth of a hotel — and shared with a small circle of visionary franchise partners.
             </p>
           </div>
@@ -203,7 +151,7 @@ function About() {
             ].map(([t, b]) => (
               <div key={t} className="border-t border-champagne/40 pt-6">
                 <h3 className="font-display text-2xl text-ivory mb-3">{t}</h3>
-                <p className="font-editorial text-base text-ivory/75 leading-relaxed">{b}</p>
+                <p className="font-editorial text-lg text-ivory/75 leading-relaxed">{b}</p>
               </div>
             ))}
           </div>
