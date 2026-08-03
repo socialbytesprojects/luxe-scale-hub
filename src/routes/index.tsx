@@ -140,7 +140,7 @@ const TIMELINE = [
   { year: "1970", title: "An Industry Innovation", text: "Invents the revolutionary layered haircut with clippers." },
   { year: "1975", title: "Global Expansion Begins", text: "Launch of the Jean Louis David franchise network." },
   { year: "Late 1970s", title: "Education First", text: "Launch of the brand's professional training videos." },
-  { year: "1980–2007", title: "International Growth", text: "Expands to 750+ salons across 20+ countries." },
+  { year: "1980s–2000s", title: "Worldwide Growth", text: "International expansion, 6 training institutes, and 750+ salons across 20+ countries." },
   { year: "2009", title: "Professional Collection", text: "Launch of the Jean Louis David Professional product range." },
   { year: "2018", title: "A New Salon Concept", text: "Introduction of the brand's new salon concept." },
   { year: "2024", title: "Brand Excellence", text: "Awarded Best Brand Strategy of the Year." },
@@ -153,6 +153,9 @@ const STORY_IMAGES = [
   "/brand-slides/slide-11.jpg",
   "/brand-slides/slide-12.jpg",
   "/brand-slides/slide-49.jpg",
+  "/brand-slides/slide-54.jpg",
+  "/brand-slides/slide-06.jpg",
+  "/brand-slides/slide-84.jpg",
 ];
 
 function StorySection() {
@@ -278,6 +281,8 @@ function SummerCollection() {
 /* ─────────────────────  INVESTOR CTA  ───────────────────── */
 function InvestorCTA() {
   const vidRef = useRef<HTMLVideoElement | null>(null);
+  const [pMuted, setPMuted] = useState(true);
+  const [pVol, setPVol] = useState(0.7);
   useEffect(() => {
     const v = vidRef.current;
     if (!v) return;
@@ -288,6 +293,10 @@ function InvestorCTA() {
     obs.observe(v);
     return () => obs.disconnect();
   }, []);
+  useEffect(() => {
+    const v = vidRef.current;
+    if (v) { v.muted = pMuted; v.volume = pVol; }
+  }, [pMuted, pVol]);
   return (
     <section className="bg-beige py-20 md:py-32">
       <div className="mx-auto max-w-[1400px] px-6 md:px-10">
@@ -302,6 +311,30 @@ function InvestorCTA() {
               preload="metadata"
               className="w-full h-full object-cover min-h-[440px]"
             />
+            <div className="absolute bottom-4 left-4 right-4 z-20 flex items-center gap-3 rounded-full border border-ivory/30 bg-noir/50 backdrop-blur px-3 py-2">
+              <button
+                type="button"
+                onClick={() => { setPMuted((m) => !m); vidRef.current?.play().catch(() => {}); }}
+                className="h-8 w-8 shrink-0 rounded-full text-ivory flex items-center justify-center hover:text-champagne transition-colors"
+                aria-label={pMuted ? "Unmute film" : "Mute film"}
+              >
+                {pMuted ? (
+                  <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4" stroke="currentColor" strokeWidth="1.5"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="m16 9 5 6M21 9l-5 6"/></svg>
+                ) : (
+                  <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4" stroke="currentColor" strokeWidth="1.5"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M16 8a5 5 0 0 1 0 8M19 5a9 9 0 0 1 0 14"/></svg>
+                )}
+              </button>
+              <input
+                type="range"
+                min={0}
+                max={1}
+                step={0.01}
+                value={pVol}
+                onChange={(e) => { const v = Number(e.target.value); setPVol(v); if (v > 0) setPMuted(false); }}
+                className="flex-1 accent-champagne"
+                aria-label="Volume"
+              />
+            </div>
           </div>
           <div className="lg:col-span-7 bg-noir text-ivory p-10 md:p-16 flex flex-col justify-center">
             <p className="eyebrow !text-champagne mb-6">— Partnership</p>
