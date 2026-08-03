@@ -244,7 +244,6 @@ function SiteFooter() {
             <ul className="space-y-3 text-sm text-ivory/75">
               <li><a href="tel:+919509502222" className="hover:text-champagne transition-colors">+91 95095 02222</a></li>
               <li><a href="mailto:info@jeanlouisdavid.in" className="hover:text-champagne transition-colors">info@jeanlouisdavid.in</a></li>
-              <li>Mumbai · Delhi · Bengaluru</li>
             </ul>
           </div>
           <div>
