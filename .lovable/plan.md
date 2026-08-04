@@ -1,6 +1,6 @@
-# Launch prep: SEO + working forms
+# Launch prep: SEO + working forms + custom domain
 
-Two workstreams before publishing to jeanlouisdavid.in.
+Everything on Lovable: hosting, Lovable Cloud (Postgres + Auth), and a connected custom domain.
 
 ## 1. Working forms (backend)
 
