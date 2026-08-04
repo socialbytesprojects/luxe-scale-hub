@@ -6,9 +6,17 @@ export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
       { title: "About — JLD" },
-      { name: "description", content: "65 years of French salon heritage, reimagined for India. The story, the founders, and the philosophy behind JLD." },
-      { property: "og:title", content: "About JLD" },
+      { name: "description", content: "65 years of French salon heritage, reimagined for India. The story, the founders, and the philosophy behind Jean Louis David." },
+      { property: "og:title", content: "About — JLD" },
       { property: "og:description", content: "A modern beauty house rooted in French craft." },
+      { property: "og:url", content: "https://jeanlouisdavid.in/about" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "About — JLD" },
+      { name: "twitter:description", content: "A modern beauty house rooted in French craft." },
+    ],
+    links: [
+      { rel: "canonical", href: "https://jeanlouisdavid.in/about" },
     ],
   }),
   component: About,
