@@ -87,13 +87,3 @@ function Input({ label, type = "text" }: { label: string; type?: string }) {
     </div>
   );
 }
-function Select({ label, options }: { label: string; options: string[] }) {
-  return (
-    <div>
-      <label className="eyebrow block mb-3">{label}</label>
-      <select className="w-full border-b border-noir/20 py-3 text-sm bg-transparent outline-none focus:border-champagne">
-        {options.map((o) => <option key={o}>{o}</option>)}
-      </select>
-    </div>
-  );
-}
