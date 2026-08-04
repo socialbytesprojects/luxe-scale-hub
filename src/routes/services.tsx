@@ -5,9 +5,17 @@ export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
       { title: "Services — JLD" },
-      { name: "description", content: "The full JLD menu — haircuts, colour, Kérastase rituals, texture, treatments, styling and grooming — with pricing across four artist tiers." },
+      { name: "description", content: "The full JLD menu — haircuts, colour, Kérastase rituals, texture, treatments, styling and grooming — with pricing across artist tiers." },
       { property: "og:title", content: "Services — JLD" },
-      { property: "og:description", content: "The JLD menu." },
+      { property: "og:description", content: "The full JLD menu — haircuts, colour, rituals, texture and grooming." },
+      { property: "og:url", content: "https://jeanlouisdavid.in/services" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Services — JLD" },
+      { name: "twitter:description", content: "The full JLD menu — haircuts, colour, rituals, texture and grooming." },
+    ],
+    links: [
+      { rel: "canonical", href: "https://jeanlouisdavid.in/services" },
     ],
   }),
   component: Services,
