@@ -27,7 +27,7 @@ You'll need to give me the email address you want as the first admin account.
 ## 2. SEO optimization
 
 - **Per-page metadata**: unique title, description, and social preview text for all 8 pages (Home, About, Services, Lookbook, Franchise, Partners, Contact, plus 404). Currently several pages share generic text.
-- **Canonical URLs + og:url** on every page pointing at `https://jeanlouisdavid.in/...` — this is also required so social previews stop attributing pages to the preview domain.
+- **Canonical URLs + og:url** on every page pointing at `https://<your-domain>/...` — this is also required so social previews stop attributing pages to the preview domain. The exact domain will be confirmed before implementation.
 - **Sitemap**: fix the base URL (currently blank, so the sitemap is invalid) and add the missing Lookbook and Partners pages.
 - **robots.txt**: keep crawling open, add the sitemap reference.
 - **Structured data (JSON-LD)**: HairSalon / LocalBusiness on the home page (name, phone 9509502222, email info@jeanlouisdavid.in, brand, price range), Organization sitewide, BreadcrumbList on inner pages, and FAQPage on the franchise page if we keep an FAQ block.
