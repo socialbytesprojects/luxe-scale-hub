@@ -24,7 +24,14 @@ What happens:
 
 You'll need to give me the email address you want as the first admin account.
 
-## 2. SEO optimization
+## 2. Custom domain
+
+- Publish to the Lovable URL first, then connect your existing domain in **Project Settings → Domains**.
+- Add the A records (root + www) and TXT verification record at your registrar/DNS provider, or use the automatic setup if your provider supports it.
+- Once DNS propagates, Lovable provisions SSL automatically.
+- All canonical URLs and the sitemap will be updated to your domain.
+
+## 3. SEO optimization
 
 - **Per-page metadata**: unique title, description, and social preview text for all 8 pages (Home, About, Services, Lookbook, Franchise, Partners, Contact, plus 404). Currently several pages share generic text.
 - **Canonical URLs + og:url** on every page pointing at `https://<your-domain>/...` — this is also required so social previews stop attributing pages to the preview domain. The exact domain will be confirmed before implementation.
