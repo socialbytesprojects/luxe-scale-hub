@@ -1,6 +1,6 @@
-# Launch prep: SEO + working forms
+# Launch prep: SEO + working forms + custom domain
 
-Two workstreams before publishing to jeanlouisdavid.in.
+Everything on Lovable: hosting, Lovable Cloud (Postgres + Auth), and a connected custom domain.
 
 ## 1. Working forms (backend)
 
@@ -24,10 +24,17 @@ What happens:
 
 You'll need to give me the email address you want as the first admin account.
 
-## 2. SEO optimization
+## 2. Custom domain
+
+- Publish to the Lovable URL first, then connect your existing domain in **Project Settings → Domains**.
+- Add the A records (root + www) and TXT verification record at your registrar/DNS provider, or use the automatic setup if your provider supports it.
+- Once DNS propagates, Lovable provisions SSL automatically.
+- All canonical URLs and the sitemap will be updated to your domain.
+
+## 3. SEO optimization
 
 - **Per-page metadata**: unique title, description, and social preview text for all 8 pages (Home, About, Services, Lookbook, Franchise, Partners, Contact, plus 404). Currently several pages share generic text.
-- **Canonical URLs + og:url** on every page pointing at `https://jeanlouisdavid.in/...` — this is also required so social previews stop attributing pages to the preview domain.
+- **Canonical URLs + og:url** on every page pointing at `https://<your-domain>/...` — this is also required so social previews stop attributing pages to the preview domain. The exact domain will be confirmed before implementation.
 - **Sitemap**: fix the base URL (currently blank, so the sitemap is invalid) and add the missing Lookbook and Partners pages.
 - **robots.txt**: keep crawling open, add the sitemap reference.
 - **Structured data (JSON-LD)**: HairSalon / LocalBusiness on the home page (name, phone 9509502222, email info@jeanlouisdavid.in, brand, price range), Organization sitewide, BreadcrumbList on inner pages, and FAQPage on the franchise page if we keep an FAQ block.
@@ -38,7 +45,7 @@ You'll need to give me the email address you want as the first admin account.
 
 ## Technical notes
 
-- Backend uses Lovable Cloud (Postgres + Auth). Tables get row-level security: public `INSERT` only, `SELECT`/`UPDATE` restricted to the admin role via a security-definer role check.
+- Backend uses Lovable Cloud (Postgres + Auth), hosted on Lovable. Tables get row-level security: public `INSERT` only, `SELECT`/`UPDATE` restricted to the admin role via a security-definer role check.
 - Form submissions go through server functions with server-side validation (Zod), so the rules can't be bypassed from the browser.
 - Admin pages live under the authenticated route group; the submissions list is fetched with an authenticated server function so no data leaks during server rendering.
 - Metadata uses each route's `head()`; canonical goes on leaf routes only. Sitemap stays the existing server route at `/sitemap.xml`.
