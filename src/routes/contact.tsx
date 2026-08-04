@@ -52,7 +52,6 @@ function Contact() {
                   <Input label="Service" />
                 </Row>
                 <Row>
-                  <Input label="Service" />
                   <Input label="Preferred date & time" type="datetime-local" />
                 </Row>
                 <div>
