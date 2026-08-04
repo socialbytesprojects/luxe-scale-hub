@@ -94,15 +94,16 @@ function Contact() {
                   <Input label="Preferred time" type="time" value={form.preferredTime} onChange={(v) => update("preferredTime", v)} />
                 </Row>
                 <div>
-                  <label className="eyebrow block mb-3">A note for our concierge</label>
+                  <label htmlFor="notes" className="eyebrow block mb-3">A note for our concierge</label>
                   <textarea
+                    id="notes"
                     rows={3}
                     value={form.notes}
                     onChange={(e) => update("notes", e.target.value)}
                     className="w-full border-b border-noir/20 py-3 text-sm bg-transparent outline-none focus:border-champagne resize-none"
                   />
                 </div>
-                <input type="text" name="website" value={form.honeypot} onChange={(e) => update("honeypot", e.target.value)} className="hidden" tabIndex={-1} autoComplete="off" />
+                <input id="website" type="text" name="website" value={form.honeypot} onChange={(e) => update("honeypot", e.target.value)} className="hidden" tabIndex={-1} autoComplete="off" />
                 <button type="submit" disabled={busy} className="btn-noir disabled:opacity-60 disabled:cursor-not-allowed">
                   {busy ? "Sending..." : "Reserve Chair"}
                 </button>
@@ -127,10 +128,12 @@ function Row({ children }: { children: ReactNode }) {
   return <div className="grid md:grid-cols-2 gap-6">{children}</div>;
 }
 function Input({ label, type = "text", value, onChange, required }: { label: string; type?: string; value: string; onChange: (v: string) => void; required?: boolean }) {
+  const id = label.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
   return (
     <div>
-      <label className="eyebrow block mb-3">{label}{required && <span className="text-champagne ml-1">*</span>}</label>
+      <label htmlFor={id} className="eyebrow block mb-3">{label}{required && <span className="text-champagne ml-1">*</span>}</label>
       <input
+        id={id}
         type={type}
         required={required}
         value={value}
