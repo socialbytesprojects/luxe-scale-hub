@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
+import { toast } from "sonner";
+import { submitFranchiseEnquiry } from "@/lib/submissions.functions";
 
 const brandSlide = (n: number) => `/brand-slides/slide-${String(n).padStart(2, "0")}.jpg`;
 
@@ -7,9 +9,17 @@ export const Route = createFileRoute("/franchise")({
   head: () => ({
     meta: [
       { title: "Franchise — JLD" },
-      { name: "description", content: "Own a JLD salon. Turnkey setup, FOCO & FOFO models, end-to-end marketing and accounting support, and 65 years of French salon heritage." },
+      { name: "description", content: "Own a Jean Louis David salon in India. Turnkey setup, FOCO & FOFO models, end-to-end marketing and accounting support, and 65 years of French salon heritage." },
       { property: "og:title", content: "Franchise — JLD" },
       { property: "og:description", content: "Partner with a brand built for scale." },
+      { property: "og:url", content: "https://jeanlouisdavid.in/franchise" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Franchise — JLD" },
+      { name: "twitter:description", content: "Own a Jean Louis David salon in India." },
+    ],
+    links: [
+      { rel: "canonical", href: "https://jeanlouisdavid.in/franchise" },
     ],
   }),
   component: FranchisePage,
