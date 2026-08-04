@@ -3,6 +3,20 @@ import { useEffect, useRef, useState } from "react";
 import partnershipVideo from "@/assets/partnership.mp4.asset.json";
 import heroVideo from "@/assets/jld-hero.mp4.asset.json";
 
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "HairSalon",
+  name: "JLD — Jean Louis David India",
+  description: "A house of beauty rooted in 65 years of French heritage. Luxury hair, colour and styling across India.",
+  url: "https://jeanlouisdavid.in",
+  telephone: "+91-95095-02222",
+  email: "info@jeanlouisdavid.in",
+  sameAs: [
+    "https://www.instagram.com/jeanlouisdavid.in",
+  ],
+  priceRange: "$$$",
+};
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -10,7 +24,14 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "A house of beauty rooted in 65 years of French heritage. Experience luxury hair, colour and styling — and partner with a brand built for scale." },
       { property: "og:title", content: "JLD — Luxury Salon House" },
       { property: "og:description", content: "Experience beauty. Own the brand." },
+      { property: "og:url", content: "https://jeanlouisdavid.in/" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "JLD — Luxury Salon House" },
+      { name: "twitter:description", content: "Experience beauty. Own the brand." },
     ],
+    links: [{ rel: "canonical", href: "https://jeanlouisdavid.in/" }],
+    scripts: [{ type: "application/ld+json", children: JSON.stringify(localBusinessSchema) }],
   }),
   component: Index,
 });

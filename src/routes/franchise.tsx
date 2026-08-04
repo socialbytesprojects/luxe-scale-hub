@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
+import { toast } from "sonner";
+import { submitFranchiseEnquiry } from "@/lib/submissions.functions";
 
 const brandSlide = (n: number) => `/brand-slides/slide-${String(n).padStart(2, "0")}.jpg`;
 
@@ -7,9 +9,17 @@ export const Route = createFileRoute("/franchise")({
   head: () => ({
     meta: [
       { title: "Franchise — JLD" },
-      { name: "description", content: "Own a JLD salon. Turnkey setup, FOCO & FOFO models, end-to-end marketing and accounting support, and 65 years of French salon heritage." },
+      { name: "description", content: "Own a Jean Louis David salon in India. Turnkey setup, FOCO & FOFO models, end-to-end marketing and accounting support, and 65 years of French salon heritage." },
       { property: "og:title", content: "Franchise — JLD" },
       { property: "og:description", content: "Partner with a brand built for scale." },
+      { property: "og:url", content: "https://jeanlouisdavid.in/franchise" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Franchise — JLD" },
+      { name: "twitter:description", content: "Own a Jean Louis David salon in India." },
+    ],
+    links: [
+      { rel: "canonical", href: "https://jeanlouisdavid.in/franchise" },
     ],
   }),
   component: FranchisePage,
@@ -56,6 +66,34 @@ const PILLARS = [
 
 function FranchisePage() {
   const [sent, setSent] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    city: "",
+    investmentInterest: "",
+    message: "",
+    honeypot: "",
+  });
+
+  const update = (key: keyof typeof form, value: string) => setForm((f) => ({ ...f, [key]: value }));
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (form.honeypot) return;
+    setBusy(true);
+    try {
+      await submitFranchiseEnquiry({ data: form });
+      setSent(true);
+      toast.success("Enquiry received", { description: "Our partnerships team will respond within 48 hours." });
+    } catch (err: any) {
+      toast.error("Something went wrong", { description: err?.message || "Please try again or WhatsApp us directly." });
+    } finally {
+      setBusy(false);
+    }
+  }
+
   return (
     <>
       {/* Hero */}
@@ -206,20 +244,44 @@ function FranchisePage() {
             </div>
           ) : (
             <form
-              onSubmit={(e) => { e.preventDefault(); setSent(true); }}
+              onSubmit={handleSubmit}
               className="mt-12 grid md:grid-cols-2 gap-6"
             >
-              <Field label="Full name" />
-              <Field label="Email" type="email" />
-              <Field label="Phone (with WhatsApp)" />
-              <Field label="Interested location" />
+              <Field label="Full name" value={form.name} onChange={(v) => update("name", v)} required />
+              <Field label="Email" type="email" value={form.email} onChange={(v) => update("email", v)} />
+              <Field label="Phone (with WhatsApp)" value={form.phone} onChange={(v) => update("phone", v)} required />
+              <Field label="Interested location" value={form.city} onChange={(v) => update("city", v)} />
               <div className="md:col-span-2">
-                <label className="eyebrow !text-noir/60 block mb-3">Message (optional)</label>
-                <textarea rows={4} className="w-full bg-transparent border-b border-noir/30 py-3 text-sm text-noir outline-none focus:border-champagne resize-none" placeholder="Tell us about your background and your vision."></textarea>
+                <label htmlFor="investment-interest" className="eyebrow !text-noir/60 block mb-3">Investment interest</label>
+                <select
+                  id="investment-interest"
+                  value={form.investmentInterest}
+                  onChange={(e) => update("investmentInterest", e.target.value)}
+                  className="w-full bg-transparent border-b border-noir/30 py-3 text-sm text-noir outline-none focus:border-champagne"
+                >
+                  <option value="">Select an option</option>
+                  <option value="FOCO">FOCO — Franchise Owned, Company Operated</option>
+                  <option value="FOFO">FOFO — Franchise Owned, Franchise Operated</option>
+                  <option value="Exploring">Still exploring</option>
+                </select>
               </div>
+              <div className="md:col-span-2">
+                <label htmlFor="message" className="eyebrow !text-noir/60 block mb-3">Message (optional)</label>
+                <textarea
+                  id="message"
+                  rows={4}
+                  value={form.message}
+                  onChange={(e) => update("message", e.target.value)}
+                  className="w-full bg-transparent border-b border-noir/30 py-3 text-sm text-noir outline-none focus:border-champagne resize-none"
+                  placeholder="Tell us about your background and your vision."
+                />
+              </div>
+              <input id="website" type="text" name="website" value={form.honeypot} onChange={(e) => update("honeypot", e.target.value)} className="hidden" tabIndex={-1} autoComplete="off" />
               <div className="md:col-span-2 mt-4 flex flex-col sm:flex-row gap-4">
-                <button type="submit" className="btn-gold">Send Enquiry</button>
-                <a href="https://wa.me/919999999999" target="_blank" rel="noopener noreferrer" className="btn-noir">WhatsApp Instead</a>
+                <button type="submit" disabled={busy} className="btn-gold disabled:opacity-60 disabled:cursor-not-allowed">
+                  {busy ? "Sending..." : "Send Enquiry"}
+                </button>
+                <a href="https://wa.me/919509502222" target="_blank" rel="noopener noreferrer" className="btn-noir">WhatsApp Instead</a>
               </div>
             </form>
           )}
@@ -229,11 +291,19 @@ function FranchisePage() {
   );
 }
 
-function Field({ label, type = "text" }: { label: string; type?: string }) {
+function Field({ label, type = "text", value, onChange, required }: { label: string; type?: string; value: string; onChange: (v: string) => void; required?: boolean }) {
+  const id = label.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
   return (
     <div>
-      <label className="eyebrow !text-noir/60 block mb-3">{label}</label>
-      <input type={type} className="w-full bg-transparent border-b border-noir/30 py-3 text-sm text-noir outline-none focus:border-champagne transition-colors" />
+      <label htmlFor={id} className="eyebrow !text-noir/60 block mb-3">{label}{required && <span className="text-champagne ml-1">*</span>}</label>
+      <input
+        id={id}
+        type={type}
+        required={required}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        className="w-full bg-transparent border-b border-noir/30 py-3 text-sm text-noir outline-none focus:border-champagne transition-colors"
+      />
     </div>
   );
 }

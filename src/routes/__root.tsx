@@ -11,6 +11,8 @@ import { useEffect, useState, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { Toaster } from "@/components/ui/sonner";
+import { supabase } from "@/integrations/supabase/client";
 
 function NotFoundComponent() {
   return (
@@ -78,17 +80,19 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "JLD — India's Next Luxury Salon Destination" },
-      { name: "description", content: "Experience beauty. Own the brand. A luxury salon house built for clients and franchise partners." },
+      { name: "description", content: "Jean Louis David brings 65 years of French salon heritage to India. Experience luxury hair services or partner with us to own a JLD franchise." },
       { name: "author", content: "JLD" },
       { property: "og:title", content: "JLD — India's Next Luxury Salon Destination" },
-      { property: "og:description", content: "Experience beauty. Own the brand. A luxury salon house built for clients and franchise partners." },
+      { property: "og:description", content: "Jean Louis David brings 65 years of French salon heritage to India. Experience luxury hair services or partner with us to own a JLD franchise." },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { property: "og:url", content: "https://jeanlouisdavid.in/" },
+      { property: "og:site_name", content: "JLD — Jean Louis David" },
+      { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "JLD — India's Next Luxury Salon Destination" },
-      { name: "twitter:description", content: "Experience beauty. Own the brand. A luxury salon house built for clients and franchise partners." },
+      { name: "twitter:description", content: "Jean Louis David brings 65 years of French salon heritage to India. Experience luxury hair services or partner with us to own a JLD franchise." },
       { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/41ca147c-3f08-40b7-85f6-5025157226a3/id-preview-46ef4a90--8913fd1b-a2b2-46e0-85d2-c2420d492538.lovable.app-1780645942255.png" },
       { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/41ca147c-3f08-40b7-85f6-5025157226a3/id-preview-46ef4a90--8913fd1b-a2b2-46e0-85d2-c2420d492538.lovable.app-1780645942255.png" },
+      { name: "robots", content: "index, follow" },
     ],
     links: [
       {
@@ -125,6 +129,17 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const router = useRouter();
+
+  useEffect(() => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event) => {
+      if (event === "SIGNED_IN" || event === "SIGNED_OUT" || event === "USER_UPDATED") {
+        router.invalidate();
+        if (event !== "SIGNED_OUT") queryClient.invalidateQueries();
+      }
+    });
+    return () => subscription.unsubscribe();
+  }, [queryClient, router]);
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -134,6 +149,7 @@ function RootComponent() {
       </main>
       <SiteFooter />
       <WhatsAppFloat />
+      <Toaster position="bottom-right" richColors />
     </QueryClientProvider>
   );
 }
