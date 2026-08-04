@@ -45,7 +45,7 @@ You'll need to give me the email address you want as the first admin account.
 
 ## Technical notes
 
-- Backend uses Lovable Cloud (Postgres + Auth). Tables get row-level security: public `INSERT` only, `SELECT`/`UPDATE` restricted to the admin role via a security-definer role check.
+- Backend uses Lovable Cloud (Postgres + Auth), hosted on Lovable. Tables get row-level security: public `INSERT` only, `SELECT`/`UPDATE` restricted to the admin role via a security-definer role check.
 - Form submissions go through server functions with server-side validation (Zod), so the rules can't be bypassed from the browser.
 - Admin pages live under the authenticated route group; the submissions list is fetched with an authenticated server function so no data leaks during server rendering.
 - Metadata uses each route's `head()`; canonical goes on leaf routes only. Sitemap stays the existing server route at `/sitemap.xml`.
