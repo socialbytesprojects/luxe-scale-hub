@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as SetupAdminRouteImport } from './routes/setup-admin'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as PartnersRouteImport } from './routes/partners'
 import { Route as LookbookRouteImport } from './routes/lookbook'
@@ -24,6 +25,11 @@ import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SetupAdminRoute = SetupAdminRouteImport.update({
+  id: '/setup-admin',
+  path: '/setup-admin',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesRoute = ServicesRouteImport.update({
@@ -85,6 +91,7 @@ export interface FileRoutesByFullPath {
   '/lookbook': typeof LookbookRoute
   '/partners': typeof PartnersRoute
   '/services': typeof ServicesRoute
+  '/setup-admin': typeof SetupAdminRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/admin': typeof AuthenticatedAdminRoute
 }
@@ -97,6 +104,7 @@ export interface FileRoutesByTo {
   '/lookbook': typeof LookbookRoute
   '/partners': typeof PartnersRoute
   '/services': typeof ServicesRoute
+  '/setup-admin': typeof SetupAdminRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/admin': typeof AuthenticatedAdminRoute
 }
@@ -111,6 +119,7 @@ export interface FileRoutesById {
   '/lookbook': typeof LookbookRoute
   '/partners': typeof PartnersRoute
   '/services': typeof ServicesRoute
+  '/setup-admin': typeof SetupAdminRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRoute
 }
@@ -125,6 +134,7 @@ export interface FileRouteTypes {
     | '/lookbook'
     | '/partners'
     | '/services'
+    | '/setup-admin'
     | '/sitemap.xml'
     | '/admin'
   fileRoutesByTo: FileRoutesByTo
@@ -137,6 +147,7 @@ export interface FileRouteTypes {
     | '/lookbook'
     | '/partners'
     | '/services'
+    | '/setup-admin'
     | '/sitemap.xml'
     | '/admin'
   id:
@@ -150,6 +161,7 @@ export interface FileRouteTypes {
     | '/lookbook'
     | '/partners'
     | '/services'
+    | '/setup-admin'
     | '/sitemap.xml'
     | '/_authenticated/admin'
   fileRoutesById: FileRoutesById
@@ -164,6 +176,7 @@ export interface RootRouteChildren {
   LookbookRoute: typeof LookbookRoute
   PartnersRoute: typeof PartnersRoute
   ServicesRoute: typeof ServicesRoute
+  SetupAdminRoute: typeof SetupAdminRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
 }
 
@@ -174,6 +187,13 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/setup-admin': {
+      id: '/setup-admin'
+      path: '/setup-admin'
+      fullPath: '/setup-admin'
+      preLoaderRoute: typeof SetupAdminRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services': {
@@ -270,8 +290,19 @@ const rootRouteChildren: RootRouteChildren = {
   LookbookRoute: LookbookRoute,
   PartnersRoute: PartnersRoute,
   ServicesRoute: ServicesRoute,
+  SetupAdminRoute: SetupAdminRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
