@@ -66,6 +66,34 @@ const PILLARS = [
 
 function FranchisePage() {
   const [sent, setSent] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    city: "",
+    investmentInterest: "",
+    message: "",
+    honeypot: "",
+  });
+
+  const update = (key: keyof typeof form, value: string) => setForm((f) => ({ ...f, [key]: value }));
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (form.honeypot) return;
+    setBusy(true);
+    try {
+      await submitFranchiseEnquiry({ data: form });
+      setSent(true);
+      toast.success("Enquiry received", { description: "Our partnerships team will respond within 48 hours." });
+    } catch (err: any) {
+      toast.error("Something went wrong", { description: err?.message || "Please try again or WhatsApp us directly." });
+    } finally {
+      setBusy(false);
+    }
+  }
+
   return (
     <>
       {/* Hero */}
