@@ -5,9 +5,17 @@ export const Route = createFileRoute("/lookbook")({
   head: () => ({
     meta: [
       { title: "Lookbook — JLD" },
-      { name: "description", content: "Explore signature JLD looks — coupes femme, hommes, gloss, contrast & sunlight, curly, 2 en 1, and sculpted low styles." },
+      { name: "description", content: "Explore signature Jean Louis David looks — cuts for women, men, colour, gloss, curly, coily and sculpted styles." },
       { property: "og:title", content: "Lookbook — JLD" },
       { property: "og:description", content: "A curated gallery of signature looks across every texture, length, and tone." },
+      { property: "og:url", content: "https://jeanlouisdavid.in/lookbook" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Lookbook — JLD" },
+      { name: "twitter:description", content: "A curated gallery of signature looks across every texture, length, and tone." },
+    ],
+    links: [
+      { rel: "canonical", href: "https://jeanlouisdavid.in/lookbook" },
     ],
   }),
   component: Lookbook,
