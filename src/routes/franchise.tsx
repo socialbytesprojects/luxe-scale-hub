@@ -252,8 +252,9 @@ function FranchisePage() {
               <Field label="Phone (with WhatsApp)" value={form.phone} onChange={(v) => update("phone", v)} required />
               <Field label="Interested location" value={form.city} onChange={(v) => update("city", v)} />
               <div className="md:col-span-2">
-                <label className="eyebrow !text-noir/60 block mb-3">Investment interest</label>
+                <label htmlFor="investment-interest" className="eyebrow !text-noir/60 block mb-3">Investment interest</label>
                 <select
+                  id="investment-interest"
                   value={form.investmentInterest}
                   onChange={(e) => update("investmentInterest", e.target.value)}
                   className="w-full bg-transparent border-b border-noir/30 py-3 text-sm text-noir outline-none focus:border-champagne"
@@ -265,8 +266,9 @@ function FranchisePage() {
                 </select>
               </div>
               <div className="md:col-span-2">
-                <label className="eyebrow !text-noir/60 block mb-3">Message (optional)</label>
+                <label htmlFor="message" className="eyebrow !text-noir/60 block mb-3">Message (optional)</label>
                 <textarea
+                  id="message"
                   rows={4}
                   value={form.message}
                   onChange={(e) => update("message", e.target.value)}
@@ -274,7 +276,7 @@ function FranchisePage() {
                   placeholder="Tell us about your background and your vision."
                 />
               </div>
-              <input type="text" name="website" value={form.honeypot} onChange={(e) => update("honeypot", e.target.value)} className="hidden" tabIndex={-1} autoComplete="off" />
+              <input id="website" type="text" name="website" value={form.honeypot} onChange={(e) => update("honeypot", e.target.value)} className="hidden" tabIndex={-1} autoComplete="off" />
               <div className="md:col-span-2 mt-4 flex flex-col sm:flex-row gap-4">
                 <button type="submit" disabled={busy} className="btn-gold disabled:opacity-60 disabled:cursor-not-allowed">
                   {busy ? "Sending..." : "Send Enquiry"}
@@ -290,10 +292,12 @@ function FranchisePage() {
 }
 
 function Field({ label, type = "text", value, onChange, required }: { label: string; type?: string; value: string; onChange: (v: string) => void; required?: boolean }) {
+  const id = label.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
   return (
     <div>
-      <label className="eyebrow !text-noir/60 block mb-3">{label}{required && <span className="text-champagne ml-1">*</span>}</label>
+      <label htmlFor={id} className="eyebrow !text-noir/60 block mb-3">{label}{required && <span className="text-champagne ml-1">*</span>}</label>
       <input
+        id={id}
         type={type}
         required={required}
         value={value}
