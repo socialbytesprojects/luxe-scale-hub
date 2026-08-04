@@ -14,11 +14,6 @@ export const Route = createFileRoute("/contact")({
   component: Contact,
 });
 
-const LOCATIONS = [
-  { city: "Mumbai", area: "Kala Ghoda · Bandra West", phone: "+91 22 4000 1100" },
-  { city: "Delhi NCR", area: "DLF Emporio · Khan Market", phone: "+91 11 4000 2200" },
-  { city: "Bengaluru", area: "UB City · Indiranagar", phone: "+91 80 4000 3300" },
-];
 
 function Contact() {
   const [sent, setSent] = useState(false);
@@ -68,24 +63,12 @@ function Contact() {
               </form>
             )}
           </div>
-          <aside className="lg:col-span-5 space-y-10">
-            <div>
-              <p className="eyebrow mb-4">— The Houses</p>
-              <div className="space-y-8">
-                {LOCATIONS.map((l) => (
-                  <div key={l.city} className="border-l-2 border-champagne pl-6">
-                    <h3 className="font-display text-2xl text-noir">{l.city}</h3>
-                    <p className="font-editorial text-lg text-brown mt-1">{l.area}</p>
-                    <p className="text-sm text-noir mt-2 tracking-wide">{l.phone}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
+          <aside className="lg:col-span-5">
             <div className="bg-noir text-ivory p-8">
               <p className="eyebrow !text-champagne mb-4">— Concierge</p>
               <p className="font-editorial text-lg text-ivory/85">Monday to Sunday · 9 AM to 10 PM</p>
-              <p className="font-display text-2xl text-champagne mt-3">+91 98XXX XXX XX</p>
-              <a href="https://wa.me/919999999999" target="_blank" rel="noopener noreferrer" className="btn-gold mt-6">WhatsApp</a>
+              <p className="font-display text-2xl text-champagne mt-3">+91 95095 02222</p>
+              <a href="https://wa.me/919509502222" target="_blank" rel="noopener noreferrer" className="btn-gold mt-6">WhatsApp</a>
             </div>
           </aside>
         </div>
