@@ -60,7 +60,7 @@ export const createFirstAdmin = createServerFn({ method: "POST" })
   .handler(async ({ data }) => {
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
 
-    const { data: existing, error: countErr } = await supabaseAdmin
+    const { count, error: countErr } = await supabaseAdmin
       .from("user_roles")
       .select("id", { count: "exact", head: true })
       .eq("role", "admin");
@@ -70,7 +70,7 @@ export const createFirstAdmin = createServerFn({ method: "POST" })
       throw new Error("Unable to verify admin setup.");
     }
 
-    if ((existing as unknown as number) > 0) {
+    if ((count ?? 0) > 0) {
       throw new Error("An admin already exists.");
     }
 
