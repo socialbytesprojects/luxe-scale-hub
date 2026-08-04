@@ -4,9 +4,17 @@ export const Route = createFileRoute("/partners")({
   head: () => ({
     meta: [
       { title: "Partners — JLD" },
-      { name: "description", content: "The brands, products and partners we work with at JLD." },
+      { name: "description", content: "The brands, products and partners we work with at Jean Louis David." },
       { property: "og:title", content: "Partners — JLD" },
-      { property: "og:description", content: "The brands, products and partners we work with at JLD." },
+      { property: "og:description", content: "The brands, products and partners we work with at Jean Louis David." },
+      { property: "og:url", content: "https://jeanlouisdavid.in/partners" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Partners — JLD" },
+      { name: "twitter:description", content: "The brands, products and partners we work with at Jean Louis David." },
+    ],
+    links: [
+      { rel: "canonical", href: "https://jeanlouisdavid.in/partners" },
     ],
   }),
   component: PartnersPage,
