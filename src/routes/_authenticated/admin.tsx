@@ -172,8 +172,8 @@ function AdminPage() {
             className="space-y-5"
             onSubmit={(e) => {
               e.preventDefault();
-              if (newAdminPassword.length < 8) {
-                toast.error("Password too short", { description: "Use at least 8 characters." });
+              if (newAdminPassword.length < 6) {
+                toast.error("Password too short", { description: "Use at least 6 characters." });
                 return;
               }
               addAdminMutation.mutate({ email: newAdminEmail, password: newAdminPassword });
@@ -196,7 +196,7 @@ function AdminPage() {
                 id="admin-password"
                 type="password"
                 required
-                minLength={8}
+                minLength={6}
                 value={newAdminPassword}
                 onChange={(e) => setNewAdminPassword(e.target.value)}
                 className="w-full border-b border-noir/20 py-3 text-sm bg-transparent outline-none focus:border-champagne"

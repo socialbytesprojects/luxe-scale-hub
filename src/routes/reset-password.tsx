@@ -38,8 +38,8 @@ function ResetPasswordPage() {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (password.length < 8) {
-      toast.error("Password too short", { description: "Use at least 8 characters." });
+    if (password.length < 6) {
+      toast.error("Password too short", { description: "Use at least 6 characters." });
       return;
     }
     if (password !== confirm) {
@@ -78,7 +78,7 @@ function ResetPasswordPage() {
                 id="new-password"
                 type="password"
                 required
-                minLength={8}
+                minLength={6}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="w-full border-b border-noir/20 py-3 text-sm bg-transparent outline-none focus:border-champagne"
@@ -90,7 +90,7 @@ function ResetPasswordPage() {
                 id="confirm-password"
                 type="password"
                 required
-                minLength={8}
+                minLength={6}
                 value={confirm}
                 onChange={(e) => setConfirm(e.target.value)}
                 className="w-full border-b border-noir/20 py-3 text-sm bg-transparent outline-none focus:border-champagne"
