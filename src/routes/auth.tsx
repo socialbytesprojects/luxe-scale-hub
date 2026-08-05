@@ -19,6 +19,7 @@ function AuthPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
+  const [resetting, setResetting] = useState(false);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -31,6 +32,23 @@ function AuthPage() {
     }
     toast.success("Signed in");
     router.navigate({ to: "/admin" });
+  }
+
+  async function handleForgotPassword() {
+    if (!email) {
+      toast.error("Enter your email first");
+      return;
+    }
+    setResetting(true);
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: `${window.location.origin}/reset-password`,
+    });
+    setResetting(false);
+    if (error) {
+      toast.error("Could not send reset email", { description: error.message });
+      return;
+    }
+    toast.success("Reset link sent", { description: "Check your inbox for the password reset email." });
   }
 
   return (
@@ -64,6 +82,14 @@ function AuthPage() {
             </div>
             <button type="submit" disabled={busy} className="btn-noir w-full disabled:opacity-60">
               {busy ? "Signing in..." : "Sign In"}
+            </button>
+            <button
+              type="button"
+              onClick={handleForgotPassword}
+              disabled={resetting}
+              className="w-full text-center text-sm text-brown hover:text-noir transition-colors disabled:opacity-60"
+            >
+              {resetting ? "Sending reset link..." : "Forgot your password?"}
             </button>
           </div>
         </form>

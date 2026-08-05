@@ -3,7 +3,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
-import { listSubmissions, updateSubmissionStatus } from "@/lib/admin.functions";
+import { createAdminAccount, listSubmissions, updateSubmissionStatus } from "@/lib/admin.functions";
 
 export const Route = createFileRoute("/_authenticated/admin")({
   head: () => ({
@@ -32,6 +32,18 @@ const statusBadge = (status: string) => {
 function AdminPage() {
   const queryClient = useQueryClient();
   const [tab, setTab] = useState<"appointments" | "franchise">("appointments");
+  const [newAdminEmail, setNewAdminEmail] = useState("");
+  const [newAdminPassword, setNewAdminPassword] = useState("");
+
+  const addAdminMutation = useMutation({
+    mutationFn: (vars: { email: string; password: string }) => createAdminAccount({ data: vars }),
+    onSuccess: () => {
+      setNewAdminEmail("");
+      setNewAdminPassword("");
+      toast.success("Admin account created");
+    },
+    onError: (err: any) => toast.error("Could not create admin", { description: err?.message }),
+  });
   const { data, isLoading, error } = useQuery({
     queryKey: ["submissions"],
     queryFn: () => listSubmissions({}),
@@ -151,6 +163,49 @@ function AdminPage() {
               <p className="mt-4 text-xs text-brown/60">Submitted {new Date(item.created_at).toLocaleString()}</p>
             </div>
           ))}
+        </div>
+
+        <div className="mt-16 bg-white border border-champagne/30 p-6 md:p-8 max-w-xl">
+          <h2 className="font-display text-2xl text-noir mb-1">Add an admin</h2>
+          <p className="font-editorial text-sm text-brown mb-6">Create another account with dashboard access.</p>
+          <form
+            className="space-y-5"
+            onSubmit={(e) => {
+              e.preventDefault();
+              if (newAdminPassword.length < 6) {
+                toast.error("Password too short", { description: "Use at least 6 characters." });
+                return;
+              }
+              addAdminMutation.mutate({ email: newAdminEmail, password: newAdminPassword });
+            }}
+          >
+            <div>
+              <label htmlFor="admin-email" className="eyebrow !text-noir/70 block mb-2">Email</label>
+              <input
+                id="admin-email"
+                type="email"
+                required
+                value={newAdminEmail}
+                onChange={(e) => setNewAdminEmail(e.target.value)}
+                className="w-full border-b border-noir/20 py-3 text-sm bg-transparent outline-none focus:border-champagne"
+              />
+            </div>
+            <div>
+              <label htmlFor="admin-password" className="eyebrow !text-noir/70 block mb-2">Temporary password</label>
+              <input
+                id="admin-password"
+                type="password"
+                required
+                minLength={6}
+                value={newAdminPassword}
+                onChange={(e) => setNewAdminPassword(e.target.value)}
+                className="w-full border-b border-noir/20 py-3 text-sm bg-transparent outline-none focus:border-champagne"
+              />
+            </div>
+            <button type="submit" disabled={addAdminMutation.isPending} className="btn-noir disabled:opacity-60">
+              {addAdminMutation.isPending ? "Creating..." : "Create Admin"}
+            </button>
+          </form>
         </div>
       </div>
     </div>
