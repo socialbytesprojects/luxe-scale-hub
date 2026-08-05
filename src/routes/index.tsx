@@ -330,6 +330,9 @@ function InvestorCTA() {
               muted
               playsInline
               preload="metadata"
+              controls={false}
+              disablePictureInPicture
+              controlsList="nodownload noplaybackrate noremoteplayback nofullscreen"
               className="w-full h-full object-cover min-h-[440px]"
             />
             <div className="absolute bottom-4 left-4 right-4 z-20 flex items-center gap-3 rounded-full border border-ivory/30 bg-noir/50 backdrop-blur px-3 py-2">
@@ -367,7 +370,7 @@ function InvestorCTA() {
             </p>
             <div className="mt-10 flex flex-col sm:flex-row gap-4">
               <Link to="/franchise" className="btn-gold">Explore the Franchise</Link>
-              <a href="https://wa.me/919999999999" target="_blank" rel="noopener noreferrer" className="btn-ghost">WhatsApp Partnerships</a>
+              <a href="https://wa.me/919509502222" target="_blank" rel="noopener noreferrer" className="btn-ghost">WhatsApp Partnerships</a>
             </div>
           </div>
         </div>
