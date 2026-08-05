@@ -55,49 +55,6 @@ export const updateSubmissionStatus = createServerFn({ method: "POST" })
     return { ok: true };
   });
 
-export const createFirstAdmin = createServerFn({ method: "POST" })
-  .inputValidator((data) => createAdminSchema.parse(data))
-  .handler(async ({ data }) => {
-    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-
-    const { count, error: countErr } = await supabaseAdmin
-      .from("user_roles")
-      .select("id", { count: "exact", head: true })
-      .eq("role", "admin");
-
-    if (countErr) {
-      console.error("Count admins error:", countErr);
-      throw new Error("Unable to verify admin setup.");
-    }
-
-    if ((count ?? 0) > 0) {
-      throw new Error("An admin already exists.");
-    }
-
-    const { data: userData, error: authError } = await supabaseAdmin.auth.admin.createUser({
-      email: data.email,
-      password: data.password,
-      email_confirm: true,
-    });
-
-    if (authError || !userData.user) {
-      console.error("Create user error:", authError);
-      throw new Error(authError?.message ?? "Failed to create admin account.");
-    }
-
-    const { error: roleError } = await supabaseAdmin.from("user_roles").insert({
-      user_id: userData.user.id,
-      role: "admin",
-    });
-
-    if (roleError) {
-      console.error("Create role error:", roleError);
-      throw new Error("Account created but role assignment failed. Contact support.");
-    }
-
-    return { ok: true };
-  });
-
 export const createAdminAccount = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((data) => createAdminSchema.parse(data))
