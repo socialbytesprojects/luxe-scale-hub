@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SetupAdminRouteImport } from './routes/setup-admin'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as PartnersRouteImport } from './routes/partners'
 import { Route as LookbookRouteImport } from './routes/lookbook'
 import { Route as FranchiseRouteImport } from './routes/franchise'
@@ -35,6 +36,11 @@ const SetupAdminRoute = SetupAdminRouteImport.update({
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PartnersRoute = PartnersRouteImport.update({
@@ -90,6 +96,7 @@ export interface FileRoutesByFullPath {
   '/franchise': typeof FranchiseRoute
   '/lookbook': typeof LookbookRoute
   '/partners': typeof PartnersRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/services': typeof ServicesRoute
   '/setup-admin': typeof SetupAdminRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -103,6 +110,7 @@ export interface FileRoutesByTo {
   '/franchise': typeof FranchiseRoute
   '/lookbook': typeof LookbookRoute
   '/partners': typeof PartnersRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/services': typeof ServicesRoute
   '/setup-admin': typeof SetupAdminRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -118,6 +126,7 @@ export interface FileRoutesById {
   '/franchise': typeof FranchiseRoute
   '/lookbook': typeof LookbookRoute
   '/partners': typeof PartnersRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/services': typeof ServicesRoute
   '/setup-admin': typeof SetupAdminRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -133,6 +142,7 @@ export interface FileRouteTypes {
     | '/franchise'
     | '/lookbook'
     | '/partners'
+    | '/reset-password'
     | '/services'
     | '/setup-admin'
     | '/sitemap.xml'
@@ -146,6 +156,7 @@ export interface FileRouteTypes {
     | '/franchise'
     | '/lookbook'
     | '/partners'
+    | '/reset-password'
     | '/services'
     | '/setup-admin'
     | '/sitemap.xml'
@@ -160,6 +171,7 @@ export interface FileRouteTypes {
     | '/franchise'
     | '/lookbook'
     | '/partners'
+    | '/reset-password'
     | '/services'
     | '/setup-admin'
     | '/sitemap.xml'
@@ -175,6 +187,7 @@ export interface RootRouteChildren {
   FranchiseRoute: typeof FranchiseRoute
   LookbookRoute: typeof LookbookRoute
   PartnersRoute: typeof PartnersRoute
+  ResetPasswordRoute: typeof ResetPasswordRoute
   ServicesRoute: typeof ServicesRoute
   SetupAdminRoute: typeof SetupAdminRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
@@ -201,6 +214,13 @@ declare module '@tanstack/react-router' {
       path: '/services'
       fullPath: '/services'
       preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/partners': {
@@ -289,6 +309,7 @@ const rootRouteChildren: RootRouteChildren = {
   FranchiseRoute: FranchiseRoute,
   LookbookRoute: LookbookRoute,
   PartnersRoute: PartnersRoute,
+  ResetPasswordRoute: ResetPasswordRoute,
   ServicesRoute: ServicesRoute,
   SetupAdminRoute: SetupAdminRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,

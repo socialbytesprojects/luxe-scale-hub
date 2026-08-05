@@ -97,3 +97,36 @@ export const createFirstAdmin = createServerFn({ method: "POST" })
 
     return { ok: true };
   });
+
+export const createAdminAccount = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((data) => createAdminSchema.parse(data))
+  .handler(async ({ data, context }) => {
+    const { data: isAdmin } = await context.supabase.rpc("has_role", { _role: "admin" });
+    if (!isAdmin) throw new Error("Forbidden");
+
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+
+    const { data: userData, error: authError } = await supabaseAdmin.auth.admin.createUser({
+      email: data.email,
+      password: data.password,
+      email_confirm: true,
+    });
+
+    if (authError || !userData.user) {
+      console.error("Create admin user error:", authError);
+      throw new Error(authError?.message ?? "Failed to create admin account.");
+    }
+
+    const { error: roleError } = await supabaseAdmin.from("user_roles").insert({
+      user_id: userData.user.id,
+      role: "admin",
+    });
+
+    if (roleError) {
+      console.error("Assign admin role error:", roleError);
+      throw new Error("Account created but role assignment failed.");
+    }
+
+    return { ok: true };
+  });
