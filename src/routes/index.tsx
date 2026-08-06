@@ -176,7 +176,6 @@ const STORY_IMAGES = [
   "/brand-slides/slide-49.jpg",
   "/brand-slides/slide-54.jpg",
   "/brand-slides/slide-06.jpg",
-  "/brand-slides/slide-84.jpg",
 ];
 
 function StorySection() {
