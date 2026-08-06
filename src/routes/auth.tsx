@@ -87,13 +87,13 @@ function AuthPage() {
               type="button"
               onClick={handleForgotPassword}
               disabled={resetting}
-              className="w-full text-center text-sm text-brown hover:text-noir transition-colors disabled:opacity-60"
+              className="w-full text-center text-base text-noir/80 hover:text-noir transition-colors disabled:opacity-60"
             >
               {resetting ? "Sending reset link..." : "Forgot your password?"}
             </button>
           </div>
         </form>
-        <p className="text-center mt-6 text-sm text-brown">
+        <p className="text-center mt-6 text-base text-noir/80">
           <Link to="/" className="hover:text-noir transition-colors">← Back to website</Link>
         </p>
       </div>

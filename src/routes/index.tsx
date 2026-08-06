@@ -225,7 +225,7 @@ function StorySection() {
                 <img src={s} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
               </button>
             ))}
-            <p className="font-editorial italic text-noir/80 text-sm">
+            <p className="font-editorial italic text-noir/80 text-base">
               Tap any frame to enlarge.
             </p>
           </aside>

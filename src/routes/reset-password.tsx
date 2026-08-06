@@ -101,7 +101,7 @@ function ResetPasswordPage() {
             </button>
           </div>
         </form>
-        <p className="text-center mt-6 text-sm text-brown">
+        <p className="text-center mt-6 text-base text-noir/80">
           <Link to="/auth" className="hover:text-noir transition-colors">← Back to sign in</Link>
         </p>
       </div>

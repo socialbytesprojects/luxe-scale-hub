@@ -68,7 +68,7 @@ function AdminPage() {
   if (isLoading) {
     return (
       <div className="min-h-screen bg-ivory flex items-center justify-center">
-        <p className="font-editorial text-brown">Loading submissions…</p>
+        <p className="font-editorial text-base text-noir/80">Loading submissions…</p>
       </div>
     );
   }
@@ -78,7 +78,7 @@ function AdminPage() {
       <div className="min-h-screen bg-ivory flex items-center justify-center px-6">
         <div className="max-w-md text-center">
           <p className="font-editorial text-lg text-noir mb-4">Could not load submissions.</p>
-          <p className="text-sm text-brown mb-6">{String(error)}</p>
+          <p className="text-base text-noir/80 mb-6">{String(error)}</p>
           <button onClick={handleSignOut} className="btn-noir">Sign Out</button>
         </div>
       </div>
@@ -93,7 +93,7 @@ function AdminPage() {
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10">
           <div>
             <h1 className="font-display text-4xl text-noir">Admin Dashboard</h1>
-            <p className="font-editorial text-brown mt-1">Appointment requests and franchise enquiries</p>
+            <p className="font-editorial text-base text-noir/80 mt-1">Appointment requests and franchise enquiries</p>
           </div>
           <div className="flex items-center gap-3">
             <Link to="/" className="btn-gold">View Website</Link>
@@ -148,14 +148,14 @@ function AdminPage() {
                 </div>
               </div>
               {tab === "appointments" && (
-                <div className="grid md:grid-cols-3 gap-4 text-sm text-brown border-t border-noir/5 pt-4">
+                <div className="grid md:grid-cols-3 gap-4 text-base text-noir/80 border-t border-noir/5 pt-4">
                   <p><span className="eyebrow !text-noir/60 block">Preferred date</span>{item.preferred_date ? new Date(item.preferred_date).toLocaleDateString() : "—"}</p>
                   <p><span className="eyebrow !text-noir/60 block">Preferred time</span>{item.preferred_time || "—"}</p>
                   <p><span className="eyebrow !text-noir/60 block">Notes</span>{item.notes || "—"}</p>
                 </div>
               )}
               {tab === "franchise" && (
-                <div className="text-sm text-brown border-t border-noir/5 pt-4">
+                <div className="text-base text-noir/80 border-t border-noir/5 pt-4">
                   <p><span className="eyebrow !text-noir/60 block">Investment interest</span>{item.investment_interest || "—"}</p>
                   {item.message && <p className="mt-3"><span className="eyebrow !text-noir/60 block">Message</span>{item.message}</p>}
                 </div>
