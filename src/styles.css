@@ -140,6 +140,10 @@
 }
 
 @layer base {
+  html {
+    font-size: 120%;
+  }
+
   * {
     border-color: var(--color-border);
   }
