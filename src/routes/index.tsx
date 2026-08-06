@@ -128,7 +128,7 @@ function Hero() {
           >
             India's next <em className="font-editorial italic text-champagne">luxury salon</em> destination.
           </h1>
-          <p className="mt-5 font-editorial text-base md:text-lg text-ivory/85 italic">
+          <p className="mt-5 font-editorial text-lg md:text-xl text-ivory italic">
             Experience beauty. Own the brand.
           </p>
           <div className="mt-7 flex flex-col sm:flex-row gap-3">
@@ -189,7 +189,7 @@ function StorySection() {
               The Jean Louis David Journey, <em className="font-editorial italic text-champagne">reimagined for India</em>.
             </h2>
           </div>
-          <p className="lg:col-span-5 font-editorial text-lg md:text-xl text-brown leading-relaxed">
+          <p className="lg:col-span-5 font-editorial text-xl md:text-2xl text-noir/80 leading-relaxed">
             A French salon brand that continues to evolve with every generation — combining heritage, innovation and creativity while remaining true to the standards that have defined Jean Louis David for over six decades.
           </p>
         </div>
@@ -202,7 +202,7 @@ function StorySection() {
                 <span className="absolute -left-[42px] md:-left-[50px] top-2 h-3 w-3 rounded-full bg-champagne ring-4 ring-ivory" />
                 <p className="font-display text-3xl md:text-4xl text-noir leading-none">{t.year}</p>
                 <p className="mt-2 eyebrow">{t.title}</p>
-                <p className="mt-2 font-editorial text-lg text-brown leading-relaxed max-w-lg">{t.text}</p>
+                <p className="mt-2 font-editorial text-xl text-noir/80 leading-relaxed max-w-lg">{t.text}</p>
               </li>
             ))}
             <li className="relative">
@@ -225,7 +225,7 @@ function StorySection() {
                 <img src={s} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
               </button>
             ))}
-            <p className="font-editorial italic text-brown text-sm">
+            <p className="font-editorial italic text-noir/80 text-sm">
               Tap any frame to enlarge.
             </p>
           </aside>
@@ -248,7 +248,7 @@ function MeetFounders() {
         <h2 className="font-display text-3xl md:text-4xl text-noir leading-[1.12]">
           Sonniya &amp; Nitin Sharma — <em className="font-editorial italic text-champagne">the India chapter</em>.
         </h2>
-        <p className="mt-6 font-editorial text-lg text-brown leading-relaxed">
+        <p className="mt-6 font-editorial text-xl text-noir/80 leading-relaxed">
           Two decades in service-led businesses, more than a decade of it in premium salons. Sonniya shapes the vision; Nitin builds the systems and teams that deliver it, visit after visit.
         </p>
         <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
@@ -270,7 +270,7 @@ function SummerCollection() {
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-noir leading-[1.05]">
             The season, <em className="font-editorial italic text-champagne">frame by frame</em>.
           </h2>
-          <p className="mt-6 font-editorial text-lg md:text-xl text-brown leading-relaxed">
+          <p className="mt-6 font-editorial text-xl md:text-2xl text-noir/80 leading-relaxed">
             Editorial highlights from the latest JLD collection — a house language that travels from the Paris runway to the chair in Mumbai.
           </p>
         </div>
@@ -364,7 +364,7 @@ function InvestorCTA() {
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.05]">
               Partner with a brand <em className="font-editorial italic text-champagne">built for scale</em>.
             </h2>
-            <p className="mt-6 font-editorial text-lg text-ivory/80 max-w-xl">
+            <p className="mt-6 font-editorial text-xl text-ivory max-w-xl">
               Limited territories are open to qualified entrepreneurs across India. Our partnerships team will walk you through the brand, the model, and the journey.
             </p>
             <div className="mt-10 flex flex-col sm:flex-row gap-4">

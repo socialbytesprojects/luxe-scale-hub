@@ -121,7 +121,7 @@ function Lookbook() {
           <h1 className="font-display text-5xl md:text-7xl lg:text-8xl leading-[1.02]">
             Every <em className="font-editorial italic text-champagne">texture</em>, every silhouette, every shade.
           </h1>
-          <p className="mt-8 font-editorial text-xl md:text-2xl text-ivory/75 italic max-w-2xl">
+          <p className="mt-8 font-editorial text-2xl md:text-3xl text-ivory italic max-w-2xl">
             A library of signature work from our floor — to inspire your next chair, or your franchise\'s first campaign.
           </p>
         </div>
@@ -155,7 +155,7 @@ function Lookbook() {
                 {current.label}
               </h2>
             </div>
-            <p className="lg:col-span-5 font-editorial text-lg text-brown leading-relaxed">
+            <p className="lg:col-span-5 font-editorial text-xl text-noir/80 leading-relaxed">
               {current.blurb}
             </p>
           </div>
