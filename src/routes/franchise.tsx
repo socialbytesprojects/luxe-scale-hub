@@ -107,7 +107,7 @@ function FranchisePage() {
           <h1 className="font-display text-5xl md:text-7xl lg:text-8xl leading-[1.02] max-w-5xl">
             Own a salon. <em className="font-editorial italic text-champagne">Backed by 65 years</em> of French heritage.
           </h1>
-          <p className="mt-8 font-editorial text-xl md:text-2xl text-ivory/80 max-w-3xl">
+          <p className="mt-8 font-editorial text-2xl md:text-3xl text-ivory max-w-3xl">
             When you open a JLD, you are not starting from scratch — you are stepping into a global brand ecosystem built on luxury, consistency, innovation and support.
           </p>
           <div className="mt-10">
@@ -123,7 +123,7 @@ function FranchisePage() {
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-noir leading-[1.05]">
             A brand built for scale — <em className="font-editorial italic text-champagne">run with precision</em>.
           </h2>
-          <p className="mt-8 font-editorial text-lg md:text-xl text-brown leading-relaxed">
+          <p className="mt-8 font-editorial text-xl md:text-2xl text-noir/80 leading-relaxed">
             JLD partners with a small circle of qualified entrepreneurs to open flagship salons across India. Every partnership is supported end-to-end — from site selection to launch and beyond.
           </p>
         </div>
@@ -137,7 +137,7 @@ function FranchisePage() {
               <div key={p.t} className="bg-ivory p-8 md:p-10">
                 <p className="font-display italic text-champagne text-lg mb-4">0{i + 1}</p>
                 <h3 className="font-display text-2xl md:text-3xl text-noir leading-tight">{p.t}</h3>
-                <p className="mt-4 font-editorial text-base md:text-lg text-brown leading-relaxed">{p.b}</p>
+                <p className="mt-4 font-editorial text-lg md:text-xl text-noir/80 leading-relaxed">{p.b}</p>
               </div>
             ))}
           </div>
@@ -156,13 +156,13 @@ function FranchisePage() {
           <div className="grid md:grid-cols-2 gap-px bg-ivory/10">
             <div className="bg-noir p-10 md:p-12">
               <p className="eyebrow !text-champagne mb-6">FOCO — Company Operated</p>
-              <p className="font-editorial text-lg text-ivory/85 leading-relaxed">
+              <p className="font-editorial text-xl text-ivory leading-relaxed">
                 You own the franchise. JLD's operations team runs the salon day-to-day — from staffing to service quality — at no additional operational cost to you. Ideal for investor-partners.
               </p>
             </div>
             <div className="bg-noir p-10 md:p-12">
               <p className="eyebrow !text-champagne mb-6">FOFO — Owner Operated</p>
-              <p className="font-editorial text-lg text-ivory/85 leading-relaxed">
+              <p className="font-editorial text-xl text-ivory leading-relaxed">
                 You own and run the salon, with the full JLD playbook, training, systems and central support behind you. Ideal for hands-on entrepreneurs.
               </p>
             </div>
@@ -193,7 +193,7 @@ function FranchisePage() {
                   <span className="font-display italic text-champagne text-2xl md:text-3xl leading-none shrink-0 w-10">0{i + 1}</span>
                   <div>
                     <p className="font-display text-xl md:text-2xl text-noir">{t}</p>
-                    <p className="mt-1 font-editorial text-base text-brown leading-relaxed">{b}</p>
+                    <p className="mt-1 font-editorial text-lg text-noir/80 leading-relaxed">{b}</p>
                   </div>
                 </li>
               ))}
@@ -219,7 +219,7 @@ function FranchisePage() {
               ["We don't follow the market.", "We lead it."],
             ].map(([a, b]) => (
               <div key={a} className="border-t border-champagne/40 pt-8">
-                <p className="font-editorial text-lg text-ivory/70">{a}</p>
+                <p className="font-editorial text-xl text-ivory/90">{a}</p>
                 <p className="mt-2 font-display italic text-2xl text-champagne">{b}</p>
               </div>
             ))}
@@ -234,13 +234,13 @@ function FranchisePage() {
           <h2 className="font-display text-4xl md:text-5xl text-noir leading-tight">
             Request the <em className="font-editorial italic text-champagne">franchise deck</em>.
           </h2>
-          <p className="mt-6 font-editorial text-lg md:text-xl text-brown">
+          <p className="mt-6 font-editorial text-xl md:text-2xl text-noir/80">
             Tell us a little about you. Our partnerships team will respond within 48 hours.
           </p>
           {sent ? (
             <div className="mt-12 border border-champagne/40 p-10 bg-ivory">
               <h3 className="font-display text-3xl text-noir mb-3">Thank you.</h3>
-              <p className="font-editorial text-lg text-brown">We have received your enquiry. The JLD partnerships team will be in touch shortly.</p>
+              <p className="font-editorial text-xl text-noir/80">We have received your enquiry. The JLD partnerships team will be in touch shortly.</p>
             </div>
           ) : (
             <form

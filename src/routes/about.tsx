@@ -41,7 +41,7 @@ function About() {
           <h1 className="font-display text-5xl md:text-7xl lg:text-8xl leading-[1.02] max-w-4xl mx-auto">
             A quiet rebellion, <em className="font-editorial italic text-champagne">65 years in the making</em>.
           </h1>
-          <p className="mt-8 font-editorial text-lg md:text-xl text-ivory/75 max-w-2xl mx-auto italic">
+          <p className="mt-8 font-editorial text-xl md:text-2xl text-ivory max-w-2xl mx-auto italic">
             Parisian in origin. Indian in temperament. Precise in every detail.
           </p>
         </div>
@@ -58,10 +58,10 @@ function About() {
           </div>
 
           <div className="mt-12 grid md:grid-cols-2 gap-10 md:gap-14 text-left">
-            <p className="font-editorial text-xl md:text-2xl text-brown leading-relaxed">
+            <p className="font-editorial text-2xl md:text-3xl text-noir/80 leading-relaxed">
               Jean Louis David opened its first salon in Paris in 1961 with a simple conviction: a haircut should be built around the person wearing it, not the fashion of the season. That idea reshaped French hairdressing — cuts designed to move, to grow out gracefully, and to be lived in.
             </p>
-            <p className="font-editorial text-xl md:text-2xl text-brown leading-relaxed">
+            <p className="font-editorial text-2xl md:text-3xl text-noir/80 leading-relaxed">
               Six decades later, the house counts 750+ salons across 20+ countries, a proprietary cutting method taught in its own academies, and a place among the most recognised names in professional beauty. India is the next chapter — the same craft, the same standards, delivered close to home.
             </p>
           </div>
@@ -99,7 +99,7 @@ function About() {
             ].map(([t, b]) => (
               <div key={t} className="border-t border-champagne pt-6">
                 <h3 className="font-display text-2xl md:text-3xl text-noir mb-3">{t}</h3>
-                <p className="font-editorial text-xl text-brown leading-relaxed">{b}</p>
+                <p className="font-editorial text-2xl text-noir/80 leading-relaxed">{b}</p>
               </div>
             ))}
           </div>
@@ -114,10 +114,10 @@ function About() {
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-noir leading-tight">
               65 years of French excellence. <em className="font-editorial italic text-champagne">A new chapter in India.</em>
             </h2>
-            <p className="mt-6 font-editorial text-xl md:text-2xl text-brown leading-relaxed">
+            <p className="mt-6 font-editorial text-2xl md:text-3xl text-noir/80 leading-relaxed">
               Founded in 1961, Jean Louis David has spent over six decades shaping the craft of French hairdressing — evolving with every era while staying rooted in the creativity and precision that built its name. Today, with 750+ salons across 20+ countries, it opens its next chapter in India.
             </p>
-            <p className="mt-5 font-editorial text-xl md:text-2xl text-brown leading-relaxed">
+            <p className="mt-5 font-editorial text-2xl md:text-3xl text-noir/80 leading-relaxed">
               Leading that chapter are Sonniya and Nitin Sharma — entrepreneurs with two decades in service-led businesses and over a decade focused specifically on the premium salon industry.
             </p>
           </div>
@@ -147,17 +147,17 @@ function About() {
                   />
                 </div>
                 <h3 className="font-display text-3xl md:text-4xl text-noir mt-6">{f.name}</h3>
-                <p className="mt-4 font-editorial text-xl text-brown leading-relaxed">{f.body}</p>
+                <p className="mt-4 font-editorial text-2xl text-noir/80 leading-relaxed">{f.body}</p>
               </article>
             ))}
           </div>
 
           <div className="mt-16 border-t border-champagne pt-8 max-w-3xl">
             <h3 className="font-display text-3xl md:text-4xl text-noir leading-tight">A partnership built on trust</h3>
-            <p className="mt-5 font-editorial text-xl md:text-2xl text-brown leading-relaxed">
+            <p className="mt-5 font-editorial text-2xl md:text-3xl text-noir/80 leading-relaxed">
               An earlier French salon brand's expansion into India was placed in their hands. What followed became one of Bangalore's most respected premium salon names — proof that a global brand's standards can take root and thrive here, given the right execution.
             </p>
-            <p className="mt-5 font-editorial text-xl md:text-2xl text-brown leading-relaxed">
+            <p className="mt-5 font-editorial text-2xl md:text-3xl text-noir/80 leading-relaxed">
               That track record is why Jean Louis David — a brand that has led its industry since 1961 without ever diluting its heritage — now begins its own India story with them.
             </p>
           </div>
@@ -172,7 +172,7 @@ function About() {
             <h3 className="font-display text-3xl md:text-4xl text-noir leading-tight">
               To make luxury salon experiences the everyday standard in India.
             </h3>
-            <p className="mt-6 font-editorial text-xl text-brown leading-relaxed">
+            <p className="mt-6 font-editorial text-2xl text-noir/80 leading-relaxed">
               We measure ourselves by the quality of every guest visit — the sit-down, the wash, the conversation, the finish — and by the standards we set for the industry that follows.
             </p>
           </div>
@@ -181,7 +181,7 @@ function About() {
             <h3 className="font-display text-3xl md:text-4xl text-noir leading-tight">
               A house of beauty, present in every serious Indian city.
             </h3>
-            <p className="mt-6 font-editorial text-xl text-brown leading-relaxed">
+            <p className="mt-6 font-editorial text-2xl text-noir/80 leading-relaxed">
               Built with the discipline of a fashion house and the warmth of a hotel — and shared with a small circle of visionary franchise partners.
             </p>
           </div>
@@ -206,7 +206,7 @@ function About() {
             ].map(([t, b]) => (
               <div key={t} className="border-t border-champagne/40 pt-6">
                 <h3 className="font-display text-2xl text-ivory mb-3">{t}</h3>
-                <p className="font-editorial text-lg text-ivory/75 leading-relaxed">{b}</p>
+                <p className="font-editorial text-xl text-ivory leading-relaxed">{b}</p>
               </div>
             ))}
           </div>

@@ -29,7 +29,7 @@ function PartnersPage() {
           <h1 className="font-display text-5xl md:text-7xl lg:text-8xl leading-[1.02] max-w-5xl">
             The <em className="font-editorial italic text-champagne">houses</em> behind our craft.
           </h1>
-          <p className="mt-8 font-editorial text-xl md:text-2xl text-ivory/80 max-w-3xl">
+          <p className="mt-8 font-editorial text-2xl md:text-3xl text-ivory max-w-3xl">
             A curated network of brands, product houses and industry partners who share our standards. This page is being updated.
           </p>
         </div>
@@ -41,10 +41,10 @@ function PartnersPage() {
             <div className="lg:col-span-7">
               <p className="eyebrow mb-6">— Products We Use</p>
               <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-noir leading-[1.05]">
-                The tools of the <em className="font-editorial italic text-brown">trade</em>.
+                The tools of the <em className="font-editorial italic text-noir/80">trade</em>.
               </h2>
             </div>
-            <p className="lg:col-span-5 font-editorial text-lg md:text-xl text-brown leading-relaxed">
+            <p className="lg:col-span-5 font-editorial text-xl md:text-2xl text-noir/80 leading-relaxed">
               Placeholder — the full list of professional product lines carried across our floors will live here.
             </p>
           </div>
@@ -65,10 +65,10 @@ function PartnersPage() {
             <div className="lg:col-span-7">
               <p className="eyebrow mb-6">— Our Partners</p>
               <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-noir leading-[1.05]">
-                The <em className="font-editorial italic text-brown">people</em> we build with.
+                The <em className="font-editorial italic text-noir/80">people</em> we build with.
               </h2>
             </div>
-            <p className="lg:col-span-5 font-editorial text-lg md:text-xl text-brown leading-relaxed">
+            <p className="lg:col-span-5 font-editorial text-xl md:text-2xl text-noir/80 leading-relaxed">
               Placeholder — press, education, real estate, media and creative partners will be listed here.
             </p>
           </div>

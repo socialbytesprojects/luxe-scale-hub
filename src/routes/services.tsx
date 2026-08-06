@@ -163,7 +163,7 @@ function Services() {
           <h1 className="font-display text-5xl md:text-7xl lg:text-8xl leading-[1.02] max-w-4xl">
             Every service, <em className="font-editorial italic text-champagne">composed</em>.
           </h1>
-          <p className="mt-8 font-editorial text-lg md:text-xl text-ivory/80 max-w-2xl">
+          <p className="mt-8 font-editorial text-xl md:text-2xl text-ivory max-w-2xl">
             L'Oréal Professionnel · Kérastase · Olaplex · K18 — powered by the world's finest brands, delivered by JLD-trained artists.
           </p>
         </div>
@@ -221,7 +221,7 @@ function Services() {
                 <div className="lg:col-span-7">
                   <p className="eyebrow mb-3">— {g.cat}</p>
                   <h2 className="font-display text-4xl md:text-5xl text-noir leading-[1.05]">{g.cat}</h2>
-                  <p className="mt-5 font-editorial text-lg text-brown leading-relaxed">{g.blurb}</p>
+                  <p className="mt-5 font-editorial text-xl text-noir/80 leading-relaxed">{g.blurb}</p>
                 </div>
                 <figure className="lg:col-span-5 aspect-[16/10] overflow-hidden bg-beige">
                   <img src={g.image} alt="" loading="lazy" className="h-full w-full object-cover object-[center_20%]" />
@@ -246,7 +246,7 @@ function Services() {
           ))}
 
           <div className="text-center pt-6">
-            <p className="font-editorial italic text-brown mb-6">Prices are indicative. Member pricing is 20% below regular pricing across the menu.</p>
+            <p className="font-editorial italic text-noir/80 mb-6">Prices are indicative. Member pricing is 20% below regular pricing across the menu.</p>
             <Link to="/contact" className="btn-noir">Book an Appointment</Link>
           </div>
           </div>

@@ -66,7 +66,7 @@ function ResetPasswordPage() {
         </Link>
         <form onSubmit={handleSubmit} className="bg-white border border-champagne/40 p-8 md:p-10 shadow-sm">
           <h1 className="font-display text-2xl text-noir mb-2">Set a new password</h1>
-          <p className="font-editorial text-sm text-brown mb-6">
+          <p className="font-editorial text-base text-noir/80 mb-6">
             {ready
               ? "Choose a new password for your admin account."
               : "Open this page from the reset link in your email."}
@@ -101,7 +101,7 @@ function ResetPasswordPage() {
             </button>
           </div>
         </form>
-        <p className="text-center mt-6 text-sm text-brown">
+        <p className="text-center mt-6 text-base text-noir/80">
           <Link to="/auth" className="hover:text-noir transition-colors">← Back to sign in</Link>
         </p>
       </div>

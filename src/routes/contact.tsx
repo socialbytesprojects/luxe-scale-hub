@@ -77,7 +77,7 @@ function Contact() {
             {sent ? (
               <div className="border border-champagne p-10 bg-beige">
                 <h3 className="font-display text-3xl text-noir mb-3">Confirmed.</h3>
-                <p className="font-editorial text-lg text-brown">Our concierge will call you shortly to finalise the time.</p>
+                <p className="font-editorial text-xl text-noir/80">Our concierge will call you shortly to finalise the time.</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-8">
@@ -113,7 +113,7 @@ function Contact() {
           <aside className="lg:col-span-5">
             <div className="bg-noir text-ivory p-8">
               <p className="eyebrow !text-champagne mb-4">— Concierge</p>
-              <p className="font-editorial text-lg text-ivory/85">Monday to Sunday · 9 AM to 10 PM</p>
+              <p className="font-editorial text-xl text-ivory">Monday to Sunday · 9 AM to 10 PM</p>
               <p className="font-display text-2xl text-champagne mt-3">+91 95095 02222</p>
               <a href="https://wa.me/919509502222" target="_blank" rel="noopener noreferrer" className="btn-gold mt-6">WhatsApp</a>
             </div>

@@ -241,13 +241,13 @@ function SiteFooter() {
               <span className="font-display text-2xl tracking-wider">JLD</span>
               <span className="font-display italic text-champagne text-sm tracking-[0.3em]">Jean Louis David</span>
             </div>
-            <p className="font-editorial text-lg text-ivory/70 leading-relaxed">
+            <p className="font-editorial text-xl text-ivory/90 leading-relaxed">
               A house of beauty, built for the modern connoisseur and the visionary entrepreneur.
             </p>
           </div>
           <div>
             <h4 className="eyebrow !text-champagne mb-5">Explore</h4>
-            <ul className="space-y-3 text-sm text-ivory/75">
+            <ul className="space-y-3 text-base text-ivory/90">
               {NAV.map((n) => (
                 <li key={n.to}>
                   <Link to={n.to} className="hover:text-champagne transition-colors">{n.label}</Link>
@@ -257,14 +257,14 @@ function SiteFooter() {
           </div>
           <div>
             <h4 className="eyebrow !text-champagne mb-5">Connect</h4>
-            <ul className="space-y-3 text-sm text-ivory/75">
+            <ul className="space-y-3 text-base text-ivory/90">
               <li><a href="tel:+919509502222" className="hover:text-champagne transition-colors">+91 95095 02222</a></li>
               <li><a href="mailto:info@jeanlouisdavid.in" className="hover:text-champagne transition-colors">info@jeanlouisdavid.in</a></li>
             </ul>
           </div>
           <div>
             <h4 className="eyebrow !text-champagne mb-5">Newsletter</h4>
-            <p className="text-sm text-ivory/70 mb-4">Editorials, openings, invitations.</p>
+            <p className="text-base text-ivory/90 mb-4">Editorials, openings, invitations.</p>
             <form className="flex border-b border-ivory/30">
               <input
                 type="email"
