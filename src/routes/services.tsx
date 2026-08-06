@@ -163,7 +163,7 @@ function Services() {
           <h1 className="font-display text-5xl md:text-7xl lg:text-8xl leading-[1.02] max-w-4xl">
             Every service, <em className="font-editorial italic text-champagne">composed</em>.
           </h1>
-          <p className="mt-8 font-editorial text-lg md:text-xl text-ivory/80 max-w-2xl">
+          <p className="mt-8 font-editorial text-xl md:text-2xl text-ivory max-w-2xl">
             L'Oréal Professionnel · Kérastase · Olaplex · K18 — powered by the world's finest brands, delivered by JLD-trained artists.
           </p>
         </div>

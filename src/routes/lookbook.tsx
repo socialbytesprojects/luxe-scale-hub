@@ -187,7 +187,7 @@ function Lookbook() {
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.05]">
             Found a look? <em className="font-editorial italic text-champagne">Bring it to the chair.</em>
           </h2>
-          <p className="mt-6 font-editorial text-lg md:text-xl text-ivory/75 max-w-2xl mx-auto">
+          <p className="mt-6 font-editorial text-xl md:text-2xl text-ivory max-w-2xl mx-auto">
             Our senior stylists tailor every reference to your face, your texture, and your life.
           </p>
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">

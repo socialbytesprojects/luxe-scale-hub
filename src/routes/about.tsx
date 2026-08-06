@@ -41,7 +41,7 @@ function About() {
           <h1 className="font-display text-5xl md:text-7xl lg:text-8xl leading-[1.02] max-w-4xl mx-auto">
             A quiet rebellion, <em className="font-editorial italic text-champagne">65 years in the making</em>.
           </h1>
-          <p className="mt-8 font-editorial text-lg md:text-xl text-ivory/75 max-w-2xl mx-auto italic">
+          <p className="mt-8 font-editorial text-xl md:text-2xl text-ivory max-w-2xl mx-auto italic">
             Parisian in origin. Indian in temperament. Precise in every detail.
           </p>
         </div>
