@@ -115,6 +115,14 @@ function Contact() {
               <p className="eyebrow !text-champagne mb-4">— Concierge</p>
               <p className="font-editorial text-xl text-ivory">Monday to Sunday · 9 AM to 10 PM</p>
               <p className="font-display text-2xl text-champagne mt-3">+91 95095 02222</p>
+              <div className="mt-6 pt-6 border-t border-ivory/20">
+                <p className="eyebrow !text-champagne mb-3">— Visit us</p>
+                <address className="not-italic font-editorial text-lg md:text-xl text-ivory/90 leading-relaxed">
+                  Site No 2026, 1st Sector, 5th Cross,<br />
+                  27th Main Road, HSR Layout,<br />
+                  Bengaluru, Karnataka 560102
+                </address>
+              </div>
               <a href="https://wa.me/919509502222" target="_blank" rel="noopener noreferrer" className="btn-gold mt-6">WhatsApp</a>
             </div>
           </aside>

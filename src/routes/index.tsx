@@ -15,6 +15,14 @@ const localBusinessSchema = {
     "https://www.instagram.com/jeanlouisdavid.in",
   ],
   priceRange: "$$$",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Site No 2026, 1st Sector, 5th Cross, 27th Main Road, HSR Layout",
+    addressLocality: "Bengaluru",
+    addressRegion: "Karnataka",
+    addressCountry: "IN",
+    postalCode: "560102",
+  },
 };
 
 export const Route = createFileRoute("/")({

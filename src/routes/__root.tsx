@@ -260,6 +260,13 @@ function SiteFooter() {
             <ul className="space-y-3 text-base text-ivory/90">
               <li><a href="tel:+919509502222" className="hover:text-champagne transition-colors">+91 95095 02222</a></li>
               <li><a href="mailto:info@jeanlouisdavid.in" className="hover:text-champagne transition-colors">info@jeanlouisdavid.in</a></li>
+              <li className="pt-2 border-t border-ivory/20">
+                <address className="not-italic">
+                  Site No 2026, 1st Sector, 5th Cross,<br />
+                  27th Main Road, HSR Layout,<br />
+                  Bengaluru, Karnataka 560102
+                </address>
+              </li>
             </ul>
           </div>
           <div>
