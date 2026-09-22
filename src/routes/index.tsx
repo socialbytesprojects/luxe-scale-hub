@@ -333,20 +333,24 @@ function SalonGallery() {
 
         <div className="grid grid-cols-1 gap-5 md:grid-cols-3 md:gap-6">
           {HSR_SALON_IMAGES.map((image) => (
-            <button
-              type="button"
-              key={image.src}
-              onClick={() => openImage(image.src)}
-              className="group relative aspect-[3/4] w-full overflow-hidden bg-beige cursor-zoom-in focus:outline-none focus:ring-2 focus:ring-champagne"
-              aria-label={`Open ${image.alt}`}
-            >
-              <img
-                src={image.src}
-                alt={image.alt}
-                loading="lazy"
-                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
-              />
-            </button>
+            <figure key={image.src}>
+              <button
+                type="button"
+                onClick={() => openImage(image.src)}
+                className="group relative aspect-[3/4] w-full overflow-hidden bg-beige cursor-zoom-in focus:outline-none focus:ring-2 focus:ring-champagne"
+                aria-label={`Open ${image.alt}`}
+              >
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  loading="lazy"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                />
+              </button>
+              <figcaption className="mt-4 text-center font-sans text-sm uppercase text-brown">
+                HSR Layout — Bengaluru
+              </figcaption>
+            </figure>
           ))}
         </div>
       </div>
