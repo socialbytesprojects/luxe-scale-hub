@@ -2,6 +2,9 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import partnershipVideo from "@/assets/partnership.mp4.asset.json";
 import heroVideo from "@/assets/jld-hero.mp4.asset.json";
+import hsrExterior from "@/assets/jld-hsr-exterior.png.asset.json";
+import hsrSignageWide from "@/assets/jld-hsr-signage-wide.png.asset.json";
+import hsrSignagePortrait from "@/assets/jld-hsr-signage-portrait.png.asset.json";
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
@@ -52,6 +55,7 @@ function Index() {
       <StorySection />
       <MeetFounders />
       <SummerCollection />
+      <SalonGallery />
       <InvestorCTA />
     </>
   );
@@ -297,6 +301,50 @@ function SummerCollection() {
                 alt={`JLD Spring Summer 2026 — look ${i + 1}`}
                 loading="lazy"
                 className="absolute inset-0 h-full w-full object-contain transition-transform duration-700 group-hover:scale-[1.02]"
+              />
+            </button>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─────────────────────  HSR LAYOUT SALON  ───────────────────── */
+const HSR_SALON_IMAGES = [
+  { src: hsrExterior.url, alt: "Jean Louis David salon exterior at HSR Layout, Bengaluru" },
+  { src: hsrSignageWide.url, alt: "Jean Louis David Paris signage at HSR Layout, Bengaluru" },
+  { src: hsrSignagePortrait.url, alt: "Jean Louis David salon facade at HSR Layout, Bengaluru" },
+];
+
+function SalonGallery() {
+  return (
+    <section className="bg-ivory py-20 md:py-28">
+      <div className="mx-auto max-w-[1400px] px-6 md:px-10">
+        <div className="mb-10 md:mb-14 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p className="eyebrow mb-4">— Our Salon</p>
+            <h2 className="font-display text-4xl md:text-5xl text-noir leading-[1.05]">
+              HSR Layout <em className="font-editorial italic text-champagne">— Bengaluru</em>
+            </h2>
+          </div>
+          <Link to="/contact" className="btn-noir self-start md:self-auto">Book Appointment</Link>
+        </div>
+
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-3 md:gap-6">
+          {HSR_SALON_IMAGES.map((image) => (
+            <button
+              type="button"
+              key={image.src}
+              onClick={() => openImage(image.src)}
+              className="group relative aspect-[3/4] w-full overflow-hidden bg-beige cursor-zoom-in focus:outline-none focus:ring-2 focus:ring-champagne"
+              aria-label={`Open ${image.alt}`}
+            >
+              <img
+                src={image.src}
+                alt={image.alt}
+                loading="lazy"
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
               />
             </button>
           ))}
