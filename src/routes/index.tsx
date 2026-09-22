@@ -344,7 +344,7 @@ function SalonGallery() {
                   src={image.src}
                   alt={image.alt}
                   loading="lazy"
-                  className={`absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.02] ${index === 1 ? "object-[36%_center]" : "object-center"}`}
+                  className={`absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.02] ${index === 1 ? "object-[54%_center]" : "object-center"}`}
                 />
               </button>
             </figure>
