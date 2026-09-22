@@ -31,6 +31,7 @@ function Contact() {
     name: "",
     phone: "",
     email: "",
+    location: "HSR Layout, Bangalore",
     service: "",
     preferredDate: "",
     preferredTime: "",
@@ -89,6 +90,18 @@ function Contact() {
                   <Input label="Email" type="email" value={form.email} onChange={(v) => update("email", v)} />
                   <Input label="Service" value={form.service} onChange={(v) => update("service", v)} />
                 </Row>
+                <div>
+                  <label htmlFor="location" className="eyebrow block mb-3">Location<span className="text-champagne ml-1">*</span></label>
+                  <select
+                    id="location"
+                    required
+                    value={form.location}
+                    onChange={(e) => update("location", e.target.value)}
+                    className="w-full border-b border-noir/20 py-3 text-sm bg-transparent outline-none focus:border-champagne transition-colors"
+                  >
+                    <option value="HSR Layout, Bangalore">HSR Layout, Bangalore</option>
+                  </select>
+                </div>
                 <Row>
                   <Input label="Preferred date" type="date" value={form.preferredDate} onChange={(v) => update("preferredDate", v)} />
                   <Input label="Preferred time" type="time" value={form.preferredTime} onChange={(v) => update("preferredTime", v)} />

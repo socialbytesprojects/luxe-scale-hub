@@ -332,7 +332,7 @@ function SalonGallery() {
         </div>
 
         <div className="grid grid-cols-1 gap-5 md:grid-cols-3 md:gap-6">
-          {HSR_SALON_IMAGES.map((image) => (
+          {HSR_SALON_IMAGES.map((image, index) => (
             <figure key={image.src}>
               <button
                 type="button"
@@ -344,12 +344,9 @@ function SalonGallery() {
                   src={image.src}
                   alt={image.alt}
                   loading="lazy"
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                  className={`absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.02] ${index === 1 ? "object-[42%_center]" : "object-center"}`}
                 />
               </button>
-              <figcaption className="mt-4 text-center font-sans text-sm uppercase text-brown">
-                HSR Layout — Bengaluru
-              </figcaption>
             </figure>
           ))}
         </div>
