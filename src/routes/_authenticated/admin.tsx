@@ -148,7 +148,8 @@ function AdminPage() {
                 </div>
               </div>
               {tab === "appointments" && (
-                <div className="grid md:grid-cols-3 gap-4 text-base text-noir/80 border-t border-noir/5 pt-4">
+                <div className="grid md:grid-cols-4 gap-4 text-base text-noir/80 border-t border-noir/5 pt-4">
+                  <p><span className="eyebrow !text-noir/60 block">Location</span>{item.location || "—"}</p>
                   <p><span className="eyebrow !text-noir/60 block">Preferred date</span>{item.preferred_date ? new Date(item.preferred_date).toLocaleDateString() : "—"}</p>
                   <p><span className="eyebrow !text-noir/60 block">Preferred time</span>{item.preferred_time || "—"}</p>
                   <p><span className="eyebrow !text-noir/60 block">Notes</span>{item.notes || "—"}</p>
