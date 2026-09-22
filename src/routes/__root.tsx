@@ -258,7 +258,7 @@ function SiteFooter() {
           <div>
             <h4 className="eyebrow !text-champagne mb-5">Connect</h4>
             <ul className="space-y-3 text-base text-ivory/90">
-              <li><a href="tel:+919509502222" className="hover:text-champagne transition-colors">+91 95095 02222</a></li>
+              <li><a href="tel:+918951720423" className="hover:text-champagne transition-colors">+91 89517 20423</a></li>
               <li><a href="mailto:info@jeanlouisdavid.in" className="hover:text-champagne transition-colors">info@jeanlouisdavid.in</a></li>
               <li className="pt-2 border-t border-ivory/20">
                 <address className="not-italic">
