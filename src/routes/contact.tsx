@@ -132,7 +132,7 @@ function Contact() {
                 <p className="eyebrow !text-champagne mb-3">— Visit us</p>
                 <iframe
                   title="Jean Louis David HSR Layout location"
-                  src="https://www.google.com/maps?q=Jean+Louis+David+Hair+Salon+HSR+Layout,+12.9140875,77.6517165&z=17&output=embed"
+                  src="https://maps.google.com/maps?q=12.9140875,77.6517165&hl=en&z=18&output=embed"
                   className="h-64 w-full border-0"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
