@@ -1,0 +1,1 @@
+- Keep salon locations on separate, shareable routes using one shared detail view, so gallery navigation stays consistent without combining locations.

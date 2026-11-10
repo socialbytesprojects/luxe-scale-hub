@@ -20,6 +20,9 @@ import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as LocationsThrissurRouteImport } from './routes/locations.thrissur'
+import { Route as LocationsHsrLayoutRouteImport } from './routes/locations.hsr-layout'
+import { Route as LocationsCoimbatoreRouteImport } from './routes/locations.coimbatore'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -76,6 +79,21 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LocationsThrissurRoute = LocationsThrissurRouteImport.update({
+  id: '/locations/thrissur',
+  path: '/locations/thrissur',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocationsHsrLayoutRoute = LocationsHsrLayoutRouteImport.update({
+  id: '/locations/hsr-layout',
+  path: '/locations/hsr-layout',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocationsCoimbatoreRoute = LocationsCoimbatoreRouteImport.update({
+  id: '/locations/coimbatore',
+  path: '/locations/coimbatore',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
   id: '/admin',
   path: '/admin',
@@ -94,6 +112,9 @@ export interface FileRoutesByFullPath {
   '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/admin': typeof AuthenticatedAdminRoute
+  '/locations/coimbatore': typeof LocationsCoimbatoreRoute
+  '/locations/hsr-layout': typeof LocationsHsrLayoutRoute
+  '/locations/thrissur': typeof LocationsThrissurRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -107,6 +128,9 @@ export interface FileRoutesByTo {
   '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/admin': typeof AuthenticatedAdminRoute
+  '/locations/coimbatore': typeof LocationsCoimbatoreRoute
+  '/locations/hsr-layout': typeof LocationsHsrLayoutRoute
+  '/locations/thrissur': typeof LocationsThrissurRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -122,6 +146,9 @@ export interface FileRoutesById {
   '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRoute
+  '/locations/coimbatore': typeof LocationsCoimbatoreRoute
+  '/locations/hsr-layout': typeof LocationsHsrLayoutRoute
+  '/locations/thrissur': typeof LocationsThrissurRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -137,6 +164,9 @@ export interface FileRouteTypes {
     | '/services'
     | '/sitemap.xml'
     | '/admin'
+    | '/locations/coimbatore'
+    | '/locations/hsr-layout'
+    | '/locations/thrissur'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -150,6 +180,9 @@ export interface FileRouteTypes {
     | '/services'
     | '/sitemap.xml'
     | '/admin'
+    | '/locations/coimbatore'
+    | '/locations/hsr-layout'
+    | '/locations/thrissur'
   id:
     | '__root__'
     | '/'
@@ -164,6 +197,9 @@ export interface FileRouteTypes {
     | '/services'
     | '/sitemap.xml'
     | '/_authenticated/admin'
+    | '/locations/coimbatore'
+    | '/locations/hsr-layout'
+    | '/locations/thrissur'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -178,6 +214,9 @@ export interface RootRouteChildren {
   ResetPasswordRoute: typeof ResetPasswordRoute
   ServicesRoute: typeof ServicesRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  LocationsCoimbatoreRoute: typeof LocationsCoimbatoreRoute
+  LocationsHsrLayoutRoute: typeof LocationsHsrLayoutRoute
+  LocationsThrissurRoute: typeof LocationsThrissurRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -259,6 +298,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/locations/thrissur': {
+      id: '/locations/thrissur'
+      path: '/locations/thrissur'
+      fullPath: '/locations/thrissur'
+      preLoaderRoute: typeof LocationsThrissurRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/locations/hsr-layout': {
+      id: '/locations/hsr-layout'
+      path: '/locations/hsr-layout'
+      fullPath: '/locations/hsr-layout'
+      preLoaderRoute: typeof LocationsHsrLayoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/locations/coimbatore': {
+      id: '/locations/coimbatore'
+      path: '/locations/coimbatore'
+      fullPath: '/locations/coimbatore'
+      preLoaderRoute: typeof LocationsCoimbatoreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_authenticated/admin': {
       id: '/_authenticated/admin'
       path: '/admin'
@@ -292,6 +352,9 @@ const rootRouteChildren: RootRouteChildren = {
   ResetPasswordRoute: ResetPasswordRoute,
   ServicesRoute: ServicesRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  LocationsCoimbatoreRoute: LocationsCoimbatoreRoute,
+  LocationsHsrLayoutRoute: LocationsHsrLayoutRoute,
+  LocationsThrissurRoute: LocationsThrissurRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

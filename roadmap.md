@@ -1,0 +1,3 @@
+- [ ] Replace the appointment form with the supplied booking experience.
+- [ ] Add a three-location salon gallery with dedicated location pages and supplied photos.
+- [ ] Validate the booking embed, gallery, and location pages.

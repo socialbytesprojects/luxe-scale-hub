@@ -5,6 +5,8 @@ import heroVideo from "@/assets/jld-hero.mp4.asset.json";
 import hsrExterior from "@/assets/jld-hsr-exterior.png.asset.json";
 import hsrSignageWide from "@/assets/jld-hsr-signage-wide.png.asset.json";
 import hsrSignagePortrait from "@/assets/jld-hsr-signage-portrait.png.asset.json";
+import salonCoimbatore from "@/assets/salon-coimbatore.png.asset.json";
+import salonThrissur from "@/assets/salon-thrissur.png.asset.json";
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
@@ -312,9 +314,9 @@ function SummerCollection() {
 
 /* ─────────────────────  HSR LAYOUT SALON  ───────────────────── */
 const HSR_SALON_IMAGES = [
-  { src: hsrExterior.url, alt: "Jean Louis David salon exterior at HSR Layout, Bengaluru" },
-  { src: hsrSignageWide.url, alt: "Jean Louis David Paris signage at HSR Layout, Bengaluru" },
-  { src: hsrSignagePortrait.url, alt: "Jean Louis David salon facade at HSR Layout, Bengaluru" },
+  { src: hsrExterior.url, alt: "Jean Louis David salon exterior at HSR Layout, Bengaluru", title: "HSR Layout", region: "Bengaluru", to: "/locations/hsr-layout" as const, imagePosition: "object-center" },
+  { src: salonThrissur.url, alt: "Jean Louis David salon interior in Thrissur, Kerala", title: "Thrissur", region: "Kerala", to: "/locations/thrissur" as const, imagePosition: "object-center" },
+  { src: salonCoimbatore.url, alt: "Jean Louis David salon interior in Coimbatore", title: "Coimbatore", region: "Tamil Nadu", to: "/locations/coimbatore" as const, imagePosition: "object-center" },
 ];
 
 function SalonGallery() {
@@ -332,8 +334,8 @@ function SalonGallery() {
         </div>
 
         <div className="grid grid-cols-1 gap-5 md:grid-cols-3 md:gap-6">
-          {HSR_SALON_IMAGES.map((image, index) => (
-            <figure key={image.src}>
+          {HSR_SALON_IMAGES.map((image) => (
+            <article key={image.src}>
               <button
                 type="button"
                 onClick={() => openImage(image.src)}
@@ -344,10 +346,17 @@ function SalonGallery() {
                   src={image.src}
                   alt={image.alt}
                   loading="lazy"
-                  className={`absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.02] ${index === 1 ? "object-[54%_center]" : "object-center"}`}
+                  className={`absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.02] ${image.imagePosition}`}
                 />
               </button>
-            </figure>
+              <div className="mt-5 flex flex-col items-start gap-3">
+                <div>
+                  <h3 className="font-display text-2xl md:text-3xl text-noir">{image.title}</h3>
+                  <p className="mt-1 font-editorial text-lg text-noir/75">{image.region}</p>
+                </div>
+                <Link to={image.to} className="btn-noir">Know more</Link>
+              </div>
+            </article>
           ))}
         </div>
       </div>
