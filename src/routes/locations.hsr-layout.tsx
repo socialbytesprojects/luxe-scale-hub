@@ -25,6 +25,7 @@ function HsrLayoutSalon() {
       imageAlt="Jean Louis David salon exterior at HSR Layout, Bengaluru"
       address={<>Site No 2026, 1st Sector, 5th Cross,<br />27th Main Road, HSR Layout,<br />Bengaluru, Karnataka 560102</>}
       mapUrl="https://maps.google.com/maps?q=Jean+Louis+David+Hair+Salon+HSR+Layout&ll=12.9140875,77.6517165&hl=en&z=18"
+      mapEmbedUrl="https://maps.google.com/maps?q=Jean+Louis+David+Hair+Salon+HSR+Layout&ll=12.9140875,77.6517165&hl=en&z=18&output=embed"
     />
   );
 }

@@ -325,9 +325,9 @@ function SalonGallery() {
       <div className="mx-auto max-w-[1400px] px-6 md:px-10">
         <div className="mb-10 md:mb-14 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="eyebrow mb-4">— Our Salon</p>
+            <p className="eyebrow mb-4">— Visit</p>
             <h2 className="font-display text-4xl md:text-5xl text-noir leading-[1.05]">
-              HSR Layout <em className="font-editorial italic text-champagne">— Bengaluru</em>
+              Our <em className="font-editorial italic text-champagne">Salons</em>
             </h2>
           </div>
           <Link to="/contact" className="btn-noir self-start md:self-auto">Book Appointment</Link>

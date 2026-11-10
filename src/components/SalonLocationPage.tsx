@@ -8,9 +8,10 @@ type SalonLocationPageProps = {
   imageAlt: string;
   address?: ReactNode;
   mapUrl?: string;
+  mapEmbedUrl?: string;
 };
 
-export function SalonLocationPage({ title, region, image, imageAlt, address, mapUrl }: SalonLocationPageProps) {
+export function SalonLocationPage({ title, region, image, imageAlt, address, mapUrl, mapEmbedUrl }: SalonLocationPageProps) {
   return (
     <>
       <section className="relative bg-noir text-ivory pt-40 pb-16 md:pt-52 md:pb-20 overflow-hidden">
@@ -39,6 +40,21 @@ export function SalonLocationPage({ title, region, image, imageAlt, address, map
           </div>
         </div>
       </section>
+      {mapEmbedUrl ? (
+        <section className="bg-beige py-16 md:py-20">
+          <div className="mx-auto max-w-[1400px] px-6 md:px-10">
+            <p className="eyebrow mb-6">— Find us</p>
+            <iframe
+              title={`Jean Louis David ${title} location`}
+              src={mapEmbedUrl}
+              className="h-[420px] md:h-[520px] w-full border-0"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+            />
+          </div>
+        </section>
+      ) : null}
     </>
   );
 }
