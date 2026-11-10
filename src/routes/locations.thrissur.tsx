@@ -23,8 +23,9 @@ function ThrissurSalon() {
       region="Kerala"
       image={salonThrissur.url}
       imageAlt="Jean Louis David salon interior in Thrissur, Kerala"
-      address="Thrissur, Kerala"
+      address={<>Jean Louis David Hair Salon,<br />Thrissur, Kerala</>}
       mapUrl="https://share.google/yDJ1NFEvE7AK9kA5P"
+      mapEmbedUrl="https://maps.google.com/maps?q=Jean+Louis+David+Salon+Thrissur+Kerala&hl=en&z=16&output=embed"
     />
   );
 }

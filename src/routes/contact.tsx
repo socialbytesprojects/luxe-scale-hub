@@ -38,36 +38,25 @@ function Contact() {
       </section>
 
       <section className="bg-ivory py-24 md:py-32">
-        <div className="mx-auto max-w-[1400px] px-6 md:px-10 grid lg:grid-cols-12 gap-16">
-          <div className="lg:col-span-7">
+        <div className="mx-auto max-w-[1400px] px-6 md:px-10 grid lg:grid-cols-12 gap-10 lg:gap-12">
+          <div className="lg:col-span-8">
             <h2 className="font-display text-3xl md:text-4xl text-noir mb-10">Book an appointment</h2>
             <iframe
               title="Book an appointment with Jean Louis David"
               src="https://www.welns.io/product/booking/WFRCHN180477?bk_src=WI104"
               width="100%"
-              height="400"
+              height="900"
               frameBorder="0"
-              className="h-[400px] w-full border-0 bg-ivory"
+              className="h-[85vh] min-h-[720px] max-h-[1000px] w-full border border-champagne/40 bg-ivory shadow-sm"
               loading="lazy"
               allow="payment"
             />
           </div>
-          <aside className="lg:col-span-5">
+          <aside className="lg:col-span-4 lg:sticky lg:top-32 self-start">
             <div className="bg-noir text-ivory p-8">
               <p className="eyebrow !text-champagne mb-4">— Concierge</p>
               <p className="font-editorial text-xl text-ivory">Monday to Sunday · 9 AM to 10 PM</p>
               <p className="font-display text-2xl text-champagne mt-3">+91 89517 20423</p>
-              <div className="mt-6 pt-6 border-t border-ivory/20">
-                <p className="eyebrow !text-champagne mb-3">— Visit us</p>
-                <iframe
-                  title="Jean Louis David HSR Layout location"
-                  src="https://maps.google.com/maps?q=Jean+Louis+David+Hair+Salon+HSR+Layout&ll=12.9140875,77.6517165&hl=en&z=18&output=embed"
-                  className="h-64 w-full border-0"
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  allowFullScreen
-                />
-              </div>
               <a href="https://wa.me/918951720423" target="_blank" rel="noopener noreferrer" className="btn-gold mt-6">WhatsApp</a>
             </div>
           </aside>
