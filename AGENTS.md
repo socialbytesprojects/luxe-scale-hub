@@ -1,0 +1,1 @@
+- Keep salon location pages as separate, directly addressable routes linked from the homepage gallery so each location can be shared independently.
